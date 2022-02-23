@@ -1,5 +1,5 @@
 body{
-  margin: 0;
+  margin: 15px 0 0 0;
   padding: 0;
   display: grid;
   place-items: center;
@@ -13,10 +13,13 @@ body{
 .red{
   background: rgb(247, 12, 12);
 }
+.blue{
+  background: rgb(38, 101, 236);
+}
 .pokedex{
-  height: 620px;
+  height: 600px;
   width: 330px;
-  background-color: rgb(190, 12, 57);
+  background: rgb(190, 12, 57);
   box-sizing: border-box;
   position: relative;
   box-shadow: 0 0 15px rgb(39, 23, 23);
@@ -29,14 +32,16 @@ body{
   display: flex;
 }
 .contentBottomBorder, .contentBottomBorderL{
-  border-bottom:rgb(104, 31, 40) solid 0.6vh;
+  border-bottom:rgb(104, 31, 40) solid 0.8vh;
 }
 .contentBottomBorder{
   position: absolute;
   height:50px;
   width:176px;
   bottom:0;
-  box-shadow: 0px 4px rgb(92, 21, 21);
+  box-shadow:
+    0 4px 5px #970529;
+  z-index: 2;
 }
 
 .contentBottomBorderL{
@@ -46,17 +51,22 @@ body{
   right:0;
   bottom: 14px;
   transform: rotate(-49deg);
-  box-shadow: 0px 4px rgb(92, 21, 21);
+  box-shadow:
+    0 4px 4px #970529;
+  z-index: 1;
 }
 
 .rightContent{
+  z-index: 3;
+  background: rgb(190, 12, 57);
   height: 89px;
   width: 124px;
-  border-bottom:rgb(104, 31, 40) solid 0.6vh;
+  border-bottom:rgb(104, 31, 40) solid 0.8vh;
+  box-shadow:
+    0 4px 4px #970529;
   position: absolute;
   top: 0;
   right: 0;
-  box-shadow: 0px 4px rgb(92, 21, 21);
 }
 
 .bigBackCircle{
@@ -76,7 +86,6 @@ body{
 .bigLed{
   height: 70px;
   width: 70px;
-  background-color: rgb(38, 101, 236);
   position: relative;
   border-radius: 50%;
   box-shadow: 0 0 10px rgb(75, 84, 90);
@@ -94,4 +103,163 @@ body{
   width: 12px;
   border-radius: 50%;
   box-shadow: 0 0 15px rgb(39, 23, 23);
+}
+
+.mainScreenContainer{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 27px 0 20px 27px;
+  height:300px;
+  width: 245px;
+  background: rgb(192, 180, 180);
+  border-radius: 3%;
+  border-bottom-left-radius: 45px;
+  box-shadow:
+  0 0 10px #f55e84,
+  0 0 0 5px #970529;
+}
+.mainScreenSLed{
+  display: flex;
+  position: absolute;
+  top: 10px;
+}
+.mainScreenLed{
+  height: 7px;
+  width: 7px;
+  margin-right: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(97, 11, 11);
+}
+.mainScreen{
+  position: relative;
+  height:240px;
+  width: 194px;
+  background: black;
+  top:25px;
+}
+.mainScreenLedB{
+  position: absolute;
+  left: 23px;
+  bottom: 14px;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(97, 11, 11);
+}
+.mainSoundBox{
+  position: absolute;
+  bottom: 27px;
+  right: 27px;
+  width: 20px;
+  border: rgb(63, 40, 42) 2px solid;
+  box-shadow: 
+  0 3px 0 rgb(192, 180, 180),
+  0 6px 0 rgb(63, 40, 42),
+  0 9px 0 rgb(192, 180, 180),
+  0 12px 0 rgb(63, 40, 42),
+  0 15px 0 rgb(192, 180, 180),
+  0 18px 0 rgb(63, 40, 42);
+}
+
+.pokedexBottomContent{
+  display: flex;
+  position: relative;
+  margin-left: 27px;
+}
+.circularButton{
+  position: relative;
+  top: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: black;
+}
+.ledAndScreenContent{
+  position: relative;
+  height: 110px;
+  margin-left: 7px;
+}
+.lineLed {
+  display: flex;
+  margin-left: 8px;
+}
+.lineLed div{
+  width: 35px;
+  height: 5px;
+  border-radius: 30%;
+}
+.lineLed div:first-child{
+  margin-right: 30px;
+}
+.miniScreen{
+  margin-top: 15px;
+  margin-left:12px;
+  height: 70px;
+  width:85px;
+  background-color: rgb(60, 148, 26);
+  border-radius: 3%;
+  box-shadow:
+  0 0 10px #f55e84,
+  0 0 0 5px #970529;
+}
+.crossButton{
+  margin-left: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+}
+.horizontalLine{
+  position: absolute;
+  justify-self: center;
+  height: 90px;
+  width: 30px;
+  background: black;
+  border-radius: 5px;
+}
+.verticalLine{
+  position: absolute;
+  height: 30px;
+  width: 90px;
+  background: black;
+  border-radius: 5px;
+}
+.crossCircle{
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px rgb(14, 12, 12);
+}
+.rightBorder{
+  z-index: 2;
+  position: absolute;
+  right:0px;
+  top:88px;
+  height:512px;
+  width: 32px;
+  background: rgb(190, 12, 57);
+  box-shadow: 
+  -4px 0 5px  #970529,
+  inset 3px 5px 4px rgb(104, 31, 40),
+  inset -3px -5px 5px rgb(104, 31, 40),
+  inset 10px 0px 1px rgb(233, 90, 126),
+  inset 15px 0px 2px rgb(228, 54, 97),
+  inset 20px 0px 1px rgb(211, 28, 74);;
+}
+.topBorder, .bottomBorder{
+  position: absolute;
+  width: 32px;
+  height: 38px;
+}
+.topBorder{
+  top:0;
+  box-shadow: 0 7px 7px rgb(104, 31, 40);
+}
+.bottomBorder{
+  bottom: 0;
+  box-shadow: 0 -7px 7px rgb(104, 31, 40);
 }
