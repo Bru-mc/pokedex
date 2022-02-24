@@ -5,7 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Access Link
 
-### `https://bru-mc.github.io/pokedex/`
+### `First version`
+https://bru-mc.github.io/pokedex/
 
 
-# pokedex
+
