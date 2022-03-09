@@ -11,6 +11,64 @@
     <title>React App</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="pokedex backColor">
+      <div class="pokedexHeader">
+        <div class="leftContent flex">
+          <div class="contentBottomBorder backColor"></div>
+          <div class="contentBottomBorderL"></div>
+          <div class="bigBackCircle circle flex lightGray">
+            <div class="bigLed blue circle"></div>
+          </div>
+          <div class="ledS flex">
+            <div class="ledSmall circle red"></div>
+            <div class="ledSmall circle yellow"></div>
+            <div class="ledSmall circle green"></div>
+          </div>
+        </div>
+        <div class="rightContent"></div>
+        <div class="rightContentOver backColor"></div>
+      </div>
+      <div class="pokedexMainContent">
+        <div class="mainScreenContainer flex lightGray">
+          <div class="mainScreenSLed flex">
+            <div class="mainScreenLed circle red"></div>
+            <div class="mainScreenLed circle red"></div>
+          </div>
+          <div id="root" class="mainScreen darkGray"></div>
+          <div class="mainScreenLedB circle red"></div>
+          <div class="mainSoundBox"></div>
+        </div>
+      </div>
+      <div class="pokedexBottomContent flex">
+        <div class="circularButton circle darkGray"></div>
+        <div class="ledAndScreenContent">
+          <div class="lineLeds flex">
+            <div class="lineLed red"></div>
+            <div class="lineLed blue"></div>
+          </div>
+          <div class="miniScreen green"></div>
+        </div>
+        <div class="crossButton flex">
+          <div class="horizontalLine darkGray"></div>
+          <div class="verticalLine darkGray"></div>
+          <div class="crossCircle circle"></div>
+        </div>
+      </div>
+      <div class="rightBorder backColor">
+        <div class="topBorder"></div>
+        <div class="bottomBorder"></div>
+      </div>
+    </div>
+    <!--<div id="root"></div>
+
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 </html>
