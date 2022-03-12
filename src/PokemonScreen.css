@@ -1,41 +1,37 @@
 
-.card{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background: white;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    box-shadow: inset 0 0 0 3px black;
-  }
-  .titulo{
-    margin:2px 0 2px 0;
-    font-size: 2.1em;
-  }
-  img{
-    margin-top: 0;
-    padding: 3px 0 3px 0;
-    width: 96%;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-  }
-  .descricao{
-    align-items: center;
-    margin:0;
-    padding:5px 0 5px 0;
-    text-align: center;
-    
-  }
-  .pokemonList{
-    background-color: aqua;
-    margin: 0;
-    padding: 0;
-  }
-  li{
-    text-align: center;
-    padding: 5px 0 5px 0;
-    list-style-type: none;
-    color: brown;
-  }
+.pokemonList{
+  background-color: #15b82b;
+  margin: 0;
+  padding: 0;
+}
+li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 0 5px 5px;
+  list-style-type: none;
+  color: #f7f0f0;
+  margin: 6px 4px 6px 4px; 
+  font-weight:600;
+  background: #61c06e;
+  border-radius: 7px;
+  transition-delay: 0.05s;
+}
+
+li:hover{
+  filter: brightness(1.1);
+}
+
+.newIcon{
+  background: red;
+  margin: 0 5px 0 0;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.newIcon p{
+  margin: 0;
+  color: yellow;
+  padding: 2px 4px 2px 4px;
+}

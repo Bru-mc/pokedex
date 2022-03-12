@@ -28,7 +28,7 @@ function App() {
               <div className="mainScreenLed circle red"></div>
               <div className="mainScreenLed circle red"></div>
             </div>
-            <div className="mainScreen darkGray">
+            <div className="mainScreen">
               <PokemonScreen/> 
             </div>
             <div className="mainScreenLedB circle red"></div>

@@ -4,6 +4,7 @@ import './PokemonScreen.css';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
+
 type pokeList = {
     count: number,
     next: string,
@@ -46,7 +47,13 @@ export function PokemonScreen (){
 
     return(
         <ul className='pokemonList'>
-            { data?.results.map<JSX.Element>(result =>{ return <li className = {result.name}>{result.name}</li>})}
+            { data?.results.map<JSX.Element>(result =>{ 
+                return <li className = {result.name}>
+                {result.name.toUpperCase()}
+                <div className='newIcon'>
+                    <p>New</p>
+                </div>
+                </li>})}
         </ul>
     //     //data
         

@@ -157,6 +157,7 @@ body{
   width: 194px;
   top:25px;
   overflow: auto;
+  background: #15b82b;
 }
 .mainScreenLedB{
   height: 15px;
