@@ -1,9 +1,6 @@
 import React from 'react';
-import pikachu from './pngegg.png';
 import './PokemonScreen.css';
 import { PokemonList } from './pages/pokemonList';
-import { useQuery } from 'react-query';
-import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import { PokeHome } from './pages/pokeHome';
 import { Pokemon } from './pages/pokemon';

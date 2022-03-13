@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 type pokeList = {
     count: number,
@@ -19,7 +21,9 @@ export const PokemonList = () => {
         <ul className='pokemonList'>
             { data?.results.map<JSX.Element>(result =>{ 
                 return <li className = {result.name}>
-                {result.name.toUpperCase()}
+                <Link to={`/pokemons/${result.name}`}>
+                  {result.name.toUpperCase()}
+                </Link>
                 <div className='newIcon'>
                     <p>New</p>
                 </div>
