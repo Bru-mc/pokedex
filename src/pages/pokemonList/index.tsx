@@ -20,14 +20,15 @@ export const PokemonList = () => {
     return(
         <ul className='pokemonList'>
             { data?.results.map<JSX.Element>(result =>{ 
-                return <li className = {result.name}>
-                <Link to={`/pokemons/${result.name}`}>
-                  {result.name.toUpperCase()}
+                return <Link to={`/pokemons/${result.name}`}>
+                  <li className = {result.name}>
+                    {result.name.toUpperCase()}
+                    <div className='newIcon'>
+                      <p>New</p>
+                    </div>
+                  </li>
                 </Link>
-                <div className='newIcon'>
-                    <p>New</p>
-                </div>
-                </li>})}
+                })}
         </ul>
     );
 } 
