@@ -11,8 +11,6 @@ type pokeList = {
 
 export const PokemonList = () => {
     const baseUrl: string = 'https://pokeapi.co/api/v2';
-    const totalPokeId: number = 150;
-    let pokemonList: string= '';
     const { data, isFetching } = useQuery<pokeList>(`pokemonList`,async () => {
         const response = await axios.get(baseUrl+ `/pokemon?limit=150`);
         return response.data;

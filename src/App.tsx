@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { PokemonScreen } from './PokemonScreen';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
@@ -29,7 +30,9 @@ function App() {
               <div className="mainScreenLed circle red"></div>
             </div>
             <div className="mainScreen">
-              <PokemonScreen/> 
+              <BrowserRouter>
+                <PokemonScreen/> 
+              </BrowserRouter>  
             </div>
             <div className="mainScreenLedB circle red"></div>
             <div className="mainSoundBox"></div>
