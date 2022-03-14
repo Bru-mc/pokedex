@@ -48,10 +48,10 @@ export const Pokemon = () =>{
       return response.data;
   })
   return(
-    <div className="pokeCard">
+    <div className="pokeCard" key={data?.name}>
       <div className="pokeCardTop">
         <div className="pokeCardHeader">
-          <Link to={`/pokedex/pokemons`}>
+          <Link to={`/pokemons`}>
             <img className="back" src={back} alt="Back"/>
           </Link>
           <h1 className="pokeCardTitle">{data?.name.toLocaleUpperCase()}</h1>
@@ -62,7 +62,7 @@ export const Pokemon = () =>{
         <h2 className="pokeCardH2">TYPE:</h2>
         <div className="typeOp">
           {data?.types.map<JSX.Element>(types =>{
-          return <p>{types.type.name.toUpperCase()}</p>
+          return <p key={types.type.name}>{types.type.name.toUpperCase()}</p>
           })}
         </div>
       </div>

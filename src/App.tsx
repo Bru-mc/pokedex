@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter,Route, Routes} from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes} from 'react-router-dom';
 import { PokeHome } from './pages/pokeHome';
 import { PokemonList } from './pages/pokemonList';
 import { Pokemon } from './pages/pokemon';
@@ -31,13 +31,13 @@ function App() {
               <div className="mainScreenLed circle red"></div>
             </div>
             <div className="mainScreen">
-              <BrowserRouter>
+              <HashRouter>
                 <Routes>
-                  <Route path='/pokedex' element = {<PokeHome />}/>
-                  <Route path='/pokedex/pokemons' element = {<PokemonList/>}/>
-                  <Route path='/pokedex/pokemons/:name' element = {<Pokemon/> }/>    
+                  <Route path='/' element = {<PokeHome />}/>
+                  <Route path='/pokemons' element = {<PokemonList/>}/>
+                  <Route path='/pokemons/:name' element = {<Pokemon/> }/>    
                 </Routes> 
-              </BrowserRouter>  
+              </HashRouter>  
             </div>
             <div className="mainScreenLedB circle red"></div>
             <div className="mainSoundBox"></div>
