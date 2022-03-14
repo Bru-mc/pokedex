@@ -39,6 +39,19 @@ type pokemon = {
     ],
     weight: number
 };
+type pokemonPropertys = {
+  name:string,
+  img:string,
+  types:[
+    {
+      slot: number,
+      type:{
+        name:string,
+        url:string
+      }
+    }
+  ],
+}
 
 export const Pokemon = () =>{
   const {name} = useParams();
@@ -47,6 +60,11 @@ export const Pokemon = () =>{
       const response = await axios.get(`${baseUrl}/pokemon/${name}`);
       return response.data;
   })
+  const pokemonPropertys = {
+    name: data?.name,
+    img: data?.sprites.other.dream_world.front_default,
+    types: data?.types
+  }
   return(
     <div className="pokeCard" key={data?.name}>
       <div className="pokeCardTop">
@@ -54,14 +72,14 @@ export const Pokemon = () =>{
           <Link to={`/pokemons`}>
             <img className="back" src={back} alt="Back"/>
           </Link>
-          <h1 className="pokeCardTitle">{data?.name.toLocaleUpperCase()}</h1>
+          <h1 className="pokeCardTitle">{pokemonPropertys.name?.toLocaleUpperCase()}</h1>
         </div>
-        <img className="pokeImg" src={data?.sprites.other.dream_world.front_default} alt={data?.name}/>
+        <img className="pokeImg" src={pokemonPropertys.img} alt={data?.name}/>
       </div>
       <div className="pokeCardType">
         <h2 className="pokeCardH2">TYPE:</h2>
         <div className="typeOp">
-          {data?.types.map<JSX.Element>(types =>{
+          {pokemonPropertys.types?.map<JSX.Element>(types =>{
           return <p key={types.type.name}>{types.type.name.toUpperCase()}</p>
           })}
         </div>
