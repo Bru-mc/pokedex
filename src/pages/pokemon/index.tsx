@@ -77,7 +77,7 @@ export const Pokemon = () =>{
         <img className="pokeImg" src={pokemonPropertys.img} alt={data?.name}/>
       </div>
       <div className="pokeCardType">
-        <h2 className="pokeCardH2">TYPE:</h2>
+        <h2 className="pokeCardH2">TYPE :</h2>
         <div className="typeOp">
           {pokemonPropertys.types?.map<JSX.Element>(types =>{
           return <p key={types.type.name}>{types.type.name.toUpperCase()}</p>

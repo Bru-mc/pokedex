@@ -18,17 +18,29 @@ export const PokemonList = () => {
         return response.data;
     });
     return(
-        <ul className='pokemonList'>
+      <div className='pokemonList'>
+        <ul id="pokeListUl" >
             { data?.results.map<JSX.Element>(result =>{ 
                 return <Link to={`/pokemons/${result.name}`} key={result.name}>
                   <li className = {result.name}>
                     {result.name.toUpperCase()}
                     <div className='newIcon'>
-                      <p>New</p>
+                      <p>NEW</p>
                     </div>
                   </li>
                 </Link>
                 })}
         </ul>
+      <div className="pokemonListFooter">
+        <ul>
+          <Link to={"/"}>
+            <li>Back</li>
+          </Link>
+          <Link to={"/pokemons"}>
+              <li>Topo</li>
+          </Link>
+        </ul>      
+      </div>
+      </div>  
     );
 } 
