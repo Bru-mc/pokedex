@@ -1,7 +1,7 @@
-import React from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import './index.css'
 
 
 type pokeList = {
@@ -20,7 +20,7 @@ export const PokemonList = () => {
     return(
         <ul className='pokemonList'>
             { data?.results.map<JSX.Element>(result =>{ 
-                return <Link to={`/pokemons/${result.name}`}>
+                return <Link to={`/pokedex/pokemons/${result.name}`}>
                   <li className = {result.name}>
                     {result.name.toUpperCase()}
                     <div className='newIcon'>

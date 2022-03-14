@@ -1,7 +1,8 @@
-import React from 'react';
 import './App.css';
-import { PokemonScreen } from './PokemonScreen';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter,Route, Routes} from 'react-router-dom';
+import { PokeHome } from './pages/pokeHome';
+import { PokemonList } from './pages/pokemonList';
+import { Pokemon } from './pages/pokemon';
 
 function App() {
   return (
@@ -31,7 +32,11 @@ function App() {
             </div>
             <div className="mainScreen">
               <BrowserRouter>
-                <PokemonScreen/> 
+                <Routes>
+                  <Route path='/pokedex' element = {<PokeHome />}/>
+                  <Route path='/pokedex/pokemons' element = {<PokemonList/>}/>
+                  <Route path='/pokedex/pokemons/:name' element = {<Pokemon/> }/>    
+                </Routes> 
               </BrowserRouter>  
             </div>
             <div className="mainScreenLedB circle red"></div>

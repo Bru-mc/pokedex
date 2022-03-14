@@ -51,7 +51,7 @@ export const Pokemon = () =>{
     <div className="pokeCard">
       <div className="pokeCardTop">
         <div className="pokeCardHeader">
-          <Link to={`/pokemons`}>
+          <Link to={`/pokedex/pokemons`}>
             <img className="back" src={back} alt="Back"/>
           </Link>
           <h1 className="pokeCardTitle">{data?.name.toLocaleUpperCase()}</h1>
