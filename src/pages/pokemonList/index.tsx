@@ -19,6 +19,11 @@ export const PokemonList = () => {
     });
     return(
       <div className='pokemonList'>
+        <div className="pokemonListHeader">
+          <Link to={"/"}>
+            <h2>BACK</h2>
+          </Link> 
+        </div>
         <ul id="pokeListUl" >
             { data?.results.map<JSX.Element>(result =>{ 
                 return <Link to={`/pokemons/${result.name}`} key={result.name}>
@@ -31,16 +36,6 @@ export const PokemonList = () => {
                 </Link>
                 })}
         </ul>
-      <div className="pokemonListFooter">
-        <ul>
-          <Link to={"/"}>
-            <li>Back</li>
-          </Link>
-          <Link to={"/pokemons"}>
-              <li>Topo</li>
-          </Link>
-        </ul>      
-      </div>
       </div>  
     );
 } 

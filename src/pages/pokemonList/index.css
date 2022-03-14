@@ -1,7 +1,18 @@
 .pokemonList{
   background: #0314af;
   margin:0;
-  padding: 5px 0 1px 0;
+  padding: 0px 0 1px 0;
+}
+.pokemonListHeader{
+  margin: 0;
+  padding: 0;
+}
+.pokemonListHeader h2{
+  margin: 0 0 5px 0;
+  padding: 0;
+  width: 100%;
+  background: #ffffff;
+  font-size: 1em;
 }
 .pokemonList ul{
   margin: 0;
@@ -52,6 +63,6 @@
   transition: 1s;
 }
 .pokemonListFooter{
-  position: fixed;
-  bottom: 0;
+  position: absolute ;
+  bottom:0;
 }
