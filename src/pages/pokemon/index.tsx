@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import './index.css'
+import back from "../../assets/back.png";
 
 
 type pokemon = {
@@ -39,16 +41,31 @@ type pokemon = {
 };
 
 export const Pokemon = () =>{
-    const {name} = useParams();
-    const {data , isFetching} = useQuery<pokemon>(`pokemon`,async () => {
-        const baseUrl: string = 'https://pokeapi.co/api/v2';
-        const response = await axios.get(`${baseUrl}/pokemon/${name}`);
-        return response.data;
-    })
-    return(
-        <div>
-          <h1>{data?.name}</h1>
-          <img src={data?.sprites.other.dream_world.front_default} alt={data?.name}/>
+  const {name} = useParams();
+  const {data , isFetching} = useQuery<pokemon>(`pokemon`,async () => {
+      const baseUrl: string = 'https://pokeapi.co/api/v2';
+      const response = await axios.get(`${baseUrl}/pokemon/${name}`);
+      return response.data;
+  })
+  return(
+    <div className="pokeCard">
+      <div className="pokeCardTop">
+        <div className="pokeCardHeader">
+          <Link to={`/pokemons`}>
+            <img className="back" src={back} alt="Back"/>
+          </Link>
+          <h1 className="pokeCardTitle">{data?.name.toLocaleUpperCase()}</h1>
         </div>
-    );
+        <img className="pokeImg" src={data?.sprites.other.dream_world.front_default} alt={data?.name}/>
+      </div>
+      <div className="pokeCardType">
+        <h2 className="pokeCardH2">TYPE:</h2>
+        <div className="typeOp">
+          {data?.types.map<JSX.Element>(types =>{
+          return <p>{types.type.name.toUpperCase()}</p>
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,0 +1,87 @@
+.pokeCard{
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+  background-color: #0e2ec0;
+  height: 100%;
+}
+.pokeCardTop{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 86.5%; 
+  justify-content: center;
+  background-image: url(../../assets/nature.jpg);
+  background-position: left bottom;
+  background-size: cover;
+  overflow: hidden;
+  /* align-content: space-between; */
+}
+.pokeCardHeader{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0e2ec0;
+  border-bottom: 2px solid rgb(27, 26, 26);
+}
+.back{
+  height: 55%;
+  position: absolute;
+  top:8px;
+  left: 0;
+}
+.pokeCardTitle{
+  
+  margin: 0;
+  font-size: 1.4em;
+  text-align: center;
+  color: #f0d53c;
+}
+.pokeImg{
+  width: 80%; 
+  margin: 0; 
+  padding: 0;
+}
+
+.pokeCardType{
+  display: flex;
+  width:100%;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: flex-end;
+  background: #0e2ec0;
+  border-top: 2px solid rgb(27, 26, 26);
+  height: 20px;
+}
+.pokeCardH2{
+  
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 1em;
+  color: #f0d53c;
+  height: 100%;
+}
+.typeOp{
+  display: flex;  
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+.typeOp p{
+  margin: 0 ;
+  background:rgb(123, 5, 146);
+  height: 100%;
+  font-size: 0.8em;
+  color: #ffffff;
+  border-radius: 3px;
+  padding: 0 5px 0 5px;
+  border: 3px solid #0e2ec0; 
+
+}
