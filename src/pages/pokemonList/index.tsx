@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import './index.css'
+import { LegacyRef, useRef } from "react";
 
 
 type pokeList = {
@@ -17,14 +18,13 @@ export const PokemonList = () => {
         const response = await axios.get(baseUrl+ `/pokemon?limit=150`);
         return response.data;
     });
+    const testRef = useRef<any>(null);
+    const goToTop = () =>{
+      testRef.current?.scrollIntoView()
+    }
     return(
       <div className='pokemonList'>
-        <div className="pokemonListHeader">
-          <Link to={"/"}>
-            <h2>BACK</h2>
-          </Link> 
-        </div>
-        <ul id="pokeListUl" >
+        <ul ref={testRef}>
             { data?.results.map<JSX.Element>(result =>{ 
                 return <Link to={`/pokemons/${result.name}`} key={result.name}>
                   <li className = {result.name}>
@@ -36,6 +36,17 @@ export const PokemonList = () => {
                 </Link>
                 })}
         </ul>
+        <div className="pokemonListFotter">
+          <Link className="backButtonLink" to={"/"}>
+            <button className="backButton" >
+              BACK
+            </button>
+          </Link> 
+          <button className="goToTop" onClick={goToTop}>
+            TOP
+          </button>
+        </div>
+        
       </div>  
     );
 } 

@@ -3,17 +3,7 @@
   margin:0;
   padding: 0px 0 1px 0;
 }
-.pokemonListHeader{
-  margin: 0;
-  padding: 0;
-}
-.pokemonListHeader h2{
-  margin: 0 0 5px 0;
-  padding: 0;
-  width: 100%;
-  background: #ffffff;
-  font-size: 1em;
-}
+
 .pokemonList ul{
   margin: 0;
   padding: 0;
@@ -62,7 +52,33 @@
   font-weight: bold;
   transition: 1s;
 }
-.pokemonListFooter{
-  position: absolute ;
-  bottom:0;
+.pokemonListFotter{
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 190px;
+  height: 27px;
+  bottom: 220px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background: #f1bd5c;
+  border: 2px solid #0314af;
 }
+.backButton{
+  display: flex;
+}
+.backButton, .goToTop{
+  width: max-content;
+  height: max-content;
+  font-size: 12px;
+  font-weight:600;
+  background: #f1bd5c;
+  color: #030d63;
+  border: none;
+  /* border: 1px solid #030d63;
+  border-radius: 3px; */
+  margin: 0px 5px;
+}
+
+
