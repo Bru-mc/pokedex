@@ -1,7 +1,5 @@
-import { useQuery } from "react-query";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import './index.css'
+import './index.css';
 import { useRef } from "react";
 import { PokemonsList } from "./PokemonsList";
 
@@ -12,7 +10,7 @@ export const Pokemons = () => {
       testRef.current?.scrollIntoView()
     }
     return(
-      <div className='pokemonsPage' ref={testRef}>
+      <div className='pokemonsPage'>
         <div className="pokemonsListHeader">
           <Link className="backButtonLink" to={"/"}>
             <button className="backButton" >
@@ -24,6 +22,7 @@ export const Pokemons = () => {
           </button>
         </div>
         <div className="pokemonsListContainer">
+          <section className="pokeListStart" ref={testRef}></section>
           <PokemonsList></PokemonsList>
         </div>
       </div>  

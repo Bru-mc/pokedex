@@ -29,6 +29,7 @@
 }
 .backButton:hover, .goToTop:hover{
   color: red;
+  cursor: pointer;
 }
 .pokemonsListContainer{
   width: 100%;
