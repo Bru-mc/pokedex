@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { pokemonPropertys } from "../../../interfaces/I_PokePropeties"
 import back from "../../../assets/back.png"
+import { pokemonPropertys } from "../../../interfaces/interfaces";
 
 export const PokeCardTop = (props:pokemonPropertys) =>{
 return(

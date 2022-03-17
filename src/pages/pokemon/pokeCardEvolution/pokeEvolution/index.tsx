@@ -9,8 +9,6 @@ interface evolutionChain{
   } 
 }
 
-
-
 interface chain{
   chain:evolutionChain
 }

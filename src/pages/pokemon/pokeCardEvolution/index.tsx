@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { pokeApiQuerys  as pokeSpeciesQuery} from "../../../helpers/pokeApiQuerys";
-import { pokeSpecie } from "../../../interfaces/I_PokeSpecie";
+import { pokeSpecie } from "../../../interfaces/interfaces";
 import { PokeEvolution } from "./pokeEvolution";
 
 export const PokeCardEvolution = (props:{url:string}) => {

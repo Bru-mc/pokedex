@@ -2,8 +2,8 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { pokeApiQuerys as pokemonsQuery } from "../../../helpers/pokeApiQuerys";
 import * as constants from "../../../constants"
-import { I_PokeList as pokeList } from "../../../interfaces/I_PokeList";
 import './index.css';
+import { pokeList } from "../../../interfaces/interfaces";
 
 export const PokemonsList = () => {
     const { data, isFetching } = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));
