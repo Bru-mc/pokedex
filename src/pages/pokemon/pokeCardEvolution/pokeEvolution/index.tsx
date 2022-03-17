@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { pokeApiQuerys as pokeEvolutionQuerys } from "../../../../helpers/pokeApiQuerys";
+import { pokeApiQuerys as pokeEvolutionQuery } from "../../../../helpers/pokeApiQuerys";
 
 interface evolutionChain{
   evolves_to: evolutionChain[]
@@ -15,12 +15,16 @@ interface chain{
   chain:evolutionChain
 }
 export const PokeEvolution = (props:{url:string}) => {
-  
-  const {data, isFetching, error} = useQuery<chain, Error>(`chain`, () => pokeEvolutionQuerys(props.url));
+  //query for pokemon evolutions
+  const {data, isFetching, error} = 
+  useQuery<chain, Error>(`chain`, () => 
+  pokeEvolutionQuery(props.url));
+
   if (isFetching) return <span>'Loading...'</span>
   if (error) return <span>Error:{error.message}</span>
   
-  const verificaSpecies = (evolutionChain: evolutionChain) =>{
+  //func that return array with species from evolution chain
+  const verifySpecies = (evolutionChain: evolutionChain) =>{
     let evolutionArray: string [] = [];
     let current:Array<evolutionChain> = [evolutionChain]
     while(current.length>0){
@@ -34,7 +38,7 @@ export const PokeEvolution = (props:{url:string}) => {
   return(   
       
     <div>
-      {verificaSpecies(data?.chain!).map((evolutionName)=>{
+      {verifySpecies(data?.chain!).map((evolutionName)=>{
       return <p key={evolutionName}>{evolutionName}</p>})} 
     </div>
   );
