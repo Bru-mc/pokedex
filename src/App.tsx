@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, HashRouter, Route, Routes} from 'react-router-dom';
 import { PokeHome } from './pages/pokeHome';
 import { Pokemons } from './pages/pokemons';
-import { Pokemon } from './pages/pokemon';
+import { PokemonCard } from './pages/pokemon';
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
                 <Routes>
                   <Route path='/' element = {<PokeHome />}/>
                   <Route path='/pokemons' element = {<Pokemons/>}/>
-                  <Route path='/pokemons/:name' element = {<Pokemon/> }/>    
+                  <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
                 </Routes> 
               </HashRouter>  
             </div>

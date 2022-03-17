@@ -1,48 +1,25 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import './index.css'
-import back from "../../assets/back.png";
+import { PokeCardEvolution } from "./pokeCardEvolution";
+import { PokeCardTop } from "./pokeCardTop";
+ 
 
 
 type pokemon = {
-    abilities: [],
-    base_experience: number,
-    forms: [],
-    game_indices: [],
-    height: number,
-    held_items: any[],
-    id: number,
-    is_default: boolean,
-    location_area_encounters: string,
-    moves: any[],
-    name: string,
-    order: number,
-    past_types: any[],
-    species:{},
-    sprites:{
-      other:{
-        dream_world:{
-          front_default:string
-        }
+  name: string,
+  species:{
+    url:string
+  },
+  sprites:{
+    other:{
+      dream_world:{
+        front_default:string
       }
-    },
-    stats: [],
-    types: [
-      {
-        slot: number,
-        type:{
-          name:string,
-          url:string
-        }
-      }
-    ],
-    weight: number
-};
-type pokemonPropertys = {
-  name:string,
-  img:string,
-  types:[
+    }
+  },
+  types: [
     {
       slot: number,
       type:{
@@ -50,40 +27,46 @@ type pokemonPropertys = {
         url:string
       }
     }
-  ],
-}
+  ]
+};
 
-export const Pokemon = () =>{
+
+export const PokemonCard = () =>{
   const {name} = useParams();
   const {data , isFetching} = useQuery<pokemon>(`pokemon`,async () => {
       const baseUrl: string = 'https://pokeapi.co/api/v2';
       const response = await axios.get(`${baseUrl}/pokemon/${name}`);
       return response.data;
   })
+  // console.log("AQUI " + data?.species.url)
   const pokemonPropertys = {
     name: data?.name,
     img: data?.sprites.other.dream_world.front_default,
     types: data?.types
   }
+  const isString = (varString:string | undefined) =>{
+    if(varString){
+      return <PokeCardEvolution url={varString}></PokeCardEvolution>
+    }
+    return <></>
+  }
+
   return(
-    <div className="pokeCard" key={data?.name}>
-      <div className="pokeCardTop">
-        <div className="pokeCardHeader">
-          <Link to={`/pokemons`}>
-            <img className="back" src={back} alt="Back"/>
-          </Link>
-          <h1 className="pokeCardTitle">{pokemonPropertys.name?.toLocaleUpperCase()}</h1>
-        </div>
-        <img className="pokeImg" src={pokemonPropertys.img} alt={data?.name}/>
-      </div>
+    <div className="pokeCard">
+      <PokeCardTop {...pokemonPropertys}></PokeCardTop> 
       <div className="pokeCardType">
         <h2 className="pokeCardH2">TYPE :</h2>
         <div className="typeOp">
           {pokemonPropertys.types?.map<JSX.Element>(types =>{
           return <p key={types.type.name}>{types.type.name.toUpperCase()}</p>
           })}
-        </div>
+        </div> 
       </div>
-    </div>
+      {/* <div className="pokeCardEvolution">
+        <PokemonEvolution url={data?.species!.url!}></PokemonEvolution>
+      </div>   */}
+        {isString(data?.species.url)}
+    </div> 
+    
   );
 }

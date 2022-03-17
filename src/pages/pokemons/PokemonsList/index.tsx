@@ -1,21 +1,12 @@
 import { useQuery } from "react-query";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import './index.css'
-
-type pokeList = {
-    count: number,
-    next: string,
-    previous: any,
-    results: [{name: string, url: string}]
-}
+import { pokeApiQuerys as pokemonsQuery } from "../../../helpers/pokeApiQuerys";
+import * as constants from "../../../constants"
+import { I_PokeList as pokeList } from "../../../interfaces/I_PokeList";
+import './index.css';
 
 export const PokemonsList = () => {
-    const baseUrl: string = 'https://pokeapi.co/api/v2';
-    const { data, isFetching } = useQuery<pokeList>(`pokemonList`,async () => {
-        const response = await axios.get(baseUrl+ `/pokemon?limit=150`);
-        return response.data;
-    });
+    const { data, isFetching } = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));
     return(
         <ul className="pokemonList">
             { data?.results.map<JSX.Element>(result =>{ 
