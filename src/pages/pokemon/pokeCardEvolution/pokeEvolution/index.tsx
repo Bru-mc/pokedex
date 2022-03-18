@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { pokeApiQuerys as pokeEvolutionQuery } from "../../../../helpers/pokeApiQuerys";
 import { chain, evolutionChain } from "../../../../interfaces/interfaces";
 import { Evolution } from "./evolution";
+import "./index.css";
 
 export const PokeEvolution = (props:{url:string,name:string}) => {
   //query for pokemon evolutions
@@ -26,7 +27,7 @@ export const PokeEvolution = (props:{url:string,name:string}) => {
   }
   return(   
       
-    <div>
+    <div className="evolutions">
       {verifySpecies(data?.chain!).map((evolutionName)=>{
       return <Evolution 
       key={evolutionName} 

@@ -62,13 +62,11 @@
   height: 20px;
 }
 .pokeCardH2{
-  
   margin: 0;
   padding: 0;
   text-align: center;
   font-size: 1em;
   color: #f0d53c;
-  height: 100%;
 }
 .typeOp{
   display: flex;  

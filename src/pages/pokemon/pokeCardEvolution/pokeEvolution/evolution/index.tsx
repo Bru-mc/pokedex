@@ -21,25 +21,31 @@ export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
     if(pokeData.name === props.currentPoke){
       return <div style={{
         backgroundColor:"black",
-        height:'30px',
+        border:'1px solid #d19d2c',
+        height:'50px',
         borderRadius:'50%',
         overflow:"hidden"  
       }} className="pokeEvolutionIcon">
         <img style={
-          {height:"30px"}
+          {height:"50px"}
         } src={pokeData.img} alt={pokeData.name} />
       </div>
     }
     else{
-      return <div className="pokeEvolutionIcon">
+      return <div style={{
+        backgroundColor:"black",
+        height:'50px',
+        borderRadius:'50%',
+        overflow:"hidden"
+        }}className="pokeEvolutionIcon">
         <img style={
-          {height:"30px"}
+          {height:"50px"}
         } src={pokeData.img} alt={pokeData.name} />
       </div>
     }
     }
   return(
-    <div className="evolutions">
+    <div className="evolution">
       {isCurrent()}
     </div>
   );
