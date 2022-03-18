@@ -3,9 +3,11 @@ import { pokeApiQuerys  as pokeSpeciesQuery} from "../../../helpers/pokeApiQuery
 import { pokeSpecie } from "../../../interfaces/interfaces";
 import { PokeEvolution } from "./pokeEvolution";
 
-export const PokeCardEvolution = (props:{url:string}) => {
+export const PokeCardEvolution = (props:{url:string, name:string}) => {
   console.log(props.url)
-  const {data , isFetching} = useQuery<pokeSpecie>(`specie`, () => pokeSpeciesQuery(props.url));
+  const {data , isFetching} = 
+  useQuery<pokeSpecie>(`specie`, () => 
+  pokeSpeciesQuery(props.url));
   
   const pokemonSpecie = {
     color: data?.color.name,
@@ -13,7 +15,7 @@ export const PokeCardEvolution = (props:{url:string}) => {
   }
   const isString = (varString:string | undefined) =>{
     if(varString){
-      return <PokeEvolution url={varString}></PokeEvolution>
+      return <PokeEvolution url={varString} name={props.name}></PokeEvolution>
     }
     return <></>
   }

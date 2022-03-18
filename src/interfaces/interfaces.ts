@@ -38,14 +38,18 @@ export interface pokemonPropertys {
 
 export interface pokeSpecie{
   color: {
-    name:string;
+    name:string |undefined;
   },
   evolution_chain: {
-    url: string;
+    url: string |undefined;
   }  
 }
+export interface pokeSpeciePropertys{
+  color:string,
+  url: string;  
+}
 export interface evolutionChain{
-  evolves_to: evolutionChain[]
+  evolves_to: evolutionChain[] 
   species:{
     name:string | undefined,
     url:string | undefined,
