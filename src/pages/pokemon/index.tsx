@@ -33,20 +33,24 @@ import { PokeCardTop } from "./pokeCardTop";
 
 
 export const PokemonCard = () =>{
+  
   const {name} = useParams();
-  const {data , isFetching} = useQuery<pokemon>(`pokemon`,async () => {
+  const pokemon = useQuery<pokemon>(`pokemon_${name}`,async () => {
       const baseUrl: string = 'https://pokeapi.co/api/v2';
       const response = await axios.get(`${baseUrl}/pokemon/${name}`);
       return response.data;
   })
+  const {data , isFetching} = pokemon;
   
   const pokemonPropertys = {
     name: data?.name,
     img: data?.sprites.other.dream_world.front_default,
     types: data?.types
   }
+  
   const isString = (varString:string | undefined) =>{
     if(varString){
+    
       return <PokeCardEvolution url={varString} name={data?.name!}></PokeCardEvolution>
     }
     return <></>
