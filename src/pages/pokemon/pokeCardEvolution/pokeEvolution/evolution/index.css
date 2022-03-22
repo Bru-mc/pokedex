@@ -1,4 +1,13 @@
 .pokeEvolutionIcon{
   display:flex;
   justify-content: center;
+  margin:0 5px;
+  background: #000000;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden; 
+}
+.pokeEvolutionImg{
+  height: 60px;
 }

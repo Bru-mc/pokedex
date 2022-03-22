@@ -4,6 +4,7 @@ import { PokeHome } from './pages/pokeHome';
 import { Pokemons } from './pages/pokemons';
 import { PokemonCard } from './pages/pokemon';
 
+
 function App() {
   return (
     <div className='body'>
@@ -36,7 +37,7 @@ function App() {
                   <Route path='/' element = {<PokeHome />}/>
                   <Route path='/pokemons' element = {<Pokemons/>}/>
                   <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
-                </Routes> 
+                </Routes>    
               </HashRouter>  
             </div>
             <div className="mainScreenLedB circle red"></div>
