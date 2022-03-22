@@ -5,7 +5,7 @@ import { PokeEvolution } from "./pokeEvolution";
 
 export const PokeCardEvolution = (props:{url:string, name:string}) => {
   const {data , isFetching} = 
-  useQuery<pokeSpecie>(`specie`, () => 
+  useQuery<pokeSpecie>(`specie-${props.name}`, () => 
   pokeSpeciesQuery(props.url));
   
   const pokemonSpecie = {
