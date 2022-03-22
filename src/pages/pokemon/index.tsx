@@ -6,32 +6,6 @@ import './index.css'
 import { PokeCardEvolution } from "./pokeCardEvolution";
 import { PokeCardTop } from "./pokeCardTop";
  
-
-
-// type pokemon = {
-//   name: string,
-//   species:{
-//     url:string
-//   },
-//   sprites:{
-//     other:{
-//       dream_world:{
-//         front_default:string
-//       }
-//     }
-//   },
-//   types: [
-//     {
-//       slot: number,
-//       type:{
-//         name:string,
-//         url:string
-//       }
-//     }
-//   ]
-// };
-
-
 export const PokemonCard = () =>{
   
   const {name} = useParams();
@@ -67,9 +41,6 @@ export const PokemonCard = () =>{
           })}
         </div> 
       </div>
-      {/* <div className="pokeCardEvolution">
-        <PokemonEvolution url={data?.species!.url!}></PokemonEvolution>
-      </div>   */}
         {isString(data?.species.url)}
     </div> 
     

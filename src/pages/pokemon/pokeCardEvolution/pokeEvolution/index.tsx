@@ -7,7 +7,7 @@ import "./index.css";
 export const PokeEvolution = (props:{url:string,name:string}) => {
   //query for pokemon evolutions
   const {data, isFetching, error} = 
-  useQuery<chain, Error>(`chain`, () => 
+  useQuery<chain, Error>(`chain-${props.name}`, () => 
   pokeEvolutionQuery(props.url));
 
   if (isFetching) return <span>'Loading...'</span>
@@ -16,6 +16,7 @@ export const PokeEvolution = (props:{url:string,name:string}) => {
   
   //func that return array with species from evolution chain
   const verifySpecies = (evolutionChain: evolutionChain) =>{
+  
     let current:Array<evolutionChain> = [evolutionChain]
     while(current.length>0){
       if(current[0].species){

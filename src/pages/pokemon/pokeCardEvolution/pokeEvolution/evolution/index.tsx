@@ -3,16 +3,17 @@ import { pokeApiQuerys as evolutionQuery } from "../../../../../helpers/pokeApiQ
 import * as constants from "../../../../../constants";
 import { pokemon } from "../../../../../interfaces/interfaces";
 import { Link } from "react-router-dom";
+import "./index.css";
 
 
 export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
   
-  console.log(props.pokemonEv)
+  console.log("ENTREI")
   const {data , isFetching} = 
   useQuery<pokemon>(`evolution${props.pokemonEv}`, ()=> 
   evolutionQuery(`${constants.apiUrl}/pokemon/${props.pokemonEv}`))
-  
-  console.log(data)
+  console.log("Query voltou pokemon:")
+  console.log(data?.name)
   
   const pokeData = {
     name : data?.name!,
@@ -23,12 +24,13 @@ export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
       return <div style={{
         backgroundColor:"black",
         border:'1px solid #d19d2c',
-        height:'50px',
+        height:'60px',
+        width:'60px',
         borderRadius:'50%',
         overflow:"hidden"  
       }} className="pokeEvolutionIcon">
         <img style={
-          {height:"50px"}
+          {height:"70px"}
         } src={pokeData.img} alt={pokeData.name} />
       </div>
     }
@@ -37,22 +39,19 @@ export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
       className="evolution">
         <div style={{
           backgroundColor:"black",
-          height:'50px',
+          height:'60px',
+          width:'60px',
           borderRadius:'50%',
           overflow:"hidden"
         }}className="pokeEvolutionIcon">
           <img style={
-            {height:"50px"}
+            {height:"70px"}
             } src={pokeData.img} alt={pokeData.name} />
         </div>
       </Link>
     }
     }
   return(
-    
       isCurrent()
-    
-    // <div className="evolution">
-    // </div>
   );
 }
