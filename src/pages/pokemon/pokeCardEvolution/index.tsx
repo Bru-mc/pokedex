@@ -21,9 +21,7 @@ export const PokeCardEvolution = (props:{url:string, name:string}) => {
   }
   return(
     <div className="pokeEvolutionContainer">
-      <h2 className="pokeCardH2">EVOLUTION</h2>
       {isString(pokemonSpecie.url)}
-      {console.log("Card pokemon:"+props.name)}
     </div>
   );
 }

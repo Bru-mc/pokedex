@@ -12,27 +12,32 @@ export const PokeEvolution = (props:{url:string,name:string}) => {
 
   if (isFetching) return <span>'Loading...'</span>
   if (error) return <span>Error:{error.message}</span>
-  const evolutionArray:Array<string> = [];
+  
   
   //func that return array with species from evolution chain
-  const verifySpecies = (evolutionChain: evolutionChain) =>{
-  
+  const createEvolutionArray = (evolutionChain: evolutionChain) =>{
+    let speciesArray:Array<string> = []
     let current:Array<evolutionChain> = [evolutionChain]
     while(current.length>0){
       if(current[0].species){
-        evolutionArray.push(current[0].species.name!)
+        speciesArray.push(current[0].species.name!)
       }
       current = current[0].evolves_to
     }
-    return evolutionArray
+    return speciesArray;
   }
-  return(   
-      
+  const evolutionArray = createEvolutionArray(data?.chain!)
+  return(      
+    evolutionArray.length===1?
+    <></>: 
     <div className="evolutions">
-      {verifySpecies(data?.chain!).map((evolutionName)=>{
-      return <Evolution 
-      key={evolutionName} 
-      pokemonEv={evolutionName} currentPoke={props.name}></Evolution>})} 
+      <h2 className="pokeCardH2">EVOLUTION</h2>
+      {evolutionArray.map((evolutionName)=>{
+        return <Evolution 
+        key={evolutionName} 
+        pokemonEv={evolutionName} 
+        currentPoke={props.name}/>
+      })} 
     </div>
   );
 }
