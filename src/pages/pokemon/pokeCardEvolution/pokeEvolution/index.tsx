@@ -26,18 +26,22 @@ export const PokeEvolution = (props:{url:string,name:string}) => {
     }
     return speciesArray;
   }
+
   const evolutionArray = createEvolutionArray(data?.chain!)
+  
   return(      
     evolutionArray.length===1? //if have more than one, the
     <><h2>No Evolves</h2></>:                     //div evolution will be exibed
-    <div className="evolutions">
+    <div className="pokeEvolutionContainer">
       <h2 className="pokeCardH2">EVOLUTION</h2>
+      <div className="evolutions">
       {evolutionArray.map((evolutionName)=>{
         return <Evolution 
         key={evolutionName} 
         pokemonEv={evolutionName} 
         currentPoke={props.name}/>
       })} 
+      </div>
     </div>
   );
 }

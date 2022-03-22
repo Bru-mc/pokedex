@@ -15,13 +15,15 @@ export const PokeCardEvolution = (props:{url:string, name:string}) => {
   }
   const isString = (varString:string | undefined) =>{
     if(varString){
-      return <PokeEvolution url={varString} name={props.name}></PokeEvolution>
+      return <PokeEvolution 
+      url={varString} 
+      name={props.name}/>
     }
     return <></>
   }
   return(
-    <div className="pokeEvolutionContainer">
+    <>
       {isString(pokemonSpecie.url)}
-    </div>
+    </>
   );
 }
