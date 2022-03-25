@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools';
+import { queryClient } from './services/queryClient';
 
-const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
+      {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/> */}
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')

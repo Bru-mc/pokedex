@@ -1,4 +1,4 @@
-import { pokemonPropertys } from '../../../interfaces/interfaces';
+import { pokemonPropertys } from '../../../interfaces';
 import './index.css';
 
 export const PokemonCardType = (props:pokemonPropertys) =>{

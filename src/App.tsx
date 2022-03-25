@@ -3,6 +3,9 @@ import { BrowserRouter, HashRouter, Route, Routes} from 'react-router-dom';
 import { PokeHome } from './pages/pokeHome';
 import { Pokemons } from './pages/pokemons';
 import { PokemonCard } from './pages/pokemon';
+import { PokemonContextProvider } from './contexts/Pokemon';
+
+
 
 
 function App() {
@@ -32,13 +35,15 @@ function App() {
               <div className="mainScreenLed circle red"></div>
             </div>
             <div className="mainScreen">
-              <HashRouter>
-                <Routes>
-                  <Route path='/' element = {<PokeHome />}/>
-                  <Route path='/pokemons' element = {<Pokemons/>}/>
-                  <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
-                </Routes>    
-              </HashRouter>  
+              <PokemonContextProvider> 
+                <HashRouter>
+                  <Routes>
+                    <Route path='/' element = {<PokeHome />}/>
+                    <Route path='/pokemons' element = {<Pokemons/>}/>
+                    <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
+                  </Routes>    
+                </HashRouter>  
+              </PokemonContextProvider>
             </div>
             <div className="mainScreenLedB circle red"></div>
             <div className="mainSoundBox"></div>

@@ -3,10 +3,8 @@
   padding: 0;
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
   height: 300px;  
-  overflow: hidden;
-  justify-content: center;
+  flex-direction: column;
   background-image: url(../../../assets/nature.jpg);
   background-position: left bottom; 
   background-size: cover;
@@ -14,7 +12,6 @@
 }
 .pokeCardHeader{
   display: flex;
-  flex-direction: row;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -41,6 +38,7 @@
   z-index: 1;
 }
 .pokeImg{
+  align-self: flex-end;
   width: 50%; 
   margin: 0; 
   padding: 0;

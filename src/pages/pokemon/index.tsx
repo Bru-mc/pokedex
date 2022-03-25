@@ -1,11 +1,14 @@
 import { pokeApiQuerys as pokemonQuery } from "../../helpers/pokeApiQuerys";
 import { useQuery } from "react-query";
 import { useParams} from "react-router-dom";
-import { pokemon } from "../../interfaces/interfaces";
+import { pokemon } from "../../interfaces";
 import { PokeCardEvolution } from "./pokeCardEvolution";
 import { PokeCardTop } from "./pokeCardTop";
 import { PokemonCardType } from "./pokeCardType";
 import './index.css'
+import { useContext, useEffect } from "react";
+import { PokemonContext } from "../../contexts/Pokemon";
+
  
 export const PokemonCard = () =>{
   
@@ -22,6 +25,11 @@ export const PokemonCard = () =>{
     types: data?.types
   }
   
+  const {setPokemonSeen} = useContext(PokemonContext);
+  useEffect(() => {
+  setPokemonSeen({[pokemonPropertys.name!]:pokemonPropertys});
+  }, [pokemonPropertys.name!]);
+
   const isString = (varString:string | undefined) =>{
     if(varString){
       return <PokeCardEvolution url={varString} name={data?.name!}></PokeCardEvolution>
@@ -37,6 +45,6 @@ export const PokemonCard = () =>{
         {isString(data?.species.url)}
       </div> 
     </div>
-    
+
   );
 }

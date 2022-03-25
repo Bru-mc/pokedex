@@ -1,20 +1,17 @@
 import { useQuery } from "react-query";
 import { pokeApiQuerys as evolutionQuery } from "../../../../../helpers/pokeApiQuerys";
 import * as constants from "../../../../../constants";
-import { pokemon } from "../../../../../interfaces/interfaces";
+import { pokemon } from "../../../../../interfaces";
 import { Link } from "react-router-dom";
 import "./index.css";
 
 
 export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
   
-  console.log("ENTREI")
   const {data , isFetching} = 
   useQuery<pokemon>(`evolution${props.pokemonEv}`, ()=> 
   evolutionQuery(`${constants.apiUrl}/pokemon/${props.pokemonEv}`))
-  console.log("Query voltou pokemon:")
-  console.log(data?.name)
-  
+ 
   const pokeData = {
     name : data?.name!,
     img : data?.sprites.other.dream_world.front_default!

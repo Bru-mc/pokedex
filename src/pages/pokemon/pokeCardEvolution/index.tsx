@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { pokeApiQuerys  as pokeSpeciesQuery} from "../../../helpers/pokeApiQuerys";
-import { pokeSpecie } from "../../../interfaces/interfaces";
+import { pokeSpecie } from "../../../interfaces";
 import { PokeEvolution } from "./pokeEvolution";
 import "./index.css";
 
