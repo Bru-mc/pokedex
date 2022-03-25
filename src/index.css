@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'VT323', monospace;
 }
 a:link{
   text-decoration: none;
@@ -25,4 +25,6 @@ a:link{
 *::-webkit-scrollbar-thumb {
   background-color: #f1bd5c;
 }
+
+
 

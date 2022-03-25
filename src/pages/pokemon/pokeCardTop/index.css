@@ -30,6 +30,7 @@
   z-index: 1;
 }
 .pokeCardTitle{
+  font-family: 'Kanit', sans-serif;
   position: absolute;
   margin: 0;
   font-size: 1.4em;
