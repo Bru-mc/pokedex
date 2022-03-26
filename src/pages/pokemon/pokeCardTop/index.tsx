@@ -7,6 +7,7 @@ export const PokeCardTop = (props:pokemonPropertys) =>{
 return(
   <div className="pokeCardTop">
     <div className="pokeCardHeader">
+      <div className="pokeballMiddleTop"></div>
       <Link to={`/pokemons`}>
         <img className="back" 
         src={back} 
@@ -16,9 +17,11 @@ return(
         {props.name?.toLocaleUpperCase()}
       </h1>
     </div>
-    <img className="pokeImg" 
-    src={props.img} 
-    alt={props.name}/> 
+    <div className="scenery">
+      <img className="pokeImg" 
+      src={props.img} 
+      alt={props.name}/> 
+    </div>
   </div>
 );
 

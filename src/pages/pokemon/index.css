@@ -4,8 +4,6 @@
   overflow: auto;
 }
 .pokeCard{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background:#da0303;
+  position: relative;
 }
