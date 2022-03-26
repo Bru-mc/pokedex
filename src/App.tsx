@@ -17,7 +17,7 @@ function App() {
             <div className="contentBottomBorder backColor"></div>
             <div className="contentBottomBorderL"></div>
             <div className="bigBackCircle circle flex lightGray">
-              <div className="bigLed blue circle"></div>
+              <div className="bigLed circle"></div>
             </div>
             <div className="ledS flex">
               <div className="ledSmall circle red"></div>

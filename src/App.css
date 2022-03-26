@@ -32,6 +32,35 @@ body{
   background: rgb(190, 12, 57);
 }
 
+@keyframes bounceIn {
+
+  0% {
+    background-color: #2e7cd4;
+  }
+  25% { 
+    background-color: #8bfafa;
+    box-shadow: 0 0 50px 2px #9ef3f3,
+    0 0 50% 4px #b9f7f7,
+    0 0 50% 8px #d3f7f7;
+  }
+  50% {
+    background-color: #b9f5f5;
+    box-shadow: 0 0 20px 4px #9ef3f3,
+    0 0 20px 8px #b9f7f7,
+    0 0 30px 12px #d3f7f7;
+  }
+  75%{
+    background-color: #8bfafa;
+    box-shadow: 0 0 20px 2px #9ef3f3,
+    0 0 20px 4px #b9f7f7,
+    0 0 30px 8px #d3f7f7;
+  }
+  100% {
+    opacity: 1;
+    background-color: #2e7cd4;
+  }
+  
+  }
 /*-----properties */
 .flex{
   display: flex;
@@ -112,7 +141,11 @@ body{
 .bigLed{
   height: 70px;
   width: 70px;
+  background-color: #2e7cd4;
   box-shadow: 0 0 10px rgb(75, 84, 90);
+  animation-name: bounceIn;
+  animation-duration: 1.45s;
+  animation-iteration-count: infinite;
 }
 .ledS{
   z-index: 7;
