@@ -5,21 +5,7 @@
     background-color: blueviolet;   
     overflow: hidden;
 }
-.pokeballMiddleContainer{
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-.pokeballMiddleBottom{
-    position: absolute;
-    height: 120px;
-    border-radius: 50%;
-    width: 120px;
-    background-image: url(../../../assets/nature.jpg);
-    background-position: bottom; 
-    background-size:auto;
-    top: -60px;
-}
+
 .pokeCardH2{
     margin: 0;
 }

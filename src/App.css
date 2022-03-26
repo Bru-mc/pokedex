@@ -35,29 +35,41 @@ body{
 @keyframes bounceIn {
 
   0% {
-    background-color: #2e7cd4;
+    background-color: #5499e9;
+    box-shadow: 0 0 20px 15px #5ba5fa,
+              0 0 4px 25px #1e68bd,
+              -5px -5px 20px 22px #5ba5fa,
+              0 0 0 30px #1e68bd;
   }
   25% { 
-    background-color: #8bfafa;
-    box-shadow: 0 0 50px 2px #9ef3f3,
-    0 0 50% 4px #b9f7f7,
-    0 0 50% 8px #d3f7f7;
+    background-color: #71b2fd;
+    box-shadow: 0 0 10px 15px #71b2fd,
+              0 0 1px 25px #69acfa,
+              -5px -5px 10px 22px #71b2fd,
+              0 0 0 30px #69acfa;
   }
   50% {
-    background-color: #b9f5f5;
-    box-shadow: 0 0 20px 4px #9ef3f3,
-    0 0 20px 8px #b9f7f7,
-    0 0 30px 12px #d3f7f7;
+    background-color: #94c3fa;
+    box-shadow: 0 0 0 15px #94c3fa,
+              0 0 2px 25px #94c3fa,
+              -5px -5px 0 22px #94c3fa,
+              0 0 2px 30px #94c3fa,
+              0 0 20px 32px #9ec6f5,
+              0 0 40px 35px #aacef7;
   }
   75%{
-    background-color: #8bfafa;
-    box-shadow: 0 0 20px 2px #9ef3f3,
-    0 0 20px 4px #b9f7f7,
-    0 0 30px 8px #d3f7f7;
+    background-color: #71b2fd;
+    box-shadow: 0 0 10px 15px #71b2fd,
+              0 0 1px 25px #69acfa,
+              -5px -5px 10px 22px #71b2fd,
+              0 0 0 30px #69acfa;
   }
   100% {
-    opacity: 1;
-    background-color: #2e7cd4;
+    background-color: #5499e9;
+    box-shadow: 0 0 20px 15px #5ba5fa,
+              0 0 4px 25px #1e68bd,
+              -5px -5px 20px 22px #5ba5fa,
+              0 0 0 30px #1e68bd;
   }
   
   }
@@ -139,13 +151,16 @@ body{
   box-shadow: 0 0 15px rgb(39, 23, 23);
 }
 .bigLed{
-  height: 70px;
-  width: 70px;
-  background-color: #2e7cd4;
-  box-shadow: 0 0 10px rgb(75, 84, 90);
+  height: 10px;
+  width: 10px;
+  background-color: #5499e9;
+  box-shadow: 0 0 20px 15px #5ba5fa,
+              0 0 4px 25px #1e68bd,
+              -5px -5px 20px 22px #5ba5fa,
+              0 0 0 30px #1e68bd;
   animation-name: bounceIn;
-  animation-duration: 1.45s;
-  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;    
 }
 .ledS{
   z-index: 7;
