@@ -2,42 +2,40 @@
     margin: 5px 0;
     padding: 0;
 }
+
 .pokemonList li{
+    cursor: pointer; 
+    margin-bottom: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.pokemonListCard{
+    display: flex;
     align-items: center;
-    cursor: pointer;
-    padding: 5px 0 5px 5px;
-    color: #ffffff;
-    margin: 0 3px 5px 3px; 
-    font-size: 17px;
-    background: #0314af;
-    border: 1px solid #ffffff;
-    border-bottom-right-radius: 15px;
-    transition-delay: 0.5s;
-    transition: 0.8s;
+    justify-content: space-between;
+    height: 70px;
+    width: 90%;
+    border-radius: 15px;
     position: relative;
 }
+
+.pokemonListCard_icon{
+    margin-left: 5px;
+    height: 45px;
+    width: 45px;
+}
+.pokemonListCard_pokeName{
+    font-size: 18px;
+    color: #000000;
+}
+.pokemonListCard_pokeId{
+    color: rgb(8, 8, 8);
+    font-size: 20px;
+    margin-right: 10px;
+    align-self: flex-start;
+    
+}
+
   
-.pokemonList li:hover{
-    justify-content: center;
-    background: #ffffff;
-    /* border: 1px solid #ffffff; */
-    border-bottom-right-radius: 0;
-    color: #030d63;
-    transition: 0.7s;
-    transition-delay: 0.07s;
-}
-.newIcon p{
-    margin: 0;
-    color: #f1bd5c;
-    padding: 3px 4px 2px 4px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 11px;
-    transition: 0.8s;
-}
-  
-.pokemonList li:hover .newIcon p{
-    color: #e90a0a;
-    transition: 1s;
-}
+

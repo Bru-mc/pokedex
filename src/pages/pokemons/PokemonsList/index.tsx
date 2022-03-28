@@ -6,6 +6,8 @@ import './index.css';
 import { pokeList } from "../../../interfaces";
 import { PokemonContext } from "../../../contexts/Pokemon";
 import { useContext} from "react";
+import { numberToString } from "../../../helpers/numberToString";
+import questionMarkIcon from "../../../assets/questionMark.png";
 
 
 export const PokemonsList = () => {
@@ -15,14 +17,21 @@ export const PokemonsList = () => {
   if(isFetching){
     return <p>Loading...</p>
   }
-  const alreadySeen = (pokeName:string) =>{
+  const alreadySeen = (result:{name:string, url:string},id:number) =>{
+    const pokeName = result.name;
     if(pokemonSeen[pokeName]){
-      return <></>
+      return <div className={`pokemonListCard ${pokemonSeen[pokeName].color}`}>
+        <img className="pokemonListCard_icon" src={pokemonSeen[pokeName].img} alt={pokeName} />
+        <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
+        <span className="pokemonListCard_pokeId">{`#${numberToString(id)}`}</span>
+      </div>
     }
     else{
-      return <div className='newIcon'>
-        <p>NEW</p>
-      </div>
+      return <div className="pokemonListCard gray opacity20">
+        <img className="pokemonListCard_icon" src={questionMarkIcon} alt="Never seen" />
+        <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
+        <span className="pokemonListCard_pokeId">???</span>
+        </div> 
     }
   }
   return(
@@ -30,11 +39,7 @@ export const PokemonsList = () => {
       { data?.results.map<JSX.Element>((result, index) =>( 
         <Link to={`/pokemons/${result.name}`} key={result.name}>
           <li className = {result.name}>
-            {`${index+1} ${result.name.toUpperCase()}`}
-            {alreadySeen(result.name)}
-            {/* <div className='newIcon'>
-              <p>NEW</p>
-            </div> */}
+            {alreadySeen(result, index+1)}
           </li>
         </Link>
       ))}

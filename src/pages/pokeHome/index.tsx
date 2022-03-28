@@ -8,7 +8,7 @@ import pokeMark from "../../assets/QuestionMarkSmall.png";
 
 export const PokeHome = () =>{
   const {pokemonSeen} = useContext(PokemonContext) 
-  console.log(pokemonSeen)
+  console.log(pokemonSeen);
   return(
       <div className="pokeMenu">
         <img src={pokeLogo} alt="Pokemon" />

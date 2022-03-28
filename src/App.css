@@ -11,19 +11,31 @@ body{
 
 /*----- Colors */
 .green{
-  background: rgb(37, 128, 9);
+  background: #088F8F;
 }
 .yellow{
-  background: rgb(243, 243, 24)
+  background: #f0cd06
 }
 .red{
-  background: rgb(247, 12, 12);
+  background: #EB1212;
 }
 .blue{
-  background: rgb(38, 101, 236);
+  background: #124bc7;
+}
+.white{
+  background: #ffffff;
+}
+.purple{
+  background: #A21FC4;
+}
+.brown{
+  background: #812c0a;
+}
+.pink{
+  background: #f71e9c;
 }
 .lightGray{
-  background: rgb(192, 180, 180);
+  background: #c0b4b4;
 }
 .darkGray{
   background: rgb(6, 11, 14);
@@ -31,7 +43,13 @@ body{
 .backColor{
   background: rgb(190, 12, 57);
 }
+.gray{
+  background-color: #686868;
+}
 
+.opacity20{
+  opacity: 35%;
+}
 @keyframes bounceIn {
 
   0% {
