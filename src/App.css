@@ -37,7 +37,7 @@ body{
   0% {
     background-color: #5499e9;
     box-shadow: 0 0 20px 15px #5ba5fa,
-              0 0 4px 25px #1e68bd,
+              0 0 12px 25px #1e68bd,
               -5px -5px 20px 22px #5ba5fa,
               0 0 0 30px #1e68bd;
   }
@@ -67,7 +67,7 @@ body{
   100% {
     background-color: #5499e9;
     box-shadow: 0 0 20px 15px #5ba5fa,
-              0 0 4px 25px #1e68bd,
+              0 0 12px 25px #1e68bd,
               -5px -5px 20px 22px #5ba5fa,
               0 0 0 30px #1e68bd;
   }
@@ -155,12 +155,12 @@ body{
   width: 10px;
   background-color: #5499e9;
   box-shadow: 0 0 20px 15px #5ba5fa,
-              0 0 4px 25px #1e68bd,
+              0 0 12px 25px #1e68bd,
               -5px -5px 20px 22px #5ba5fa,
               0 0 0 30px #1e68bd;
-  animation-name: bounceIn;
+  /* animation-name: bounceIn;
   animation-duration: 1s;
-  animation-iteration-count: infinite;    
+  animation-iteration-count: infinite;     */
 }
 .ledS{
   z-index: 7;
