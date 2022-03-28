@@ -1,7 +1,7 @@
 import { pokeApiQuerys as pokemonQuery } from "../../helpers/pokeApiQuerys";
 import { useQuery } from "react-query";
 import { useParams} from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { PokemonContext } from "../../contexts/Pokemon";
 
 import { pokemon } from "../../interfaces";
@@ -15,6 +15,7 @@ export const PokemonCard = () =>{
   
   const baseUrl: string = 'https://pokeapi.co/api/v2';
   const {name} = useParams();
+  const pokeCardRef = useRef<any>(null);
 
   const pokemon = useQuery<pokemon>(`pokemon_${name}`,
   ()=>pokemonQuery(`${baseUrl}/pokemon/${name}`));
@@ -44,7 +45,7 @@ export const PokemonCard = () =>{
 
   return(
     <div className="pokeCardContainer">
-      <div className="pokeCard">
+      <div className="pokeCard" ref={pokeCardRef}>
         <PokeCardTop {...pokemonPropertys}/>
         <PokemonCardType {...pokemonPropertys}/>
         {isString(data?.species.url)}

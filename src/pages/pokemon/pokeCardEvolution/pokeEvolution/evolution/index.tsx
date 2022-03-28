@@ -4,10 +4,14 @@ import * as constants from "../../../../../constants";
 import { pokemon } from "../../../../../interfaces";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { useContext } from "react";
+import { PokemonContext } from "../../../../../contexts/Pokemon";
 
 
 export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
   
+  const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
+
   const {data , isFetching} = 
   useQuery<pokemon>(`evolution${props.pokemonEv}`, ()=> 
   evolutionQuery(`${constants.apiUrl}/pokemon/${props.pokemonEv}`))
@@ -16,6 +20,17 @@ export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
     name : data?.name!,
     img : data?.sprites.other.dream_world.front_default!
   }
+
+  /*Criando o array de evolution no context*/ 
+  if(!pokemonSeen[props.currentPoke].evolutions){
+    pokemonSeen[props.currentPoke].evolutions = [];
+  }
+  /*So adiciona ao array se ainda nao tiver o pokemon e quando o dado do pokemon for valido*/ 
+  else if(!pokemonSeen[props.currentPoke].evolutions?.find(specie => (specie===pokeData.name)) 
+  && pokeData.name!=undefined){
+    pokemonSeen[props.currentPoke].evolutions?.push(pokeData.name);
+  }
+
   const isCurrent = () =>{
     if(pokeData.name === props.currentPoke){
       return <div style={{border:'1px solid #d19d2c'}} 

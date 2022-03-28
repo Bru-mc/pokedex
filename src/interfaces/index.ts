@@ -33,7 +33,9 @@ export interface pokemonPropertys {
         name:string | undefined,
       }
     } | undefined
-  ] | undefined
+  ] | undefined,
+  color?:string,
+  evolutions?:string[] 
 }
 
 export interface pokeSpecie{
