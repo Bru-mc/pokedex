@@ -3,6 +3,7 @@ import "./index.css"
 import pokeLogo from "../../assets/pokelogo.png";
 import { PokemonContext } from "../../contexts/Pokemon";
 import { useContext } from "react";
+import pokeMark from "../../assets/QuestionMarkSmall.png";
 
 
 export const PokeHome = () =>{
