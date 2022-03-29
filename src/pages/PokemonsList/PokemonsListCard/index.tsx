@@ -12,7 +12,7 @@ import { hexColors } from "../../../constants";
 import { LedAnimationContext } from "../../../contexts/LedAnimation";
 
 
-export const PokemonsList = () => {
+export const PokemonsListCard = () => {
   const {ledRefState} = useContext(LedAnimationContext);
   const {pokemonSeen} = useContext(PokemonContext)
   const { data, isFetching} = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));

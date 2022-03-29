@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import './index.css';
 import { useRef } from "react";
-import { PokemonsList } from "./PokemonsList";
+import { PokemonsListCard } from "./PokemonsListCard";
 
-export const Pokemons = () => {
+export const PokemonsList = () => {
     
     const testRef = useRef<any>(null);
     const goToTop = () =>{
@@ -23,7 +23,7 @@ export const Pokemons = () => {
         </div>
         <div className="pokemonsListContainer">
           <section className="pokeListStart" ref={testRef}></section>
-          <PokemonsList></PokemonsList>
+          <PokemonsListCard></PokemonsListCard>
         </div>
       </div>  
     );

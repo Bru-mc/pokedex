@@ -1,11 +1,15 @@
 import './App.css';
-import { BrowserRouter, HashRouter, Route, Routes} from 'react-router-dom';
-import { PokeHome } from './pages/pokeHome';
-import { Pokemons } from './pages/pokemons';
-import { PokemonCard } from './pages/pokemon';
-import { PokemonContextProvider } from './contexts/Pokemon';
+//react-router-dom
+import { HashRouter, Route, Routes} from 'react-router-dom';
+//react Hooks
 import { useContext, useEffect, useRef } from 'react';
+//contexts
+import { PokemonContextProvider } from './contexts/Pokemon';
 import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
+//pages components
+import { PokeHome } from './pages/pokeHome';
+import { PokemonsList } from './pages/PokemonsList';
+import { PokemonCard } from './pages/pokemon';
 
 
 function App() {
@@ -17,7 +21,6 @@ function App() {
     ledRefState.ledRef = animationLed;
     ledRefState.addAnimation = () =>{
       ledRefState.ledRef!.current.style.animationDuration = '1s';
-      console.log("ENTREI DOIDAO")
     }
     ledRefState.removeAnimation = () =>{
       ledRefState.ledRef!.current.style.animationDuration = '0s';
@@ -25,11 +28,8 @@ function App() {
     setLedRefState(ledRefState)
   },[]);
   
-  
-  
-
   return (
-    <div className='body'>
+    <div className='pokedexContainer'>
       <div className="pokedex backColor">
         <div className="pokedexHeader">
           <div className="leftContent flex">
@@ -59,7 +59,7 @@ function App() {
                   <HashRouter>
                     <Routes>
                       <Route path='/' element = {<PokeHome />}/>
-                      <Route path='/pokemons' element = {<Pokemons/>}/>
+                      <Route path='/pokemons' element = {<PokemonsList/>}/>
                       <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
                     </Routes>    
                   </HashRouter>  
