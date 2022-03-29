@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Pokedex from './Pokedex';
 import { QueryClientProvider} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools';
 import { queryClient } from './services/queryClient';
@@ -10,7 +10,7 @@ import { queryClient } from './services/queryClient';
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <Pokedex />
       {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/> */}
     </QueryClientProvider>
   </React.StrictMode>,

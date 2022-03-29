@@ -1,4 +1,4 @@
-import './App.css';
+import './Pokedex.css';
 //react-router-dom
 import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
@@ -7,12 +7,12 @@ import { useContext, useEffect, useRef } from 'react';
 import { PokemonContextProvider } from './contexts/Pokemon';
 import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
 //pages components
-import { PokeHome } from './pages/pokeHome';
+import { PokeHome } from './pages/PokeHome';
 import { PokemonsList } from './pages/PokemonsList';
-import { PokemonCard } from './pages/pokemon';
+import { PokemonCard } from './pages/PokemonCard';
 
 
-function App() {
+function Pokedex() {
   const animationLed = useRef<any>(null);
   
   let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
@@ -60,7 +60,7 @@ function App() {
                     <Routes>
                       <Route path='/' element = {<PokeHome />}/>
                       <Route path='/pokemons' element = {<PokemonsList/>}/>
-                      <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
+                      <Route path='/pokemons/:name' element = {<PokemonCard/>}/>    
                     </Routes>    
                   </HashRouter>  
                 </LedAnimationProvider>
@@ -93,5 +93,5 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Pokedex;
 
