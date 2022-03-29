@@ -11,7 +11,7 @@ body{
 
 /*----- Colors */
 .green{
-  background: #088F8F;
+  background: #589c30;
 }
 .yellow{
   background: #f0cd06
@@ -34,6 +34,9 @@ body{
 .pink{
   background: #f71e9c;
 }
+.gray{
+  background-color: #686868;
+}
 .lightGray{
   background: #c0b4b4;
 }
@@ -42,9 +45,6 @@ body{
 }
 .backColor{
   background: rgb(190, 12, 57);
-}
-.gray{
-  background-color: #686868;
 }
 
 .opacity20{
@@ -176,9 +176,9 @@ body{
               0 0 12px 25px #1e68bd,
               -5px -5px 20px 22px #5ba5fa,
               0 0 0 30px #1e68bd;
-  /* animation-name: bounceIn;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;     */
+  animation-name: bounceIn;
+  animation-duration: 0;
+  animation-iteration-count: infinite;    
 }
 .ledS{
   z-index: 7;

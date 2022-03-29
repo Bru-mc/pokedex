@@ -4,11 +4,29 @@ import { PokeHome } from './pages/pokeHome';
 import { Pokemons } from './pages/pokemons';
 import { PokemonCard } from './pages/pokemon';
 import { PokemonContextProvider } from './contexts/Pokemon';
-
-
+import { useContext, useEffect, useRef } from 'react';
+import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
 
 
 function App() {
+  const animationLed = useRef<any>(null);
+  
+  let {ledRef, addAnimation, removeAnimation} = useContext(LedAnimationContext)
+  useEffect(() => {
+    ledRef = animationLed.current;
+    addAnimation = () =>{
+      ledRef!.current.style.animationDuration = '1s';
+      console.log("ENTREI DOIDAO")
+    }
+    removeAnimation = () =>{
+      ledRef!.current.style.animationDuration = '0s';
+    }  
+    console.log(ledRef)
+  },[animationLed.current]);
+  
+  
+  
+
   return (
     <div className='body'>
       <div className="pokedex backColor">
@@ -17,7 +35,7 @@ function App() {
             <div className="contentBottomBorder backColor"></div>
             <div className="contentBottomBorderL"></div>
             <div className="bigBackCircle circle flex lightGray">
-              <div className="bigLed circle"></div>
+              <div className="bigLed circle" ref={animationLed}></div>
             </div>
             <div className="ledS flex">
               <div className="ledSmall circle red"></div>
@@ -36,13 +54,15 @@ function App() {
             </div>
             <div className="mainScreen">
               <PokemonContextProvider> 
-                <HashRouter>
-                  <Routes>
-                    <Route path='/' element = {<PokeHome />}/>
-                    <Route path='/pokemons' element = {<Pokemons/>}/>
-                    <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
-                  </Routes>    
-                </HashRouter>  
+                <LedAnimationProvider>
+                  <HashRouter>
+                    <Routes>
+                      <Route path='/' element = {<PokeHome />}/>
+                      <Route path='/pokemons' element = {<Pokemons/>}/>
+                      <Route path='/pokemons/:name' element = {<PokemonCard/> }/>    
+                    </Routes>    
+                  </HashRouter>  
+                </LedAnimationProvider>
               </PokemonContextProvider>
             </div>
             <div className="mainScreenLedB circle red"></div>

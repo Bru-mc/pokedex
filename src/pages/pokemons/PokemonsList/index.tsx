@@ -8,9 +8,17 @@ import { PokemonContext } from "../../../contexts/Pokemon";
 import { useContext} from "react";
 import { numberToString } from "../../../helpers/numberToString";
 import questionMarkIcon from "../../../assets/questionMark.png";
+import { hexColors } from "../../../constants";
+import { LedAnimationContext } from "../../../contexts/LedAnimation";
 
 
 export const PokemonsList = () => {
+  const {ledRef} = useContext(LedAnimationContext);
+  const addAnimation = () => {
+    console.log('O FDP A SER CARREGADO E :',ledRef);
+    ledRef!.current.style.animationDuration = '1s';
+    console.log("ENTREI DOIDAO");
+  }
   const {pokemonSeen} = useContext(PokemonContext)
   const { data, isFetching } = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));
   
@@ -20,14 +28,16 @@ export const PokemonsList = () => {
   const alreadySeen = (result:{name:string, url:string},id:number) =>{
     const pokeName = result.name;
     if(pokemonSeen[pokeName]){
-      return <div className={`pokemonListCard ${pokemonSeen[pokeName].color}`}>
+      let color = pokemonSeen[pokeName].color!
+      return <div className="pokemonListCard" style={{backgroundColor: `${hexColors[color]}`, 
+      boxShadow: `0 3px 12px 0 ${hexColors[color]}`}}>
         <img className="pokemonListCard_icon" src={pokemonSeen[pokeName].img} alt={pokeName} />
         <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
         <span className="pokemonListCard_pokeId">{`#${numberToString(id)}`}</span>
       </div>
     }
     else{
-      return <div className="pokemonListCard gray opacity20">
+      return <div className="pokemonListCard gray opacity20" onClick={addAnimation}>
         <img className="pokemonListCard_icon" src={questionMarkIcon} alt="Never seen" />
         <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
         <span className="pokemonListCard_pokeId">???</span>
