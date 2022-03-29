@@ -13,18 +13,14 @@ import { LedAnimationContext } from "../../../contexts/LedAnimation";
 
 
 export const PokemonsList = () => {
-  const {ledRef} = useContext(LedAnimationContext);
-  const addAnimation = () => {
-    console.log('O FDP A SER CARREGADO E :',ledRef);
-    ledRef!.current.style.animationDuration = '1s';
-    console.log("ENTREI DOIDAO");
-  }
+  const {ledRefState} = useContext(LedAnimationContext);
   const {pokemonSeen} = useContext(PokemonContext)
-  const { data, isFetching } = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));
+  const { data, isFetching} = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));
   
   if(isFetching){
     return <p>Loading...</p>
   }
+  
   const alreadySeen = (result:{name:string, url:string},id:number) =>{
     const pokeName = result.name;
     if(pokemonSeen[pokeName]){
@@ -37,7 +33,7 @@ export const PokemonsList = () => {
       </div>
     }
     else{
-      return <div className="pokemonListCard gray opacity20" onClick={addAnimation}>
+      return <div className="pokemonListCard gray opacity20">
         <img className="pokemonListCard_icon" src={questionMarkIcon} alt="Never seen" />
         <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
         <span className="pokemonListCard_pokeId">???</span>
@@ -48,7 +44,7 @@ export const PokemonsList = () => {
     <ul className="pokemonList">
       { data?.results.map<JSX.Element>((result, index) =>( 
         <Link to={`/pokemons/${result.name}`} key={result.name}>
-          <li className = {result.name}>
+          <li className = {result.name} onClick={ledRefState.addAnimation}>
             {alreadySeen(result, index+1)}
           </li>
         </Link>

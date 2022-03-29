@@ -8,13 +8,20 @@ import { useContext } from "react";
 import { PokemonContext } from "../../../../../contexts/Pokemon";
 
 
+
+
 export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
   
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
 
-  const {data , isFetching} = 
+  const {data , isFetching, isFetched} = 
   useQuery<pokemon>(`evolution${props.pokemonEv}`, ()=> 
   evolutionQuery(`${constants.apiUrl}/pokemon/${props.pokemonEv}`))
+
+  if(isFetching){
+    return <p>Loading...</p>
+  }
+
  
   const pokeData = {
     name : data?.name!,

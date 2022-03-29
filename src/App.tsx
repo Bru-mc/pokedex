@@ -11,18 +11,19 @@ import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimati
 function App() {
   const animationLed = useRef<any>(null);
   
-  let {ledRef, addAnimation, removeAnimation} = useContext(LedAnimationContext)
+  let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
+  
   useEffect(() => {
-    ledRef = animationLed.current;
-    addAnimation = () =>{
-      ledRef!.current.style.animationDuration = '1s';
+    ledRefState.ledRef = animationLed;
+    ledRefState.addAnimation = () =>{
+      ledRefState.ledRef!.current.style.animationDuration = '1s';
       console.log("ENTREI DOIDAO")
     }
-    removeAnimation = () =>{
-      ledRef!.current.style.animationDuration = '0s';
+    ledRefState.removeAnimation = () =>{
+      ledRefState.ledRef!.current.style.animationDuration = '0s';
     }  
-    console.log(ledRef)
-  },[animationLed.current]);
+    setLedRefState(ledRefState)
+  },[]);
   
   
   
