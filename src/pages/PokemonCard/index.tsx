@@ -5,17 +5,18 @@ import { useContext, useEffect, useRef } from "react";
 import { PokemonContext } from "../../contexts/Pokemon";
 
 import { pokemon } from "../../interfaces";
-import { PokeCardEvolution } from "./pokeCardEvolution";
-import { PokeCardTop } from "./pokeCardTop";
-import { PokemonCardType } from "./pokeCardType";
+import { PokeCardEvolution } from "./PokeCardEvolution";
+import { PokeCardTop } from "./PokeCardTop";
+import { PokemonCardType } from "./PokeCardType";
 import './index.css'
+import { hexColors } from "../../constants";
 
  
 export const PokemonCard = () =>{
   
   const baseUrl: string = 'https://pokeapi.co/api/v2';
   const {name} = useParams();
-  const pokeCardRef = useRef<any>(null);
+  
 
   const pokemon = useQuery<pokemon>(`pokemon_${name}`,
   ()=>pokemonQuery(`${baseUrl}/pokemon/${name}`));
@@ -42,10 +43,11 @@ export const PokemonCard = () =>{
     }
     return <></>
   }
+  const color = pokemonSeen[pokemonPropertys.name!].color!
 
   return(
     <div className="pokeCardContainer">
-      <div className="pokeCard" ref={pokeCardRef}>
+      <div className="pokeCard" style={{backgroundColor:`${hexColors[color]}`}}>
         <PokeCardTop {...pokemonPropertys}/>
         <PokemonCardType {...pokemonPropertys}/>
         {isString(data?.species.url)}
