@@ -26,14 +26,14 @@ export const PokemonsListCard = () => {
     if(pokemonSeen[pokeName]){
       let color = pokemonSeen[pokeName].color!
       return <div className="pokemonListCard" style={{backgroundColor: `${hexColors[color]}`, 
-      boxShadow: `0 3px 12px 0 ${hexColors[color]}`}}>
+      boxShadow: `0 3px 8px 0 ${hexColors[color]}`}}>
         <img className="pokemonListCard_icon" src={pokemonSeen[pokeName].img} alt={pokeName} />
         <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
         <span className="pokemonListCard_pokeId">{`#${numberToString(id)}`}</span>
       </div>
     }
     else{
-      return <div className="pokemonListCard gray opacity20">
+      return <div className="pokemonListCard gray opacity20" style={{boxShadow:'0 0 0 1px #000000'}}>
         <img className="pokemonListCard_icon" src={questionMarkIcon} alt="Never seen" />
         <h1 className="pokemonListCard_pokeName">{`${pokeName.toUpperCase()}`}</h1>
         <span className="pokemonListCard_pokeId">???</span>
