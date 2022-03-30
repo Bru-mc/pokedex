@@ -1,7 +1,7 @@
 import { pokeApiQuerys as pokemonQuery } from "../../helpers/pokeApiQuerys";
 import { useQuery } from "react-query";
 import { useParams} from "react-router-dom";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { PokemonContext } from "../../contexts/Pokemon";
 
 import { pokemon } from "../../interfaces";
@@ -32,27 +32,29 @@ export const PokemonCard = () =>{
   if(!pokemonSeen[pokemonPropertys.name!]){
     pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
   }
+  const [color, setColor] = useState('#ffffff');
+  const [render, setRender] = useState(false);
+  
   useEffect(() => {
     setPokemonSeen(pokemonSeen);
+    console.log('Entrei 1');
+    if(data?.species.url){
+      setRender(true);
+    }
   }, [pokemonPropertys.name!]);
   
-
-  const isString = (varString:string | undefined) =>{
-    if(varString){
-      return <PokeCardEvolution url={varString} name={data?.name!}></PokeCardEvolution>
-    }
-    return <></>
-  }
-  const color = pokemonSeen[pokemonPropertys.name!].color!
-
   return(
+    render?
     <div className="pokeCardContainer">
       <div className="pokeCard" style={{backgroundColor:`${hexColors[color]}`}}>
         <PokeCardTop {...pokemonPropertys}/>
         <PokemonCardType {...pokemonPropertys}/>
-        {isString(data?.species.url)}
+        <PokeCardEvolution url={data?.species.url!} name={data?.name!}></PokeCardEvolution>
+        {/* {isString(data?.species.url)} */}
       </div> 
+    </div>: 
+    <div>
+      <p>Loading...</p>
     </div>
-
   );
 }
