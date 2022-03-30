@@ -9,14 +9,15 @@ import { PokeCardEvolution } from "./PokeCardEvolution";
 import { PokeCardTop } from "./PokeCardTop";
 import { PokemonCardType } from "./PokeCardType";
 import './index.css'
-import { hexColors } from "../../constants";
+
 
  
 export const PokemonCard = () =>{
   
   const baseUrl: string = 'https://pokeapi.co/api/v2';
   const {name} = useParams();
-  
+  const pokeCard = useRef<any>(null);
+  const [pokeCardRefState,setpokeCardRefState] = useState(pokeCard);
 
   const pokemon = useQuery<pokemon>(`pokemon_${name}`,
   ()=>pokemonQuery(`${baseUrl}/pokemon/${name}`));
@@ -32,25 +33,23 @@ export const PokemonCard = () =>{
   if(!pokemonSeen[pokemonPropertys.name!]){
     pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
   }
-  const [color, setColor] = useState('#ffffff');
+  
   const [render, setRender] = useState(false);
   
   useEffect(() => {
     setPokemonSeen(pokemonSeen);
-    console.log('Entrei 1');
     if(data?.species.url){
-      setRender(true);
+      setRender(true); //just when query url load, the component will render
     }
-  }, [pokemonPropertys.name!]);
-  
+  }, [pokemonPropertys.name]);
+
   return(
     render?
     <div className="pokeCardContainer">
-      <div className="pokeCard" style={{backgroundColor:`${hexColors[color]}`}}>
+      <div className="pokeCard" ref={pokeCard}> 
         <PokeCardTop {...pokemonPropertys}/>
         <PokemonCardType {...pokemonPropertys}/>
-        <PokeCardEvolution url={data?.species.url!} name={data?.name!}></PokeCardEvolution>
-        {/* {isString(data?.species.url)} */}
+        <PokeCardEvolution url={data?.species.url!} name={data?.name!} refstate={pokeCardRefState} ></PokeCardEvolution>
       </div> 
     </div>: 
     <div>
