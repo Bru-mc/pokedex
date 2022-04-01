@@ -24,17 +24,17 @@ export const PokeCardEvolution = (props:{url:string, name:string, refstate: Reac
     props.refstate.current.style.backgroundColor = hexColors[pokemonSpecie.color] //set the background card color 
   }
   
-  const isString = (varString:string | undefined) =>{
-    if(varString){
-      return <PokeEvolution 
-      url={varString} 
-      name={props.name}/>
-    }
-    return <></>
-  }
-  return(
-    <>
-      {isString(pokemonSpecie.url)}
-    </>
-  );
+  // const isString = (varString:string | undefined) =>{
+  //   if(varString){
+  //     return <PokeEvolution 
+  //     url={varString} 
+  //     name={props.name}/>
+  //   }
+  //   return <></>
+  // }
+  // return(
+  //   <>
+  //     {isString(pokemonSpecie.url)}
+  //   </>
+  // );
 }

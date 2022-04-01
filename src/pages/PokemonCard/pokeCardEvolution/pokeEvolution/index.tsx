@@ -1,6 +1,5 @@
-
 import { useQuery } from "react-query";
-import { pokeApiQuerys as pokeEvolutionQuery } from "../../../../helpers/pokeApiQuerys";
+import { pokeApiQuerys as pokeEvolutionQuery } from "@helpers/pokeApiQuerys";
 import { chain, evolutionChain } from "../../../../interfaces";
 import { Evolution } from "./evolution";
 import "./index.css";
@@ -30,19 +29,19 @@ export const PokeEvolution = (props:{url:string,name:string}) => {
 
   const evolutionArray = createEvolutionArray(data?.chain!)
   
-  return(      
-    evolutionArray.length===1? //if have more than one, the
-    <><h2>No Evolves</h2></>:                     //div evolution will be exibed
-    <div className="pokeEvolutionContainer">
-      <h2 className="pokeCardH2">EVOLUTION</h2>
-      <div className="evolutions">
-      {evolutionArray.map((evolutionName)=>{
-        return <Evolution 
-        key={evolutionName} 
-        pokemonEv={evolutionName} 
-        currentPoke={props.name}/>
-      })} 
-      </div>
-    </div>
-  );
+  // return(      
+  //   evolutionArray.length===1? //if have more than one, the
+  //   <><h2>No Evolves</h2></>:                     //div evolution will be exibed
+  //   <div className="pokeEvolutionContainer">
+  //     <h2 className="pokeCardH2">EVOLUTION</h2>
+  //     <div className="evolutions">
+  //     {evolutionArray.map((evolutionName)=>{
+  //       return <Evolution 
+  //       key={evolutionName} 
+  //       pokemonEv={evolutionName} 
+  //       currentPoke={props.name}/>
+  //     })} 
+  //     </div>
+  //   </div>
+  // );
 }

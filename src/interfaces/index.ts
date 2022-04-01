@@ -25,15 +25,9 @@ export interface pokemon {
 };
 
 export interface pokemonPropertys {
-  name:string | undefined,
-  img:string | undefined,
-  types:[
-    {
-      type:{
-        name:string | undefined,
-      }
-    } | undefined
-  ] | undefined,
+  name:string, //| undefined
+  img:string ,//
+  types?:string[]
   color?:string,
   evolutions?:string[] 
 }

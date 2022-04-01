@@ -8,48 +8,44 @@ import { useContext } from "react";
 import { PokemonContext } from "../../../../../contexts/Pokemon";
 
 
-
-
-export const Evolution = (props:{pokemonEv:string, currentPoke:string}) => {
+export const Evolution = (props:{evolution:{name:string, img:string}, currentPoke:string}) => {
   
-  const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
+  // const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
 
-  const {data , isFetching, isFetched} = 
-  useQuery<pokemon>(`evolution${props.pokemonEv}`, ()=> 
-  evolutionQuery(`${constants.apiUrl}/pokemon/${props.pokemonEv}`))
+  // const {data , isFetching, isFetched} = 
+  // useQuery<pokemon>(`evolution${props.pokemonEv}`, ()=> 
+  // evolutionQuery(`${constants.apiUrl}/pokemon/${props.pokemonEv}`));
+  // if(isFetching){
+  //   return <p>Loading...</p>
+  // }
 
-  if(isFetching){
-    return <p>Loading...</p>
-  }
-
- 
-  const pokeData = {
-    name : data?.name!,
-    img : data?.sprites.other.dream_world.front_default!
-  }
+  // const pokeData = {
+  //   name : data?.name!,
+  //   img : data?.sprites.other.dream_world.front_default!
+  // }
 
   /*Criando o array de evolution no context*/ 
-  if(!pokemonSeen[props.currentPoke].evolutions){
-    pokemonSeen[props.currentPoke].evolutions = [];
-  }
+  // if(!pokemonSeen[props.currentPoke].evolutions){
+  //   pokemonSeen[props.currentPoke].evolutions = [];
+  // }
   /*So adiciona ao array se ainda nao tiver o pokemon e quando o dado do pokemon for valido*/ 
-  else if(!pokemonSeen[props.currentPoke].evolutions?.find(specie => (specie===pokeData.name)) 
-  && pokeData.name!=undefined){
-    pokemonSeen[props.currentPoke].evolutions?.push(pokeData.name);
-  }
+  // else if(!pokemonSeen[props.currentPoke].evolutions?.find(specie => (specie===pokeData.name)) 
+  // && pokeData.name!=undefined){
+  //   pokemonSeen[props.currentPoke].evolutions?.push(pokeData.name);
+  // }
 
   const isCurrent = () =>{
-    if(pokeData.name === props.currentPoke){
+    if(props.evolution.name === props.currentPoke){
       return <div style={{border:'1px solid #d19d2c'}} 
       className="pokeEvolutionIcon">
-        <img src={pokeData.img} alt={pokeData.name} className='pokeEvolutionImg' />
+        <img src={props.evolution.img} alt={props.evolution.name} className='pokeEvolutionImg' />
       </div>
     }
     else{
-      return <Link to={`/pokemons/${pokeData.name}`} 
+      return <Link to={`/pokemons/${props.evolution.name}`} 
       className="evolution">
         <div className="pokeEvolutionIcon">
-          <img src={pokeData.img} alt={pokeData.name} />
+          <img src={props.evolution.img} alt={props.evolution.name} />
         </div>
       </Link>
     }
