@@ -20,7 +20,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@helpers/*": ["./src/helpers/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*":["./src/constants/*"],
+      "@contexts/*":["./src/contexts/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@services/*": ["./src/services/*"],
     }
   },
   "include": [
