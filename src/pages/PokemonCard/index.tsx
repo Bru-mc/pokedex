@@ -10,6 +10,7 @@ import { PokemonCardType } from "./PokeCardType";
 import './index.css'
 import { hexColors } from "../../constants/index";
 import { Evolution } from "./evolution";
+import { PokeCardEvolution } from "./PokeCardEvolution";
 
  
 export const PokemonCard = () =>{
@@ -131,22 +132,9 @@ export const PokemonCard = () =>{
         <PokemonCardType types={pokemon.types!}/>
         <p>{pokemon.name}</p>
         <div className="PokeEvolutionsContainer">
-          {pokemonsEvolution.length === 1?
-          <><h2>No Evolves</h2></>: //Fazer componente NoEvolves
-          pokemonsEvolution.map(pokemonEvolution => 
-            {return <>
-              <h2 className="pokeCardH2">EVOLUTION</h2>
-              <div className="evolutions"> 
-              <Evolution key={pokemonEvolution.evolutionName} 
-              evolution ={
-                {
-                  name : pokemonEvolution.evolutionName, 
-                  img: pokemonEvolution.evolutionImg
-                }
-              } 
-              currentPoke = {pokemon.name!}/>
-              </div>
-            </>})}
+          <PokeCardEvolution 
+          pokemonEvolution={pokemonsEvolution} 
+          currentPoke = {pokemon.name!}/>
         </div>
       </div> 
     </div>: 
