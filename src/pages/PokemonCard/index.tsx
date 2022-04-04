@@ -5,12 +5,11 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { PokemonContext } from "../../contexts/Pokemon";
 
 import { chain, evolutionChain, pokemon, pokeSpecie } from "../../interfaces";
-import { PokeCardEvolution } from "./PokeCardEvolution";
 import { PokeCardTop } from "./PokeCardTop";
 import { PokemonCardType } from "./PokeCardType";
 import './index.css'
-import { hexColors } from "../../constants";
-import { Evolution } from "./PokeCardEvolution/pokeEvolution/evolution";
+import { hexColors } from "../../constants/index";
+import { Evolution } from "./evolution";
 
  
 export const PokemonCard = () =>{
@@ -120,18 +119,6 @@ export const PokemonCard = () =>{
     }
   );
   
-  // const pokemonPropertys = {
-  //   name: pokemon.name!,
-  //   img: pokemon.img!,
-  //   types: pokemon.types!.map(currentType => (currentType.type.name)),
-  //   color: pokemonSpecie.color!
-  // }
-  
-  // const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
-  // if(!pokemonSeen[pokemonPropertys.name!]){
-  //   pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
-  // }
-  
   useEffect(() => {
     setPokemonSeen(pokemonSeen);
   },[pokeEvolutionChainSpeciesUseQueries]);
@@ -142,14 +129,12 @@ export const PokemonCard = () =>{
       <div className="pokeCard" style={{backgroundColor: hexColors[pokemonSpecie.color!] }}> 
         <PokeCardTop name = {pokemon.name!}  img = {pokemon.img!} />
         <PokemonCardType types={pokemon.types!}/>
-        {/* <PokeCardEvolution url={data?.species.url!} name={data?.name!} refstate={pokeCardRefState} ></PokeCardEvolution> */} 
         <p>{pokemon.name}</p>
-        <p>{pokemonSpecie.color}</p>
-        <div className="evolutions">
+        <div className="PokeEvolutionsContainer">
           {pokemonsEvolution.length === 1?
-          <><h2>No Evolves</h2></>:
+          <><h2>No Evolves</h2></>: //Fazer componente NoEvolves
           pokemonsEvolution.map(pokemonEvolution => 
-            {return <div className="pokeEvolutionContainer">
+            {return <>
               <h2 className="pokeCardH2">EVOLUTION</h2>
               <div className="evolutions"> 
               <Evolution key={pokemonEvolution.evolutionName} 
@@ -161,12 +146,12 @@ export const PokemonCard = () =>{
               } 
               currentPoke = {pokemon.name!}/>
               </div>
-            </div>})}
+            </>})}
         </div>
       </div> 
     </div>: 
     <div>
-      <p>Loading...</p>
+      <p>Loading...</p> //Fazer componente Loading
     </div>
   );
 }

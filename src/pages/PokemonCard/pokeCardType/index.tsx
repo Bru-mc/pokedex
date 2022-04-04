@@ -1,6 +1,4 @@
-import { pokemonPropertys } from '../../../interfaces';
 import './index.css';
-
 
 export const PokemonCardType = (props:{types:[{type:{name:string, url:string}}]}) =>{
   return(

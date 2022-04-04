@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import back from "../../../assets/back.png"
 import { LedAnimationContext } from "../../../contexts/LedAnimation";
-import { pokemon, pokemonPropertys } from "../../../interfaces";
 import './index.css';
 
 
