@@ -12,3 +12,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.pokeDescription{
+  margin: 0;
+  font-size: 20px;
+}
