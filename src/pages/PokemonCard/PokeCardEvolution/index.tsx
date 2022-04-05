@@ -5,6 +5,8 @@ export const PokeCardEvolution = (props: {pokemonEvolution: {
     evolutionName: string;
     evolutionImg: string;
 }[], currentPoke: string}) => {
+    console.log("Abaixo");
+    console.log(props);
     return (
         <>
             <h2 className="pokeCardH2">EVOLUTION</h2>
@@ -13,6 +15,7 @@ export const PokeCardEvolution = (props: {pokemonEvolution: {
             : props.pokemonEvolution.map(pokemonEvolution => 
             {return <>
                 <div className="evolutions"> 
+                    {console.log("key = ",pokemonEvolution.evolutionName)}
                     <Evolution key={pokemonEvolution.evolutionName} 
                     evolution ={
                       {

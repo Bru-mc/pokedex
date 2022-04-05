@@ -3,6 +3,8 @@ export interface pokeList{
 }
 
 export interface pokemon {
+  height: number,
+  id: number,
   name: string,
   species:{
     url:string
@@ -21,7 +23,8 @@ export interface pokemon {
         url:string
       }
     }
-  ]
+  ],
+  weight: number
 };
 
 export interface pokemonPropertys {
@@ -34,11 +37,15 @@ export interface pokemonPropertys {
 
 export interface pokeSpecie{
   color: {
-    name:string |undefined;
+    name:string |undefined
   },
   evolution_chain: {
-    url: string |undefined;
-  }  
+    url: string |undefined
+  },
+  habitat: {
+    name: string,
+    url: string
+  }
 }
 export interface pokeSpeciePropertys{
   color:string,

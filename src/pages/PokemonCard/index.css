@@ -7,3 +7,8 @@
   /* background:#da0303; */
   position: relative;
 }
+
+.PokeProperty{
+  display: flex;
+  justify-content: space-between;
+}

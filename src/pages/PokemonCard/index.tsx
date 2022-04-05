@@ -9,7 +9,6 @@ import { PokeCardTop } from "./PokeCardTop";
 import { PokemonCardType } from "./PokeCardType";
 import './index.css'
 import { gradient, hexColors } from "../../constants/index";
-import { Evolution } from "./evolution";
 import { PokeCardEvolution } from "./PokeCardEvolution";
 
  
@@ -30,9 +29,12 @@ export const PokemonCard = () =>{
 
   const pokemon = {
     name: pokemonDATA?.name,
+    id: pokemonDATA?.id,
     img: pokemonDATA?.sprites.other.dream_world.front_default,
     types: pokemonDATA?.types,
-    specieURL: pokemonDATA?.species.url
+    specieURL: pokemonDATA?.species.url,
+    weight: pokemonDATA?.weight,
+    height: pokemonDATA?.height
   }
   
   
@@ -48,7 +50,8 @@ export const PokemonCard = () =>{
   
   const pokemonSpecie = {
     color: pokemonSpecieDATA?.color.name,
-    evolutionChainURL: pokemonSpecieDATA?.evolution_chain.url
+    evolutionChainURL: pokemonSpecieDATA?.evolution_chain.url,
+    habitat: pokemonSpecieDATA?.habitat
   }
 
   //-----POKEMON EVOLUTION CHAIN QUERY-----
@@ -132,13 +135,36 @@ export const PokemonCard = () =>{
         `linear-gradient(to bottom,${gradient[pokemonSpecie.color!][1]},
         ${gradient[pokemonSpecie.color!][0]})`}}> 
         <PokeCardTop name = {pokemon.name!}  img = {pokemon.img!} types = {pokemon.types!}/>
-        <PokemonCardType types={pokemon.types!}/>
-        <p>{pokemon.name}</p>
-        <div className="PokeEvolutionsContainer">
+        <div className="PokeCardPropertys">
+
+          <PokemonCardType types={pokemon.types!}/>
+
+          <div key={"pokeCardHeight"} className="pokeCardHeight PokeProperty">
+            <p className="pokeDescription">HEIGHT:</p>
+            <p className="pokeDescription">{pokemon.height}</p>
+          </div>
+
+          <div key={"pokeCardWeight"} className="pokeCardWeight PokeProperty">
+            <p className="pokeDescription">WEIGHT:</p>
+            <p className="pokeDescription">{pokemon.weight}</p>
+          </div>
+
+          <div key={"pokeCardHabitat"} className="pokeCardHabitat PokeProperty">
+            <p className="pokeDescription">HABITAT:</p>
+            <p className="pokeDescription">{pokemonSpecie.habitat?.name!.toUpperCase()}</p>
+          </div>
+
+          <div key={"pokeCardNumber"} className="pokeCardNumber PokeProperty">
+            <p className="pokeDescription">NUMBER:</p>
+            <p className="pokeDescription">{pokemon.id}</p>
+          </div>
+        </div> 
+
+        {/* <div className="PokeEvolutionsContainer">
           <PokeCardEvolution 
           pokemonEvolution={pokemonsEvolution} 
           currentPoke = {pokemon.name!}/>
-        </div>
+        </div>  */}
       </div> 
     </div>: 
     <div>
