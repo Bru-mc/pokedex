@@ -8,7 +8,7 @@ import { chain, evolutionChain, pokemon, pokeSpecie } from "../../interfaces";
 import { PokeCardTop } from "./PokeCardTop";
 import { PokemonCardType } from "./PokeCardType";
 import './index.css'
-import { hexColors } from "../../constants/index";
+import { gradient, hexColors } from "../../constants/index";
 import { Evolution } from "./evolution";
 import { PokeCardEvolution } from "./PokeCardEvolution";
 
@@ -127,8 +127,11 @@ export const PokemonCard = () =>{
   return(
     render?
     <div className="pokeCardContainer">
-      <div className="pokeCard" style={{backgroundColor: hexColors[pokemonSpecie.color!] }}> 
-        <PokeCardTop name = {pokemon.name!}  img = {pokemon.img!} />
+      <div className="pokeCard" style={{
+        backgroundImage: 
+        `linear-gradient(to bottom,${gradient[pokemonSpecie.color!][1]},
+        ${gradient[pokemonSpecie.color!][0]})`}}> 
+        <PokeCardTop name = {pokemon.name!}  img = {pokemon.img!} types = {pokemon.types!}/>
         <PokemonCardType types={pokemon.types!}/>
         <p>{pokemon.name}</p>
         <div className="PokeEvolutionsContainer">

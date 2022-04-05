@@ -7,11 +7,11 @@ export const PokeCardEvolution = (props: {pokemonEvolution: {
 }[], currentPoke: string}) => {
     return (
         <>
+            <h2 className="pokeCardH2">EVOLUTION</h2>
             {props.pokemonEvolution.length === 1?
             <><h2>No Evolves</h2></>//Fazer componente NoEvolves
             : props.pokemonEvolution.map(pokemonEvolution => 
             {return <>
-                <h2 className="pokeCardH2">EVOLUTION</h2>
                 <div className="evolutions"> 
                     <Evolution key={pokemonEvolution.evolutionName} 
                     evolution ={
