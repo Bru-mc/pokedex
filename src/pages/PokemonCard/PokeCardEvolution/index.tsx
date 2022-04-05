@@ -16,7 +16,7 @@ export const PokeCardEvolution = (props: {pokemonEvolution: {
                 {props.pokemonEvolution.map(pokemonEvolution => 
                     {return <> 
                         <Evolution key={pokemonEvolution.evolutionName} 
-                        evolution ={
+                        evolution = {
                         {name : pokemonEvolution.evolutionName, 
                         img: pokemonEvolution.evolutionImg}} 
                         currentPoke = {props.currentPoke}/>

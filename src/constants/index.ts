@@ -15,7 +15,7 @@ export const hexColors:hexColor = {
     purple: '#A21FC4',
     brown: '#812c0a',
     pink: '#f71e9c',
-    gray: '#686868'
+    gray: '#7F9192'
 }
 
 export const gradient:gradient = {
@@ -27,5 +27,6 @@ export const gradient:gradient = {
     purple: ['#2C024D','#A21FC4'],
     brown: ['#422204','#812c0a'],
     pink: ['#9E0843','#f71e9c'],
+    gray: ['#475B5B','#7F9192']
     //falta adicionar gray
 }
