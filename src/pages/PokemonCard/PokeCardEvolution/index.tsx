@@ -12,20 +12,18 @@ export const PokeCardEvolution = (props: {pokemonEvolution: {
             <h2 className="pokeCardH2">EVOLUTION</h2>
             {props.pokemonEvolution.length === 1?
             <><h2>No Evolves</h2></>//Fazer componente NoEvolves
-            : props.pokemonEvolution.map(pokemonEvolution => 
-            {return <>
-                <div className="evolutions"> 
-                    {console.log("key = ",pokemonEvolution.evolutionName)}
-                    <Evolution key={pokemonEvolution.evolutionName} 
-                    evolution ={
-                      {
-                        name : pokemonEvolution.evolutionName, 
-                        img: pokemonEvolution.evolutionImg
-                      }
-                    } 
-                    currentPoke = {props.currentPoke}/>
-                </div>
-            </>})}
+            :<div className='evolutionsContent'>
+                {props.pokemonEvolution.map(pokemonEvolution => 
+                    {return <> 
+                        <Evolution key={pokemonEvolution.evolutionName} 
+                        evolution ={
+                        {name : pokemonEvolution.evolutionName, 
+                        img: pokemonEvolution.evolutionImg}} 
+                        currentPoke = {props.currentPoke}/>
+                    </>}
+                )}
+            </div> 
+            }
         </>
     );
 }

@@ -7,6 +7,15 @@
   /* background:#da0303; */
   position: relative;
 }
+.PokeCardPropertys{
+  width: 192px;
+  padding: 30px 25px 10px 25px;
+  box-sizing: border-box;
+  background:#272729; 
+  position: relative;
+  top: -15px;
+  z-index: 1;
+}
 
 .PokeProperty{
   display: flex;
@@ -15,5 +24,16 @@
 
 .pokeDescription{
   margin: 0;
-  font-size: 20px;
+  font-size: 15px;
+  color: #949090;
+}
+.PokeEvolutionsContainer{
+  padding-top: 5px;
+  width: 100%;
+  background:#272729; 
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 270px;
 }

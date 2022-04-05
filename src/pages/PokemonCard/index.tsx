@@ -10,6 +10,9 @@ import { PokemonCardType } from "./PokeCardType";
 import './index.css'
 import { gradient, hexColors } from "../../constants/index";
 import { PokeCardEvolution } from "./PokeCardEvolution";
+import { valueFormater } from "../../helpers/valueFormater";
+import { numberToString } from "../../helpers/numberToString";
+
 
  
 export const PokemonCard = () =>{
@@ -130,23 +133,23 @@ export const PokemonCard = () =>{
   return(
     render?
     <div className="pokeCardContainer">
-      <div className="pokeCard" style={{
-        backgroundImage: 
-        `linear-gradient(to bottom,${gradient[pokemonSpecie.color!][1]},
-        ${gradient[pokemonSpecie.color!][0]})`}}> 
-        <PokeCardTop name = {pokemon.name!}  img = {pokemon.img!} types = {pokemon.types!}/>
+      <div className="pokeCard"> 
+      
+        <PokeCardTop color = {pokemonSpecie.color!} name = {pokemon.name!}  
+        img = {pokemon.img!} types = {pokemon.types!}/>
+
         <div className="PokeCardPropertys">
 
           <PokemonCardType types={pokemon.types!}/>
 
           <div key={"pokeCardHeight"} className="pokeCardHeight PokeProperty">
             <p className="pokeDescription">HEIGHT:</p>
-            <p className="pokeDescription">{pokemon.height}</p>
+            <p className="pokeDescription">{valueFormater(pokemon.height!) + ' M'}</p>
           </div>
 
           <div key={"pokeCardWeight"} className="pokeCardWeight PokeProperty">
             <p className="pokeDescription">WEIGHT:</p>
-            <p className="pokeDescription">{pokemon.weight}</p>
+            <p className="pokeDescription">{valueFormater(pokemon.weight!) + ' KG'}</p>
           </div>
 
           <div key={"pokeCardHabitat"} className="pokeCardHabitat PokeProperty">
@@ -156,15 +159,15 @@ export const PokemonCard = () =>{
 
           <div key={"pokeCardNumber"} className="pokeCardNumber PokeProperty">
             <p className="pokeDescription">NUMBER:</p>
-            <p className="pokeDescription">{pokemon.id}</p>
+            <p className="pokeDescription">{numberToString(pokemon.id!)}</p>
           </div>
         </div> 
 
-        {/* <div className="PokeEvolutionsContainer">
+        <div className="PokeEvolutionsContainer">
           <PokeCardEvolution 
           pokemonEvolution={pokemonsEvolution} 
           currentPoke = {pokemon.name!}/>
-        </div>  */}
+        </div> 
       </div> 
     </div>: 
     <div>

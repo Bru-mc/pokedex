@@ -1,0 +1,11 @@
+.pokeCardH2{
+    margin: 0;
+    font-size: 25px;
+    color:#949090;
+}
+.evolutionsContent{
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

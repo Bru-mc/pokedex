@@ -23,19 +23,21 @@
   margin: 0;
   padding-top: 0;
   font-size: 30px;
-  color: #fdfdfd;
+  color: #272525;
   position: relative;
 }
 .scenery{
   width: 100%;
-  height: 170px;
+  height: 140px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
+  z-index: 2;
 }
 .pokeImg{
   height: 130px;
+  width: 130px;
   margin: 0; 
   padding: 0;
 }
