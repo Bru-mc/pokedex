@@ -2,7 +2,7 @@ import './Pokedex.css';
 //react-router-dom
 import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 //contexts
 import { PokemonContextProvider } from './contexts/Pokemon';
 import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
@@ -10,10 +10,27 @@ import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimati
 import { PokeHome } from './pages/PokeHome';
 import { PokemonsList } from './pages/PokemonsList';
 import { PokemonCard } from './pages/PokemonCard';
+import arrowRight from './assets/caret-right-solid.png'
+import { disableElement } from './helpers/disableElement';
+import { enableElement } from './helpers/enableElement';
+import { changeSidePokedex } from './helpers/changeSidePokedex';
+
+
 
 
 function Pokedex() {
+  const pokeFront = useRef<any>(null);
+  const pokeRightSide = useRef<any>(null);
   const animationLed = useRef<any>(null);
+  const buttonChangeSide = useRef<any>(null);
+  const [canChangeSidePokedex, setCanChange] = useState(false);
+  const [clientWidth, setClientWidth] = useState(document.body.clientWidth)
+  const removeCape = () => {
+    disableElement(pokeFront)
+    enableElement(pokeRightSide)
+    setCanChange(true);
+    setClientWidth(document.body.clientWidth)
+  }
   
   let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
   
@@ -25,8 +42,23 @@ function Pokedex() {
     ledRefState.removeAnimation = () =>{
       ledRefState.ledRef!.current.style.animationDuration = '0s';
     }  
-    setLedRefState(ledRefState)
+    setLedRefState(ledRefState);
+
   },[]);
+  
+
+  console.log("clientWidth = ",clientWidth)
+  
+  useEffect(() => {
+    console.log("Entrei aqui 1");
+    console.log(document.body.clientWidth)
+    console.log(canChangeSidePokedex)
+    if (document.body.clientWidth < 660 && canChangeSidePokedex){
+      console.log("Entrei aqui");
+      buttonChangeSide.current.style.visibility = "initial"
+    }
+  },[canChangeSidePokedex])
+  
   
   return (
     <div className='pokedexContainer'>
@@ -82,6 +114,7 @@ function Pokedex() {
           <div className="crossButton flex">
             <div className="horizontalLine darkGray"></div>
             <div className="verticalLine darkGray"></div>
+            <div className="horizontalLineOver darkGray"></div>
             <div className="crossCircle circle"></div>
           </div>
         </div>
@@ -89,9 +122,21 @@ function Pokedex() {
           <div className="topBorder"></div>
           <div className="bottomBorder"></div>
         </div>
+        <img className="buttonChangePokeSide" src={arrowRight} alt="clique aqui" 
+        ref={buttonChangeSide} onClick={changeSidePokedex}/>
+        
+        <div className="pokedexFront backColor" ref={pokeFront}>
+          <div className="pokedexFrontTopRightOver backColor"></div>
+          <img className="arrowRightIcon" src={arrowRight} alt="clique aqui" 
+           onClick={removeCape}/>
+        </div>
+      </div>
+      <div className='pokedexRight' ref={pokeRightSide}>
+
       </div>
     </div>
   );
+  
 }
 export default Pokedex;
 
