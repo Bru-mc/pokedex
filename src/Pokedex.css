@@ -1,12 +1,13 @@
 
 /*----- Reset css*/
 .pokedexContainer{
+  height:100%;
   margin: 15px 0 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-items: center; */
+  align-content: space-between;
 }
 
 /*----- Colors */
@@ -107,7 +108,7 @@
   box-sizing: border-box;
   box-shadow: 0 0 15px rgb(39, 23, 23);
   margin-top: 25px;
-  margin-bottom: 50px;
+  margin-bottom: 50px; 
 }
 
 /*-- Pokedex Head */
@@ -396,7 +397,7 @@
   position: relative;
   box-sizing: border-box;
   margin-top: 119px;
-  margin-bottom: 50px;
+  margin-bottom: 50%; 
   visibility: hidden;
 }
 
