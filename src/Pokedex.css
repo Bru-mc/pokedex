@@ -44,7 +44,7 @@
   background: #1d1d20;
 }
 .backColor{
-  background: rgb(190, 12, 57);
+  background: #be0c39;
 }
 
 .opacity20{
@@ -350,6 +350,16 @@
   bottom: 0;
   box-shadow: 0 -6px 1px rgb(104, 31, 40);
 }
+.buttonChangePokeSide{
+  visibility: hidden;
+  position: absolute;
+  margin: 10px;
+  bottom:260px;
+  left: 293px;
+  width: 25px;
+  height: 50px;
+  z-index: 5;
+}
 
 /*Pokedex Front*/
 .pokedexFront{
@@ -378,31 +388,91 @@
   cursor: pointer;
 }
 
-/* Pokedex righ content */
+/* Pokedex right content */
 
-.pokedexRight{
-  height: 600px;
+.pokedexRightSide{
+  height: 506px;
   width: 330px;
   position: relative;
   box-sizing: border-box;
-  box-shadow: 0 0 15px rgb(39, 23, 23);
-  background-color: #589c30;
-  margin-top: 25px;
+  margin-top: 119px;
   margin-bottom: 50px;
   visibility: hidden;
 }
 
-.buttonChangePokeSide{
-  visibility: hidden;
+/*content top border left (Right side pokedex)*/
+.contentTopBorderLeftRS{
+  width: 120px;
+  height: 7px;
+  background-color: #c20736;
   position: absolute;
-  margin: 10px;
-  bottom:260px;
-  left: 293px;
-  width: 25px;
-  height: 50px;
-  z-index: 5;
+  top:0;
+  border: 2px solid #681f28; 
+  border-left: 0;
+  border-right: 0;
+  z-index: 1;
 }
 
+/*content top left (Right side pokedex)*/
+.contentTopLeftRS{
+  width: 120px;
+  height: 50px;
+  background: #be0c39;
+  position: absolute;
+  left:0;
+  top: 7px;
+}
 
+.contentTopBorderLeft2RS{
+  width: 55px;
+  height: 7px;
+  transform: rotate(49deg);
+  background-color: #c20736;
+  border: 2px solid #681f28;
+  border-left: 0;
+  border-right: 0;
+  position: absolute;
+  left:107px;
+  top: 19px;
+}
+.contentTopLeft2RS{
+  width: 55px;
+  height: 50px;
+  transform: rotate(49deg);
+  background: #be0c39;
+  position: absolute;
+  left:85px;
+  top: 20px;
+}
+.contentTopBorderLeftRSIn{
+  width: 55px;
+  height: 7px;
+  transform: rotate(49deg);
+  background-color: #c20736;
+  border-left: 0;
+  border-right: 0;
+  position: absolute;
+  left:107px;
+  top: 21px;
+  z-index: 3;
+} 
+.contentTopBorderRightRS{
+  width: 181px;
+  height: 7px;
+  background-color: #c20736;
+  border: 2px solid #681f28;
+  border-left: 0;
+  border-right: 0;
+  position: absolute;
+  top:39px;
+  right: 0;
+}
+.pokedexRightSideMainContent{
+  height: 456px;
+  width: 330px;
+  position: absolute;
+  background-color: #be0c39;
+  bottom: 0;
+}
 
 

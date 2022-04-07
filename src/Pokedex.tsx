@@ -131,8 +131,18 @@ function Pokedex() {
            onClick={removeCape}/>
         </div>
       </div>
-      <div className='pokedexRight' ref={pokeRightSide}>
+      <div className="pokedexRightSide" ref={pokeRightSide}>
+        <div className="pokedexRightSideHeader">
+          <div className="contentTopBorderLeftRS"></div>
+          <div className="contentTopLeftRS"></div>
+          <div className="contentTopBorderLeft2RS"></div>
+          <div className="contentTopLeft2RS"></div>
+          <div className="contentTopBorderLeftRSIn"></div>
+          <div className="contentTopBorderRightRS"></div>
+        </div>
+        <div className="pokedexRightSideMainContent">
 
+        </div>
       </div>
     </div>
   );
