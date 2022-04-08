@@ -45,7 +45,18 @@ export interface pokeSpecie{
   habitat: {
     name: string,
     url: string
-  }
+  },
+  flavor_text_entries: [
+    {
+      flavor_text:string,
+      language:{
+        name:string
+      },
+      version:{
+        name:string
+      }
+    }
+  ]
 }
 export interface pokeSpeciePropertys{
   color:string,

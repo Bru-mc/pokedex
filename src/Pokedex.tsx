@@ -5,6 +5,7 @@ import { HashRouter, Route, Routes} from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 //contexts
 import { PokemonContextProvider } from './contexts/Pokemon';
+import { CurrentPokemonContextProvider } from './contexts/CurrentPokemon';
 import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
 //pages components
 import { PokeHome } from './pages/PokeHome';
@@ -14,6 +15,8 @@ import arrowRight from './assets/caret-right-solid.png'
 import { disableElement } from './helpers/disableElement';
 import { enableElement } from './helpers/enableElement';
 import { changeSidePokedex } from './helpers/changeSidePokedex';
+import { DescriptionScreen } from './components/DescriptionScreen';
+
 
 
 function Pokedex() {
@@ -69,32 +72,33 @@ function Pokedex() {
   },[clientWidth]);
   
   return (
+    <PokemonContextProvider>
+    <CurrentPokemonContextProvider>
     <div className='pokedexContainer'>
-      <div className="pokedex backColor">
-        <div className="pokedexHeader">
-          <div className="leftContent flex">
-            <div className="contentBottomBorder backColor"></div>
-            <div className="contentBottomBorderL"></div>
-            <div className="bigBackCircle circle flex lightGray">
-              <div className="bigLed circle" ref={animationLed}></div>
+        <div className="pokedex backColor">
+          <div className="pokedexHeader">
+            <div className="leftContent flex">
+              <div className="contentBottomBorder backColor"></div>
+              <div className="contentBottomBorderL"></div>
+              <div className="bigBackCircle circle flex lightGray">
+                <div className="bigLed circle" ref={animationLed}></div>
+              </div>
+              <div className="ledS flex">
+                <div className="ledSmall circle red"></div>
+                <div className="ledSmall circle yellow"></div>
+                <div className="ledSmall circle green"></div>
+              </div>
             </div>
-            <div className="ledS flex">
-              <div className="ledSmall circle red"></div>
-              <div className="ledSmall circle yellow"></div>
-              <div className="ledSmall circle green"></div>
-            </div>
+            <div className="rightContent"></div>
+            <div className="rightContentOver backColor"></div>
           </div>
-          <div className="rightContent"></div>
-          <div className="rightContentOver backColor"></div>
-        </div>
-        <div className="pokedexMainContent">
-          <div className="mainScreenContainer flex lightGray">
-            <div className="mainScreenSLed flex">
-              <div className="mainScreenLed circle red"></div>
-              <div className="mainScreenLed circle red"></div>
-            </div>
-            <div className="mainScreen">
-              <PokemonContextProvider> 
+          <div className="pokedexMainContent">
+            <div className="mainScreenContainer flex lightGray">
+              <div className="mainScreenSLed flex">
+                <div className="mainScreenLed circle red"></div>
+                <div className="mainScreenLed circle red"></div>
+              </div>
+              <div className="mainScreen">
                 <LedAnimationProvider>
                   <HashRouter>
                     <Routes>
@@ -103,60 +107,63 @@ function Pokedex() {
                       <Route path='/pokemons/:name' element = {<PokemonCard/>}/>    
                     </Routes>    
                   </HashRouter>  
-                </LedAnimationProvider>
-              </PokemonContextProvider>
+                </LedAnimationProvider>               
+              </div>
+              <div className="mainScreenLedB circle red"></div>
+              <div className="mainSoundBox"></div>
             </div>
-            <div className="mainScreenLedB circle red"></div>
-            <div className="mainSoundBox"></div>
           </div>
-        </div>
-        <div className="pokedexBottomContent flex">
-          <div className="circularButton circle darkGray"></div>
-          <div className="ledAndScreenContent">
-            <div className="lineLeds flex">
-              <div className="lineLed red"></div>
-              <div className="lineLed blue"></div>
+          <div className="pokedexBottomContent flex">
+            <div className="circularButton circle darkGray"></div>
+            <div className="ledAndScreenContent">
+              <div className="lineLeds flex">
+                <div className="lineLed red"></div>
+                <div className="lineLed blue"></div>
+              </div>
+              <div className="miniScreen green"></div>
             </div>
-            <div className="miniScreen green"></div>
+            <div className="crossButton flex">
+              <div className="horizontalLine darkGray"></div>
+              <div className="verticalLine darkGray"></div>
+              <div className="horizontalLineOver darkGray"></div>
+              <div className="crossCircle circle"></div>
+            </div>
           </div>
-          <div className="crossButton flex">
-            <div className="horizontalLine darkGray"></div>
-            <div className="verticalLine darkGray"></div>
-            <div className="horizontalLineOver darkGray"></div>
-            <div className="crossCircle circle"></div>
+          <div className="rightBorder backColor">
+            <div className="topBorder"></div>
+            <div className="bottomBorder"></div>
+          </div>
+          <img className="buttonChangePokeSide" src={arrowRight} alt="clique aqui" 
+          ref={buttonChangeSide} onClick={changeSidePokedex}/>
+          
+          <div className="pokedexFront backColor" ref={pokeFront}>
+            <div className="pokedexFrontTopRightOver backColor"></div>
+            <img className="arrowRightIcon" src={arrowRight} alt="clique aqui" 
+            onClick={removeCape}/>
           </div>
         </div>
-        <div className="rightBorder backColor">
-          <div className="topBorder"></div>
-          <div className="bottomBorder"></div>
+        <div className="pokedexRightSide" ref={pokeRightSide}>
+          <div className="pokedexRightSideHeader">
+            <div className="contentTopBorderLeftRS"></div>
+            <div className="contentTopLeftRS"></div>
+            <div className="contentTopBorderLeft2RS"></div>
+            <div className="contentTopLeft2RS"></div>
+            <div className="contentTopBorderLeftRSIn"></div>
+            <div className="contentTopBorderRightRS"></div>
+          </div>
+          <div className="pokedexRightSideMainContent">
+            <div className="pokedexRightSideMainScreen">
+              <DescriptionScreen/>
+            </div>
+          </div>
+          <div className="leftBorder backColor">
+            <div className="topBorder"></div>
+            <div className="bottomBorder"></div>
+          </div>
         </div>
-        <img className="buttonChangePokeSide" src={arrowRight} alt="clique aqui" 
-        ref={buttonChangeSide} onClick={changeSidePokedex}/>
-        
-        <div className="pokedexFront backColor" ref={pokeFront}>
-          <div className="pokedexFrontTopRightOver backColor"></div>
-          <img className="arrowRightIcon" src={arrowRight} alt="clique aqui" 
-           onClick={removeCape}/>
-        </div>
-      </div>
-      <div className="pokedexRightSide" ref={pokeRightSide}>
-        <div className="pokedexRightSideHeader">
-          <div className="contentTopBorderLeftRS"></div>
-          <div className="contentTopLeftRS"></div>
-          <div className="contentTopBorderLeft2RS"></div>
-          <div className="contentTopLeft2RS"></div>
-          <div className="contentTopBorderLeftRSIn"></div>
-          <div className="contentTopBorderRightRS"></div>
-        </div>
-        <div className="pokedexRightSideMainContent">
-          <div className="pokedexRightSideMainScreen"></div>
-        </div>
-        <div className="leftBorder backColor">
-          <div className="topBorder"></div>
-          <div className="bottomBorder"></div>
-        </div>
-      </div>
     </div>
+    </CurrentPokemonContextProvider> 
+    </PokemonContextProvider>
   );
   
 }

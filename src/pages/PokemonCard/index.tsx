@@ -12,6 +12,7 @@ import { gradient, hexColors } from "../../constants/index";
 import { PokeCardEvolution } from "./PokeCardEvolution";
 import { valueFormater } from "../../helpers/valueFormater";
 import { numberToString } from "../../helpers/numberToString";
+import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
 
 
  
@@ -22,6 +23,7 @@ export const PokemonCard = () =>{
   const pokeCard = useRef<any>(null);
   const [pokeCardRefState,setpokeCardRefState] = useState(pokeCard);
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
+  let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
 
   //-----POKEMON QUERY----- 
   const pokemonUseQuery = useQuery<pokemon>(
@@ -54,7 +56,8 @@ export const PokemonCard = () =>{
   const pokemonSpecie = {
     color: pokemonSpecieDATA?.color.name,
     evolutionChainURL: pokemonSpecieDATA?.evolution_chain.url,
-    habitat: pokemonSpecieDATA?.habitat
+    habitat: pokemonSpecieDATA?.habitat,
+    descriptions: pokemonSpecieDATA?.flavor_text_entries
   }
 
   //-----POKEMON EVOLUTION CHAIN QUERY-----
@@ -108,6 +111,9 @@ export const PokemonCard = () =>{
     {
       if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
         render = true;
+        currentPokemonDetails.currentPokemon = pokemon.name!
+        currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
+        setCurrentPokemonDetails(currentPokemonDetails);
         const pokemonPropertys = {
           name: pokemon.name!,
           img: pokemon.img!,
