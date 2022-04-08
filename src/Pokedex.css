@@ -394,6 +394,7 @@
   height: 506px;
   width: 330px;
   position: absolute;
+  left:-32px;
   box-sizing: border-box;
   margin-top: 119px;
   margin-bottom: 50%;
@@ -475,4 +476,30 @@
   bottom: 0;
 }
 
+/*Pokedex right side main */
 
+.pokedexRightSideMainScreen{
+  width: 245px;
+  height: 100px;
+  position: absolute;
+  top:27px;
+  right: 27px;
+  background-color: #060b0e;
+}
+
+
+/*Left border */
+.leftBorder{
+  z-index: 1;
+  height:506px;
+  width: 32px;
+  position: absolute;
+  top:0;
+  left:0;
+  box-shadow: 
+  inset 1px 2px 2px rgb(104, 31, 40),
+  inset -3px -2px 3px rgb(104, 31, 40),
+  inset 10px 0px 1px rgb(233, 90, 126),
+  inset 15px 0px 2px rgb(228, 54, 97),
+  inset 20px 0px 1px rgb(211, 28, 74);;
+}

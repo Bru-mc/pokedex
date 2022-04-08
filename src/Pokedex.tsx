@@ -16,15 +16,13 @@ import { enableElement } from './helpers/enableElement';
 import { changeSidePokedex } from './helpers/changeSidePokedex';
 
 
-
-
 function Pokedex() {
   const pokeFront = useRef<any>(null);
   const pokeRightSide = useRef<any>(null);
   const animationLed = useRef<any>(null);
   const buttonChangeSide = useRef<any>(null);
   const [canChangeSidePokedex, setCanChange] = useState(false);
-  const [clientWidth, setClientWidth] = useState(document.body.clientWidth)
+  const [clientWidth, setClientWidth] = useState(document.body.clientWidth);
   const removeCape = () => {
     disableElement(pokeFront)
     pokeRightSide.current.style.position = 'relative';
@@ -32,6 +30,8 @@ function Pokedex() {
     setCanChange(true);
     setClientWidth(document.body.clientWidth)
   }
+  const handleResize = () => setClientWidth(document.body.clientWidth)
+    
   
   let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
   
@@ -44,22 +44,29 @@ function Pokedex() {
       ledRefState.ledRef!.current.style.animationDuration = '0s';
     }  
     setLedRefState(ledRefState);
+  
+    window.addEventListener('resize', handleResize);
 
   },[]);
   
-
-  console.log("clientWidth = ",clientWidth)
-  
   useEffect(() => {
-    console.log("Entrei aqui 1");
-    console.log(document.body.clientWidth)
-    console.log(canChangeSidePokedex)
+    if (document.body.clientWidth < 660 && canChangeSidePokedex){
+      buttonChangeSide.current.style.visibility = "initial";
+      pokeRightSide.current.style.left = "initial";
+    }
+  },[canChangeSidePokedex]);
+
+  useEffect(() => { 
+    if(clientWidth > 660){
+      buttonChangeSide.current.style.visibility = "hidden";
+      pokeRightSide.current.style.left = "-32px";
+    }
     if (document.body.clientWidth < 660 && canChangeSidePokedex){
       console.log("Entrei aqui");
-      buttonChangeSide.current.style.visibility = "initial"
+      buttonChangeSide.current.style.visibility = "initial";
+      pokeRightSide.current.style.left = "initial";
     }
-  },[canChangeSidePokedex])
-  
+  },[clientWidth]);
   
   return (
     <div className='pokedexContainer'>
@@ -142,7 +149,11 @@ function Pokedex() {
           <div className="contentTopBorderRightRS"></div>
         </div>
         <div className="pokedexRightSideMainContent">
-
+          <div className="pokedexRightSideMainScreen"></div>
+        </div>
+        <div className="leftBorder backColor">
+          <div className="topBorder"></div>
+          <div className="bottomBorder"></div>
         </div>
       </div>
     </div>
