@@ -27,6 +27,7 @@ function Pokedex() {
   const [clientWidth, setClientWidth] = useState(document.body.clientWidth)
   const removeCape = () => {
     disableElement(pokeFront)
+    pokeRightSide.current.style.position = 'relative';
     enableElement(pokeRightSide)
     setCanChange(true);
     setClientWidth(document.body.clientWidth)

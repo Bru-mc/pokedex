@@ -2,8 +2,7 @@
 /*----- Reset css*/
 .pokedexContainer{
   height:100%;
-  margin: 15px 0 0 0;
-  padding: 0;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -394,10 +393,10 @@
 .pokedexRightSide{
   height: 506px;
   width: 330px;
-  position: relative;
+  position: absolute;
   box-sizing: border-box;
   margin-top: 119px;
-  margin-bottom: 50%; 
+  margin-bottom: 50%;
   visibility: hidden;
 }
 
