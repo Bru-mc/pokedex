@@ -1,8 +1,6 @@
 import { gradient } from "../../../constants";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import back from "../../../assets/back.png"
-import { LedAnimationContext } from "../../../contexts/LedAnimation";
 import './index.css';
 
 
@@ -14,7 +12,6 @@ export const PokeCardTop = (props:{color: string, name:string, img:string, types
   };
 }]
 }) =>{
-  const{ledRefState} = useContext(LedAnimationContext);
   return(
     <div className="pokeCardTop" 
     style={{backgroundImage:
@@ -23,8 +20,7 @@ export const PokeCardTop = (props:{color: string, name:string, img:string, types
         <Link to={`/pokemons`} className="back">
           <img  
           src={back} 
-          alt="Back"
-          onClick={ledRefState.removeAnimation}/>
+          alt="Back"/>
         </Link>
         <h1 className="pokeCardTitle">
           {props.name?.toLocaleUpperCase()}

@@ -3,12 +3,15 @@ import './index.css';
 import { useContext, useEffect, useRef } from "react";
 import { PokemonsListCard } from "./PokemonsListCard";
 import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
+import { LedAnimationContext } from "../../contexts/LedAnimation";
 
 export const PokemonsList = () => {
 
+  const {ledRefState} = useContext(LedAnimationContext);
   const {setDescriptionRender} = useContext(DescriptionRenderContext)
   useEffect(()=>{
     setDescriptionRender(false)
+    ledRefState.removeAnimation!()
   })  
   const testRef = useRef<any>(null);
   const goToTop = () =>{

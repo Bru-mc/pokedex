@@ -16,11 +16,13 @@ import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
 import { PokeCardTop } from "./pokeCardTop";
 import { PokemonCardType } from "./pokeCardType";
 import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
+import { LedAnimationContext } from "../../contexts/LedAnimation";
 
 
  
 export const PokemonCard = () =>{
   
+  const {ledRefState} = useContext(LedAnimationContext);
   const baseUrl: string = 'https://pokeapi.co/api/v2';
   const {name} = useParams();
   const pokeCard = useRef<any>(null);
@@ -28,6 +30,9 @@ export const PokemonCard = () =>{
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
   let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
 
+  useEffect(()=>{
+    ledRefState.addAnimation!();
+  })
   //-----POKEMON QUERY----- 
   const pokemonUseQuery = useQuery<pokemon>(
     ['pokemon', name],
