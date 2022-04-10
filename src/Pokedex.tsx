@@ -17,6 +17,8 @@ import { enableElement } from './helpers/enableElement';
 import { changeSidePokedex } from './helpers/changeSidePokedex';
 import { DescriptionScreen } from './components/DescriptionScreen';
 import { PokeHome } from './pages/pokeHome';
+import { DescriptionRenderContextProvider } from './contexts/DescriptionRender';
+
 
 
 
@@ -51,7 +53,7 @@ function Pokedex() {
   
     window.addEventListener('resize', handleResize);
 
-  },[]);
+  });
   
   useEffect(() => {
     if (document.body.clientWidth < 660 && canChangeSidePokedex){
@@ -74,6 +76,7 @@ function Pokedex() {
   
   return (
     <PokemonContextProvider>
+    <DescriptionRenderContextProvider>
     <CurrentPokemonContextProvider>
     <div className='pokedexContainer'>
         <div className="pokedex backColor">
@@ -164,6 +167,7 @@ function Pokedex() {
         </div>
     </div>
     </CurrentPokemonContextProvider> 
+    </DescriptionRenderContextProvider>
     </PokemonContextProvider>
   );
   

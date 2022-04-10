@@ -1,16 +1,17 @@
+import { DescriptionRenderContext } from '../../contexts/DescriptionRender';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentPokemonContext } from '../../contexts/CurrentPokemon';
 import './index.css';
 
+
 export const DescriptionScreen = () => {
-    const [render, setRender] = useState(false);
-    
+    // const [render, setRender] = useState(false);
+    const {descriptionRender} = useContext(DescriptionRenderContext);
     const {currentPokemonDetails} = useContext(CurrentPokemonContext);
     const [descriptionText, setDescriptionText] = useState('');
 
     useEffect(()=>{
       if(currentPokemonDetails.descriptionArray.length !== 1){
-        setRender(true);
         currentPokemonDetails.descriptionArray.forEach((description) =>{
           if(description.language.name==="en" 
           && description.version.name==="firered"){
@@ -21,7 +22,7 @@ export const DescriptionScreen = () => {
     },[currentPokemonDetails])
     
     return(
-        render?
+        descriptionRender?
         <div className="descriptionScreen">
             <h2 className='h2RightSide'>{currentPokemonDetails.currentPokemon
             .toUpperCase()}</h2>

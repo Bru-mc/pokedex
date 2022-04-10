@@ -15,6 +15,7 @@ import { numberToString } from "../../helpers/numberToString";
 import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
 import { PokeCardTop } from "./pokeCardTop";
 import { PokemonCardType } from "./pokeCardType";
+import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
 
 
  
@@ -98,7 +99,7 @@ export const PokemonCard = () =>{
       console.log({...currentPokemonDetails})
       setCurrentPokemonDetails({...currentPokemonDetails});
     }
-  },[pokemonSpecie.descriptions])
+  })
 
   //-----POKEMON EVOLUTION CHAIN SPECIES QUERIES-----
   const pokeEvolutionChainSpeciesUseQueries = useQueries<{ 
@@ -115,12 +116,13 @@ export const PokemonCard = () =>{
     })
   )
   let render = false;
-
+  const {setDescriptionRender} = useContext(DescriptionRenderContext)
   const pokemonsEvolution = pokeEvolutionChainSpeciesUseQueries
   .map(pokeEvolutionChainSpecieUseQuerie => 
     {
       if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
         render = true;
+        setDescriptionRender(true);
         const pokemonPropertys = {
           name: pokemon.name!,
           img: pokemon.img!,
@@ -141,7 +143,7 @@ export const PokemonCard = () =>{
   
   useEffect(() => {
     setPokemonSeen(pokemonSeen);
-  },[pokeEvolutionChainSpeciesUseQueries]);
+  });
 
   return(
     render?

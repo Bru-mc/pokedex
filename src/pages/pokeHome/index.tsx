@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
-import "./index.css"
+import "./index.css";
 import pokeLogo from "../../assets/pokelogo.png";
-import { PokemonContext } from "../../contexts/Pokemon";
-import { useContext } from "react";
-import pokeMark from "../../assets/QuestionMarkSmall.png";
+import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
+import { useContext, useEffect } from "react";
 
 
 export const PokeHome = () =>{
-  const {pokemonSeen} = useContext(PokemonContext) 
+  const {setDescriptionRender} = useContext(DescriptionRenderContext)
+  useEffect(()=>{
+    setDescriptionRender(false)
+  })
   return(
       <div className="pokeMenu">
         <img src={pokeLogo} alt="Pokemon" />
