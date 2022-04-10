@@ -1,7 +1,5 @@
 import { createContext, useState } from "react";
 
-const [teste, setTeste] = useState(false)
-
 type descriptionRender = {
     descriptionRender: boolean,
     setDescriptionRender: React.Dispatch<React.SetStateAction<boolean>>

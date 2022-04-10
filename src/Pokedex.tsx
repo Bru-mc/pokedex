@@ -8,7 +8,7 @@ import { PokemonContextProvider } from './contexts/Pokemon';
 import { CurrentPokemonContextProvider } from './contexts/CurrentPokemon';
 import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
 //pages components
-import { PokeHome } from './pages/PokeHome';
+
 import { PokemonsList } from './pages/PokemonsList';
 import { PokemonCard } from './pages/PokemonCard';
 import arrowRight from './assets/caret-right-solid.png'
@@ -16,6 +16,7 @@ import { disableElement } from './helpers/disableElement';
 import { enableElement } from './helpers/enableElement';
 import { changeSidePokedex } from './helpers/changeSidePokedex';
 import { DescriptionScreen } from './components/DescriptionScreen';
+import { PokeHome } from './pages/pokeHome';
 
 
 

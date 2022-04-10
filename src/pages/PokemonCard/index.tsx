@@ -5,14 +5,16 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { PokemonContext } from "../../contexts/Pokemon";
 
 import { chain, evolutionChain, pokemon, pokeSpecie } from "../../interfaces";
-import { PokeCardTop } from "./PokeCardTop";
-import { PokemonCardType } from "./PokeCardType";
+
+
 import './index.css'
 import { gradient, hexColors } from "../../constants/index";
 import { PokeCardEvolution } from "./PokeCardEvolution";
 import { valueFormater } from "../../helpers/valueFormater";
 import { numberToString } from "../../helpers/numberToString";
 import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
+import { PokeCardTop } from "./pokeCardTop";
+import { PokemonCardType } from "./pokeCardType";
 
 
  
