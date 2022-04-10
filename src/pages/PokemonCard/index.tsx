@@ -89,6 +89,14 @@ export const PokemonCard = () =>{
       currentEvolutionChain = currentEvolutionChain[0].evolves_to
     }
   }
+  useEffect(()=>{
+    if(pokemonSpecie.descriptions){
+      currentPokemonDetails.currentPokemon = pokemon.name!
+      currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
+      console.log({...currentPokemonDetails})
+      setCurrentPokemonDetails({...currentPokemonDetails});
+    }
+  },[pokemonSpecie.descriptions])
 
   //-----POKEMON EVOLUTION CHAIN SPECIES QUERIES-----
   const pokeEvolutionChainSpeciesUseQueries = useQueries<{ 
@@ -111,9 +119,6 @@ export const PokemonCard = () =>{
     {
       if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
         render = true;
-        currentPokemonDetails.currentPokemon = pokemon.name!
-        currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
-        setCurrentPokemonDetails(currentPokemonDetails);
         const pokemonPropertys = {
           name: pokemon.name!,
           img: pokemon.img!,

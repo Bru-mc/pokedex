@@ -20,7 +20,7 @@ type defaultValuetype = {
 
 const defaultValue: defaultValuetype = {
     currentPokemonDetails: {
-        currentPokemon: '',
+        currentPokemon: 'Teste',
         descriptionArray: [
             {
                 flavor_text:'',
