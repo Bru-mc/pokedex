@@ -26,6 +26,7 @@ export const PokemonCard = () =>{
   const {name} = useParams();
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
   let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
+  const {setDescriptionRender} = useContext(DescriptionRenderContext)
 
   useEffect(()=>{
     if(ledRefState.addAnimation){
@@ -114,11 +115,12 @@ export const PokemonCard = () =>{
   },[pokemon.img, pokemon.name, pokemon.types, pokemonSpecie.color])
   useEffect(()=>{
     if(pokemonSpecie.descriptions){
-      if(currentPokemonDetails.currentPokemon === ''){
+      if(currentPokemonDetails.currentPokemon !== pokemonPropertys.name!){
         currentPokemonDetails.currentPokemon = pokemonPropertys.name!
         currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
         console.log({...currentPokemonDetails})
         setCurrentPokemonDetails({...currentPokemonDetails});
+        setDescriptionRender(true);
       }
       if(!pokemonSeen[pokemonPropertys.name!]){
         pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
@@ -126,7 +128,7 @@ export const PokemonCard = () =>{
       }
     }
   },[pokemonSpecie.descriptions, currentPokemonDetails, pokemonPropertys, pokemonSeen,
-    setCurrentPokemonDetails, setPokemonSeen])
+    setCurrentPokemonDetails, setPokemonSeen, setDescriptionRender])
   
 
   //-----POKEMON EVOLUTION CHAIN SPECIES QUERIES-----
@@ -144,13 +146,11 @@ export const PokemonCard = () =>{
     })
   )
   let render = false;
-  const {setDescriptionRender} = useContext(DescriptionRenderContext)
   const pokemonsEvolution = pokeEvolutionChainSpeciesUseQueries
   .map(pokeEvolutionChainSpecieUseQuerie => 
     {
       if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
         render = true;
-        setDescriptionRender(true);
       }
       return {
         evolutionName: pokeEvolutionChainSpecieUseQuerie.data?.name!,
