@@ -11,7 +11,9 @@ export const PokemonsList = () => {
   const {setDescriptionRender} = useContext(DescriptionRenderContext)
   useEffect(()=>{
     setDescriptionRender(false)
-    ledRefState.removeAnimation!()
+    if(ledRefState.removeAnimation){
+      ledRefState.removeAnimation!()
+    }
   })  
   const testRef = useRef<any>(null);
   const goToTop = () =>{

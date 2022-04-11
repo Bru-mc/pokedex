@@ -8,9 +8,10 @@
     align-items: center;
 }
 .descriptionScreen p{
-    margin: 7px;
+    margin: 15px;
     font-size: 15px;
     color: #ffffff;
+    text-transform: uppercase;
 }
 .h2RightSide{
     margin: 0;

@@ -16,7 +16,7 @@ import { disableElement } from './helpers/disableElement';
 import { enableElement } from './helpers/enableElement';
 import { changeSidePokedex } from './helpers/changeSidePokedex';
 import { DescriptionScreen } from './components/DescriptionScreen';
-import { PokeHome } from './pages/pokeHome';
+import { PokeHome } from './pages/PokeHome';
 import { DescriptionRenderContextProvider } from './contexts/DescriptionRender';
 
 
@@ -158,6 +158,48 @@ function Pokedex() {
           <div className="pokedexRightSideMainContent">
             <div className="pokedexRightSideMainScreen">
               <DescriptionScreen/>
+            </div>
+            <div className="pokedexRightSideMainButtons">
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>1</p>
+                <p className='RS_MButtonLetters'>ABC</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>2</p>
+                <p className='RS_MButtonLetters'>DEF</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>3</p>
+                <p className='RS_MButtonLetters'>GHI</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>4</p>
+                <p className='RS_MButtonLetters'>JKL</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>5</p>
+                <p className='RS_MButtonLetters'>MNO</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>6</p>
+                <p className='RS_MButtonLetters'>PQR</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>7</p>
+                <p className='RS_MButtonLetters'>STU</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>8</p>
+                <p className='RS_MButtonLetters'>VWX</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>9</p>
+                <p className='RS_MButtonLetters'>YZ</p>
+              </div>
+              <div className='RS_MButton'>
+                <p className='RS_MButtonNumber'>0</p>
+                <p className='RS_MButtonLetters'>__</p>
+              </div>
             </div>
           </div>
           <div className="leftBorder backColor">

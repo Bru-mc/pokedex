@@ -8,13 +8,12 @@ import { chain, evolutionChain, pokemon, pokeSpecie } from "../../interfaces";
 
 
 import './index.css'
-import { gradient, hexColors } from "../../constants/index";
 import { PokeCardEvolution } from "./PokeCardEvolution";
 import { valueFormater } from "../../helpers/valueFormater";
 import { numberToString } from "../../helpers/numberToString";
 import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
-import { PokeCardTop } from "./pokeCardTop";
-import { PokemonCardType } from "./pokeCardType";
+import { PokeCardTop } from "./PokeCardTop";
+import { PokemonCardType } from "./PokeCardType";
 import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
 import { LedAnimationContext } from "../../contexts/LedAnimation";
 
@@ -31,7 +30,9 @@ export const PokemonCard = () =>{
   let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
 
   useEffect(()=>{
-    ledRefState.addAnimation!();
+    if(ledRefState.addAnimation){
+      ledRefState.addAnimation!();
+    }
   })
   //-----POKEMON QUERY----- 
   const pokemonUseQuery = useQuery<pokemon>(
