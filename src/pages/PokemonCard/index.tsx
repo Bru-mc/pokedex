@@ -24,8 +24,6 @@ export const PokemonCard = () =>{
   const {ledRefState} = useContext(LedAnimationContext);
   const baseUrl: string = 'https://pokeapi.co/api/v2';
   const {name} = useParams();
-  const pokeCard = useRef<any>(null);
-  const [pokeCardRefState,setpokeCardRefState] = useState(pokeCard);
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
   let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
 
@@ -98,14 +96,38 @@ export const PokemonCard = () =>{
       currentEvolutionChain = currentEvolutionChain[0].evolves_to
     }
   }
+  const [pokemonPropertys, setPokemonPropertys] = useState({
+    name: '',
+    img: '',
+    types: [''],
+    color: ''
+  })
+  useEffect(()=>{
+    if(pokemonSpecie.color){
+        setPokemonPropertys({
+          name: pokemon.name!,
+          img: pokemon.img!,
+          types: pokemon.types!.map(currentType => (currentType.type.name)),
+          color: pokemonSpecie.color!
+        })
+    }
+  },[pokemon.img, pokemon.name, pokemon.types, pokemonSpecie.color])
   useEffect(()=>{
     if(pokemonSpecie.descriptions){
-      currentPokemonDetails.currentPokemon = pokemon.name!
-      currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
-      console.log({...currentPokemonDetails})
-      setCurrentPokemonDetails({...currentPokemonDetails});
+      if(currentPokemonDetails.currentPokemon === ''){
+        currentPokemonDetails.currentPokemon = pokemonPropertys.name!
+        currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
+        console.log({...currentPokemonDetails})
+        setCurrentPokemonDetails({...currentPokemonDetails});
+      }
+      if(!pokemonSeen[pokemonPropertys.name!]){
+        pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
+        setPokemonSeen(pokemonSeen);
+      }
     }
-  })
+  },[pokemonSpecie.descriptions, currentPokemonDetails, pokemonPropertys, pokemonSeen,
+    setCurrentPokemonDetails, setPokemonSeen])
+  
 
   //-----POKEMON EVOLUTION CHAIN SPECIES QUERIES-----
   const pokeEvolutionChainSpeciesUseQueries = useQueries<{ 
@@ -129,15 +151,6 @@ export const PokemonCard = () =>{
       if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
         render = true;
         setDescriptionRender(true);
-        const pokemonPropertys = {
-          name: pokemon.name!,
-          img: pokemon.img!,
-          types: pokemon.types!.map(currentType => (currentType.type.name)),
-          color: pokemonSpecie.color!
-        }
-        if(!pokemonSeen[pokemonPropertys.name!]){
-          pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
-        }
       }
       return {
         evolutionName: pokeEvolutionChainSpecieUseQuerie.data?.name!,
@@ -147,10 +160,6 @@ export const PokemonCard = () =>{
     }
   );
   
-  useEffect(() => {
-    setPokemonSeen(pokemonSeen);
-  });
-
   return(
     render?
     <div className="pokeCardContainer">

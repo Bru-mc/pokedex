@@ -6,7 +6,7 @@ export const PokemonCardType = (props:{types:[{type:{name:string, url:string}}]}
       <p className="pokeDescription">TYPE:</p>
       <div className="pokeTypes">
         {props.types.map<JSX.Element>((types, index) =>{
-          if(index != (props.types.length - 1)){
+          if(index !== (props.types.length - 1)){
             return <p key={types.type.name} className="pokeDescription">
             {types.type.name!.toUpperCase()+'/'}
           </p>
