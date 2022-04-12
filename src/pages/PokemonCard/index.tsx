@@ -145,20 +145,39 @@ export const PokemonCard = () =>{
       }
     })
   )
+
   let render = false;
-  const pokemonsEvolution = pokeEvolutionChainSpeciesUseQueries
-  .map(pokeEvolutionChainSpecieUseQuerie => 
+  let pokemonsEvolution = [{
+    evolutionName: '',
+    evolutionImg: ''
+  }]
+  let allSucess = false;
+  let sucessCount = 0;
+  let pokeEvolChainSpeciesUseQLength = pokeEvolutionChainSpeciesUseQueries.length
+  pokeEvolutionChainSpeciesUseQueries.forEach(pokeEvolutionChainSpecieUseQuerie =>
     {
       if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
-        render = true;
-      }
-      return {
-        evolutionName: pokeEvolutionChainSpecieUseQuerie.data?.name!,
-        evolutionImg: pokeEvolutionChainSpecieUseQuerie.data?.sprites.other.dream_world.front_default!,
-        // evolutionType: pokeEvolutionChainSpecieUseQuerie.data?.types.map(currentType => (currentType.type.name))
+        sucessCount+=1
       }
     }
   );
+  if(pokeEvolChainSpeciesUseQLength>1 && sucessCount===pokeEvolChainSpeciesUseQLength){
+    allSucess = true;
+  }
+
+  if(allSucess){
+    pokemonsEvolution = pokeEvolutionChainSpeciesUseQueries
+    .map(pokeEvolutionChainSpecieUseQuerie => 
+      {
+        return {
+          evolutionName: pokeEvolutionChainSpecieUseQuerie.data?.name!,
+          evolutionImg: pokeEvolutionChainSpecieUseQuerie.data?.sprites.other.dream_world.front_default!,
+          // evolutionType: pokeEvolutionChainSpecieUseQuerie.data?.types.map(currentType => (currentType.type.name))
+        } 
+      }
+      );
+    render = true;
+  }
   
   return(
     render?
@@ -193,9 +212,8 @@ export const PokemonCard = () =>{
           </div>
         </div> 
 
-        <div className="PokeEvolutionsContainer">
-          <PokeCardEvolution 
-          pokemonEvolution={pokemonsEvolution} 
+        <div className="PokeEvolutionsContainer"> 
+          <PokeCardEvolution pokemonEvolution={pokemonsEvolution} 
           currentPoke = {pokemon.name!}/>
         </div> 
       </div> 
