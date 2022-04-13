@@ -191,22 +191,22 @@ export const PokemonCard = () =>{
 
           <PokemonCardType types={pokemon.types!}/>
 
-          <div key={"pokeCardHeight"} className="pokeCardHeight PokeProperty">
+          <div className="pokeCardHeight PokeProperty">
             <p className="pokeDescription">HEIGHT:</p>
             <p className="pokeDescription">{valueFormater(pokemon.height!) + ' M'}</p>
           </div>
 
-          <div key={"pokeCardWeight"} className="pokeCardWeight PokeProperty">
+          <div className="pokeCardWeight PokeProperty">
             <p className="pokeDescription">WEIGHT:</p>
             <p className="pokeDescription">{valueFormater(pokemon.weight!) + ' KG'}</p>
           </div>
 
-          <div key={"pokeCardHabitat"} className="pokeCardHabitat PokeProperty">
+          <div className="pokeCardHabitat PokeProperty">
             <p className="pokeDescription">HABITAT:</p>
             <p className="pokeDescription">{pokemonSpecie.habitat?.name!.toUpperCase()}</p>
           </div>
 
-          <div key={"pokeCardNumber"} className="pokeCardNumber PokeProperty">
+          <div className="pokeCardNumber PokeProperty">
             <p className="pokeDescription">NUMBER:</p>
             <p className="pokeDescription">{numberToString(pokemon.id!)}</p>
           </div>

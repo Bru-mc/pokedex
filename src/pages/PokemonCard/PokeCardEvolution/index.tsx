@@ -15,14 +15,16 @@ export const PokeCardEvolution = (props: {pokemonEvolution: {
             :<div className='evolutionsContent'>
                 {
                 props.pokemonEvolution.map(pokemonEvolution => {
-                    console.log(pokemonEvolution.evolutionName)
-                    return <> 
-                        <Evolution 
+                    return <div key={pokemonEvolution.evolutionName}>
+                        <Evolution  
                         evolution = {
-                        {name : pokemonEvolution.evolutionName, 
-                        img: pokemonEvolution.evolutionImg}} 
+                        {
+                            name : pokemonEvolution.evolutionName, 
+                            img: pokemonEvolution.evolutionImg
+                        }
+                        } 
                         currentPoke = {props.currentPoke}/>
-                    </>
+                    </div>
                 })
                 }
             </div> 

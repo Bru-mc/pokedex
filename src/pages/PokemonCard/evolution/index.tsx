@@ -6,13 +6,13 @@ export const Evolution = (props:{evolution:{name:string, img:string}, currentPok
   
   const isCurrent = () =>{
     if(props.evolution.name === props.currentPoke){
-      return <div key={'evolution_'+props.evolution.name} style={{border:'2px solid #949090'}} 
+      return <div style={{border:'2px solid #949090'}} 
       className="pokeEvolutionIcon">
         <img src={props.evolution.img} alt={props.evolution.name} className='pokeEvolutionImg' />
       </div>
     }
     else{
-      return <Link key={'evolution_'+props.evolution.name} to={`/pokemons/${props.evolution.name}`} >
+      return <Link to={`/pokemons/${props.evolution.name}`} >
         <div className="pokeEvolutionIcon">
           <img src={props.evolution.img} alt={props.evolution.name} />
         </div>

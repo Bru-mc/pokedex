@@ -26,7 +26,8 @@ function Pokedex() {
   const pokeFront = useRef<any>(null);
   const pokeRightSide = useRef<any>(null);
   const animationLed = useRef<any>(null);
-  const buttonChangeSide = useRef<any>(null);
+  const buttonChangeSideRight = useRef<any>(null);
+  const buttonChangeSideLeft = useRef<any>(null);
   const [canChangeSidePokedex, setCanChange] = useState(false);
   const [clientWidth, setClientWidth] = useState(document.body.clientWidth);
   const removeCape = () => {
@@ -57,19 +58,23 @@ function Pokedex() {
   
   useEffect(() => {
     if (document.body.clientWidth < 660 && canChangeSidePokedex){
-      buttonChangeSide.current.style.visibility = "initial";
+      buttonChangeSideRight.current.style.visibility = "initial";
+      buttonChangeSideLeft.current.style.visibility = "initial";
       pokeRightSide.current.style.left = "initial";
     }
   },[canChangeSidePokedex]);
 
   useEffect(() => { 
-    if(clientWidth > 660){
-      buttonChangeSide.current.style.visibility = "hidden";
+    if(clientWidth >= 660){
+      buttonChangeSideRight.current.style.visibility = "hidden";
+      buttonChangeSideLeft.current.style.visibility = "hidden";
       pokeRightSide.current.style.left = "-32px";
+      document.body.style.top = "0";
+      document.body.style.bottom = "initial";
     }
     if (document.body.clientWidth < 660 && canChangeSidePokedex){
-      console.log("Entrei aqui");
-      buttonChangeSide.current.style.visibility = "initial";
+      buttonChangeSideRight.current.style.visibility = "initial";
+      buttonChangeSideLeft.current.style.visibility = "initial";
       pokeRightSide.current.style.left = "initial";
     }
   },[clientWidth]);
@@ -138,7 +143,7 @@ function Pokedex() {
             <div className="bottomBorder"></div>
           </div>
           <img className="buttonChangePokeSide" src={arrowRight} alt="clique aqui" 
-          ref={buttonChangeSide} onClick={changeSidePokedex}/>
+          ref={buttonChangeSideRight} onClick={()=>changeSidePokedex("right")}/>
           
           <div className="pokedexFront backColor" ref={pokeFront}>
             <div className="pokedexFrontTopRightOver backColor"></div>
@@ -206,6 +211,8 @@ function Pokedex() {
             <div className="topBorder"></div>
             <div className="bottomBorder"></div>
           </div>
+          <img className="buttonChangePokeSideleft left" src={arrowRight} alt="clique aqui" 
+          ref={buttonChangeSideLeft} onClick={()=>changeSidePokedex("left")}/>
         </div>
     </div>
     </CurrentPokemonContextProvider> 
