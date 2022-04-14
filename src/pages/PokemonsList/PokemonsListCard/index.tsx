@@ -10,6 +10,8 @@ import { numberToString } from "../../../helpers/numberToString";
 import questionMarkIcon from "../../../assets/questionMark.png";
 import { hexColors } from "../../../constants";
 import { LedAnimationContext } from "../../../contexts/LedAnimation";
+import { Loading } from "../../../components/Loading";
+
 
 
 export const PokemonsListCard = () => {
@@ -18,7 +20,7 @@ export const PokemonsListCard = () => {
   const { data, isFetching} = useQuery<pokeList>(`pokemonList`, () => pokemonsQuery(constants.pokeListApiUrl));
   
   if(isFetching){
-    return <p>Loading...</p>
+    return <Loading/>
   }
   
   const alreadySeen = (result:{name:string, url:string},id:number) =>{

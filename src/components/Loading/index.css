@@ -1,0 +1,75 @@
+@keyframes pokeAnimationFristStep {
+    0% {
+        opacity:0; 
+    }
+    100% {
+      transform: rotate(-405deg);
+      opacity:50%;
+    } 
+}
+@keyframes opacity {
+    0% {
+        visibility: visible;  
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      } 
+}
+
+.loadingContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #272729;
+}
+
+.pokeBallLoad{
+    height: 50px;
+    width: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeBallBack{
+    height: 50px;
+    width: 50px;
+    transform: rotate(-45deg);
+    border: 5px solid;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-top-color: red;
+    border-right-color: red;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    animation-name: pokeAnimationFristStep;
+    animation-delay: 0ms;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+}
+.pokeBallMiddleBall{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px white;
+    /* background: blue; */
+}
+.loadText{
+    margin-top: 25px;
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+    visibility: hidden; 
+    animation-name: opacity;
+    animation-delay: 0;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite; 
+}

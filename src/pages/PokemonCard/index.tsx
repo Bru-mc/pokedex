@@ -16,7 +16,7 @@ import { PokeCardTop } from "./PokeCardTop";
 import { PokemonCardType } from "./PokeCardType";
 import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
 import { LedAnimationContext } from "../../contexts/LedAnimation";
-
+import { Loading } from "../../components/Loading";
 
  
 export const PokemonCard = () =>{
@@ -161,7 +161,7 @@ export const PokemonCard = () =>{
       }
     }
   );
-  if(pokeEvolChainSpeciesUseQLength>1 && sucessCount===pokeEvolChainSpeciesUseQLength){
+  if(pokeEvolChainSpeciesUseQLength>=1 && sucessCount===pokeEvolChainSpeciesUseQLength){
     allSucess = true;
   }
 
@@ -176,7 +176,8 @@ export const PokemonCard = () =>{
         } 
       }
       );
-    render = true;
+    render = true; 
+    console.log(pokemonSpecie.color, pokemonPropertys.name)
   }
   
   return(
@@ -218,8 +219,9 @@ export const PokemonCard = () =>{
         </div> 
       </div> 
     </div>: 
-    <div>
-      <p>Loading...</p> //Fazer componente Loading
-    </div>
+    <Loading/>
+    // <div>
+    //   <p>Loading...</p> //Fazer componente Loading
+    // </div>
   );
 }
