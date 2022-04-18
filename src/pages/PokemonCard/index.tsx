@@ -17,7 +17,7 @@ import { PokemonContext } from "../../contexts/Pokemon";
 //components
 import { PokeCardEvolution } from "./PokeCardEvolution";
 import { PokeCardTop } from "./PokeCardTop";
-import { PokemonCardType } from "./PokeCardType";
+import { PokemonCardProperty } from "./PokeCardPropertys";
 import { Loading } from "../../components/Loading";
 //style
 import './index.css'
@@ -30,7 +30,7 @@ export const PokemonCard = () =>{
   const {setDescriptionRender} = useContext(DescriptionRenderContext)
   const [pokemonPropertys, setPokemonPropertys] = useState({
     name: '',
-    id: 0,
+    id: '',
     img: '',
     types: [''],
     weight: '',
@@ -113,25 +113,24 @@ export const PokemonCard = () =>{
       currentEvolutionChain = currentEvolutionChain[0].evolves_to
     }
   }
-  
   useEffect(()=>{
     if(pokeSpecieUseQuery.isSuccess){
         setPokemonPropertys({
           name: pokemon.name!,
-          id: pokemon.id!,
+          id: numberToString(pokemon.id!),
           img: pokemon.img!,
           types: pokemon.types!.map(currentType => (currentType.type.name)),
           weight: valueFormater(pokemon.weight!) + ' KG',
           height: valueFormater(pokemon.height!) + ' M',
           color: pokemonSpecie.color!,
-          habitat: pokemonSpecieDATA?.habitat.name!
+          habitat: pokemonSpecie.habitat?.name!
         })
         if(!pokemonSeen[pokemonPropertys.name!]){
           pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
           setPokemonSeen(pokemonSeen);
         }
     }
-  },[pokemon.img, pokemon.name, pokemon.types, pokemonSpecie.color])
+  },[pokemon, pokemonPropertys, pokemonSpecie, pokeSpecieUseQuery.isSuccess])
   useEffect(()=>{
     if(pokemonSpecie.descriptions){
       if(currentPokemonDetails.currentPokemon !== pokemonPropertys.name!){
@@ -184,35 +183,9 @@ export const PokemonCard = () =>{
     render?
     <div className="pokeCardContainer">
       <div className="pokeCard"> 
-      
         <PokeCardTop color = {pokemonSpecie.color!} name = {pokemon.name!}  
         img = {pokemon.img!} types = {pokemon.types!}/>
-
-        <div className="PokeCardPropertys">
-
-          <PokemonCardType types={pokemon.types!}/>
-
-          <div className="pokeCardHeight PokeProperty">
-            <p className="pokeDescription">HEIGHT:</p>
-            <p className="pokeDescription">{valueFormater(pokemon.height!) + ' M'}</p>
-          </div>
-
-          <div className="pokeCardWeight PokeProperty">
-            <p className="pokeDescription">WEIGHT:</p>
-            <p className="pokeDescription">{valueFormater(pokemon.weight!) + ' KG'}</p>
-          </div>
-
-          <div className="pokeCardHabitat PokeProperty">
-            <p className="pokeDescription">HABITAT:</p>
-            <p className="pokeDescription">{pokemonSpecie.habitat?.name!.toUpperCase()}</p>
-          </div>
-
-          <div className="pokeCardNumber PokeProperty">
-            <p className="pokeDescription">NUMBER:</p>
-            <p className="pokeDescription">{numberToString(pokemon.id!)}</p>
-          </div>
-        </div> 
-
+        <PokemonCardProperty pokemonPropertys={pokemonPropertys}/>
         <div className="PokeEvolutionsContainer"> 
           <PokeCardEvolution pokemonEvolution={pokemonsEvolution} 
           currentPoke = {pokemon.name!}/>

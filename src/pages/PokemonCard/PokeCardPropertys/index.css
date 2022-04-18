@@ -1,0 +1,22 @@
+.PokeCardPropertys{
+    width: 192px;
+    padding: 30px 25px 10px 25px;
+    box-sizing: border-box;
+    background:#272729; 
+    position: relative;
+    top: -15px;
+    z-index: 1;
+}
+.pokeTypes{
+    display: flex;
+}
+.PokeProperty{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.pokeDescription{
+    margin: 0;
+    font-size: 15px;
+    color: #949090;
+}
