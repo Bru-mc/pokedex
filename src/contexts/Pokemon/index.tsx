@@ -10,7 +10,7 @@ type PokemonsSeenContext = {
 };
 
 const defaultValue:PokemonsSeenContext = {
-    pokemonSeen: {teste:{name:"teste", img:"", types:undefined}},
+    pokemonSeen: {teste:{name: "teste", id: 0, img: "", types: undefined, weight: "", height: "", habitat: ""}},
     setPokemonSeen: () => {}
 }
 

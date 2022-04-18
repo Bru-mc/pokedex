@@ -29,10 +29,14 @@ export interface pokemon {
 
 export interface pokemonPropertys {
   name:string, //| undefined
+  id: number,
   img:string ,//
-  types?:string[]
+  types?:string[],
+  weight: string,
+  height: string,
   color?:string,
-  evolutions?:string[] 
+  evolutions?:string[],
+  habitat:string,
 }
 
 export interface pokeSpecie{

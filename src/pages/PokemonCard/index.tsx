@@ -1,38 +1,54 @@
-import { pokeApiQuerys } from "../../helpers/pokeApiQuerys";
-import { QueryFunction, QueryKey, useQueries, useQuery} from "react-query";
+//Hooks
 import { useParams} from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-import { PokemonContext } from "../../contexts/Pokemon";
-
-import { chain, evolutionChain, pokemon, pokeSpecie } from "../../interfaces";
-
-
-import './index.css'
-import { PokeCardEvolution } from "./PokeCardEvolution";
+import { QueryFunction, QueryKey, useQueries, useQuery} from "react-query";
+//helpers
+import { pokeApiQuerys } from "../../helpers/pokeApiQuerys";
 import { valueFormater } from "../../helpers/valueFormater";
 import { numberToString } from "../../helpers/numberToString";
-import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
-import { PokeCardTop } from "./PokeCardTop";
-import { PokemonCardType } from "./PokeCardType";
+import { allUseQueriesSuccess } from "../../helpers/allUseQueriesSuccess";
+//interfaces
+import { chain, evolutionChain, pokemon, pokeSpecie } from "../../interfaces";
+//contexts
 import { DescriptionRenderContext } from "../../contexts/DescriptionRender";
 import { LedAnimationContext } from "../../contexts/LedAnimation";
+import { CurrentPokemonContext } from "../../contexts/CurrentPokemon";
+import { PokemonContext } from "../../contexts/Pokemon";
+//components
+import { PokeCardEvolution } from "./PokeCardEvolution";
+import { PokeCardTop } from "./PokeCardTop";
+import { PokemonCardType } from "./PokeCardType";
 import { Loading } from "../../components/Loading";
+//style
+import './index.css'
 
- 
+
 export const PokemonCard = () =>{
-  
   const {ledRefState} = useContext(LedAnimationContext);
-  const baseUrl: string = 'https://pokeapi.co/api/v2';
-  const {name} = useParams();
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
   let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
   const {setDescriptionRender} = useContext(DescriptionRenderContext)
+  const [pokemonPropertys, setPokemonPropertys] = useState({
+    name: '',
+    id: 0,
+    img: '',
+    types: [''],
+    weight: '',
+    height: '',
+    color: '',
+    habitat: ''
+  })
 
+  const baseUrl: string = 'https://pokeapi.co/api/v2';
+  const {name} = useParams();
+
+  //----Adding LED animation ---
   useEffect(()=>{
     if(ledRefState.addAnimation){
       ledRefState.addAnimation!();
     }
   })
+
   //-----POKEMON QUERY----- 
   const pokemonUseQuery = useQuery<pokemon>(
     ['pokemon', name],
@@ -54,9 +70,9 @@ export const PokemonCard = () =>{
   //-----POKEMON SPECIE QUERY----- 
   const pokeSpecieUseQuery = useQuery<pokeSpecie>(
     ['specie', pokemon.name], 
-    () => pokeApiQuerys(pokemonDATA?.species.url!),
+    () => pokeApiQuerys(pokemon.specieURL!),
     {
-      enabled: !!pokemonDATA?.species.url, //verify if specieURL is true to can start query
+      enabled: !!pokemon.specieURL, //verify if specieURL is true to can start query
     }
   );
   const {data:pokemonSpecieDATA} = pokeSpecieUseQuery
@@ -97,20 +113,23 @@ export const PokemonCard = () =>{
       currentEvolutionChain = currentEvolutionChain[0].evolves_to
     }
   }
-  const [pokemonPropertys, setPokemonPropertys] = useState({
-    name: '',
-    img: '',
-    types: [''],
-    color: ''
-  })
+  
   useEffect(()=>{
-    if(pokemonSpecie.color){
+    if(pokeSpecieUseQuery.isSuccess){
         setPokemonPropertys({
           name: pokemon.name!,
+          id: pokemon.id!,
           img: pokemon.img!,
           types: pokemon.types!.map(currentType => (currentType.type.name)),
-          color: pokemonSpecie.color!
+          weight: valueFormater(pokemon.weight!) + ' KG',
+          height: valueFormater(pokemon.height!) + ' M',
+          color: pokemonSpecie.color!,
+          habitat: pokemonSpecieDATA?.habitat.name!
         })
+        if(!pokemonSeen[pokemonPropertys.name!]){
+          pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
+          setPokemonSeen(pokemonSeen);
+        }
     }
   },[pokemon.img, pokemon.name, pokemon.types, pokemonSpecie.color])
   useEffect(()=>{
@@ -118,13 +137,8 @@ export const PokemonCard = () =>{
       if(currentPokemonDetails.currentPokemon !== pokemonPropertys.name!){
         currentPokemonDetails.currentPokemon = pokemonPropertys.name!
         currentPokemonDetails.descriptionArray = pokemonSpecie.descriptions! 
-        console.log({...currentPokemonDetails})
         setCurrentPokemonDetails({...currentPokemonDetails});
         setDescriptionRender(true);
-      }
-      if(!pokemonSeen[pokemonPropertys.name!]){
-        pokemonSeen[pokemonPropertys.name!] = pokemonPropertys;
-        setPokemonSeen(pokemonSeen);
       }
     }
   },[pokemonSpecie.descriptions, currentPokemonDetails, pokemonPropertys, pokemonSeen,
@@ -146,38 +160,24 @@ export const PokemonCard = () =>{
     })
   )
 
-  let render = false;
   let pokemonsEvolution = [{
     evolutionName: '',
     evolutionImg: ''
   }]
-  let allSucess = false;
-  let sucessCount = 0;
-  let pokeEvolChainSpeciesUseQLength = pokeEvolutionChainSpeciesUseQueries.length
-  pokeEvolutionChainSpeciesUseQueries.forEach(pokeEvolutionChainSpecieUseQuerie =>
-    {
-      if(pokeEvolutionChainSpecieUseQuerie.isSuccess){
-        sucessCount+=1
-      }
-    }
-  );
-  if(pokeEvolChainSpeciesUseQLength>=1 && sucessCount===pokeEvolChainSpeciesUseQLength){
-    allSucess = true;
-  }
+  let render = false;
 
-  if(allSucess){
+  if(allUseQueriesSuccess(pokeEvolutionChainSpeciesUseQueries)){
     pokemonsEvolution = pokeEvolutionChainSpeciesUseQueries
     .map(pokeEvolutionChainSpecieUseQuerie => 
       {
         return {
           evolutionName: pokeEvolutionChainSpecieUseQuerie.data?.name!,
-          evolutionImg: pokeEvolutionChainSpecieUseQuerie.data?.sprites.other.dream_world.front_default!,
-          // evolutionType: pokeEvolutionChainSpecieUseQuerie.data?.types.map(currentType => (currentType.type.name))
+          evolutionImg: pokeEvolutionChainSpecieUseQuerie.data?.sprites.other.dream_world.front_default!
         } 
       }
       );
+    //just render when all useQueries of evolution chain was successed
     render = true; 
-    console.log(pokemonSpecie.color, pokemonPropertys.name)
   }
   
   return(
@@ -220,8 +220,5 @@ export const PokemonCard = () =>{
       </div> 
     </div>: 
     <Loading/>
-    // <div>
-    //   <p>Loading...</p> //Fazer componente Loading
-    // </div>
   );
 }
