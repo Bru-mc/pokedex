@@ -20,44 +20,21 @@ import { PokeHome } from './pages/PokeHome';
 import { DescriptionRenderContextProvider } from './contexts/DescriptionRender';
 
 
-
-
 function Pokedex() {
-  const pokeFront = useRef<any>(null);
-  const pokeRightSide = useRef<any>(null);
-  const animationLed = useRef<any>(null);
-  const buttonChangeSideRight = useRef<any>(null);
-  const buttonChangeSideLeft = useRef<any>(null);
-  const [canChangeSidePokedex, setCanChange] = useState(false);
+  
   const [clientWidth, setClientWidth] = useState(document.body.clientWidth);
-  const removeCape = () => {
-    disableElement(pokeFront)
-    pokeRightSide.current.style.position = 'relative';
-    enableElement(pokeRightSide)
-    setCanChange(true);
-    setClientWidth(document.body.clientWidth)
-  }
+  
   const handleResize = () => setClientWidth(document.body.clientWidth)
     
   
   let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
   
-  useEffect(() => {
-    ledRefState.ledRef = animationLed;
-    ledRefState.addAnimation = () =>{
-      ledRefState.ledRef!.current.style.animationDuration = '1s';
-    }
-    ledRefState.removeAnimation = () =>{
-      ledRefState.ledRef!.current.style.animationDuration = '0s';
-    }  
-    setLedRefState(ledRefState);
-  
+  useEffect(() => {  
     window.addEventListener('resize', handleResize);
-
   });
   
   useEffect(() => {
-    if (document.body.clientWidth < 660 && canChangeSidePokedex){
+    if (clientWidth < 660 && canChangeSidePokedex){
       buttonChangeSideRight.current.style.visibility = "initial";
       buttonChangeSideLeft.current.style.visibility = "initial";
       pokeRightSide.current.style.left = "initial";
@@ -84,7 +61,7 @@ function Pokedex() {
     <DescriptionRenderContextProvider>
     <CurrentPokemonContextProvider>
     <div className='pokedexContainer'>
-        <div className="pokedex backColor">
+        {/* <div className="pokedex backColor">
           <div className="pokedexHeader">
             <div className="leftContent flex">
               <div className="contentBottomBorder backColor"></div>
@@ -150,8 +127,8 @@ function Pokedex() {
             <img className="arrowRightIcon" src={arrowRight} alt="clique aqui" 
             onClick={removeCape}/>
           </div>
-        </div>
-        <div className="pokedexRightSide" ref={pokeRightSide}>
+        </div> */}
+        {/* <div className="pokedexRightSide" ref={pokeRightSide}>
           <div className="pokedexRightSideHeader">
             <div className="contentTopBorderLeftRS"></div>
             <div className="contentTopLeftRS"></div>
@@ -228,7 +205,7 @@ function Pokedex() {
           </div>
           <img className="buttonChangePokeSideleft left" src={arrowRight} alt="clique aqui" 
           ref={buttonChangeSideLeft} onClick={()=>changeSidePokedex("left")}/>
-        </div>
+        </div> */}
     </div>
     </CurrentPokemonContextProvider> 
     </DescriptionRenderContextProvider>
