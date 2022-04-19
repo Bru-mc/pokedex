@@ -30,13 +30,6 @@ export const PokeCardTop = (props:{color: string, name:string, img:string, types
         <img className="pokeImg" 
         src={props.img} 
         alt={props.name}/>
-        {/* <div className="typeIconsTop">
-          {props.types.map(types => {
-            return <img key={types.type.name} 
-            src={require('../../../assets/Pokemon'+ types.type.name + 'TypeIcon.svg')} 
-            alt={types.type.name}/>
-          })}
-        </div>  */}
       </div>
     </div>
   );

@@ -28,6 +28,7 @@ export const PokemonCard = () =>{
   const {pokemonSeen, setPokemonSeen} = useContext(PokemonContext);
   let {currentPokemonDetails, setCurrentPokemonDetails} = useContext(CurrentPokemonContext);
   const {setDescriptionRender} = useContext(DescriptionRenderContext)
+  
   const [pokemonPropertys, setPokemonPropertys] = useState({
     name: '',
     id: '',
@@ -98,14 +99,10 @@ export const PokemonCard = () =>{
     error:pokemonChainERROR
   } = pokeChainUseQuery;
 
-  const pokemonChain = {
-    chain: pokemonChainDATA?.chain
-  }
-
   let evolutionChainSpeciesArray:Array<string> = []
 
-  if(pokemonChain.chain){
-    let currentEvolutionChain:Array<evolutionChain> = [pokemonChain.chain!] //Current recive the main pokemon
+  if(pokemonChainDATA?.chain){
+    let currentEvolutionChain:Array<evolutionChain> = [pokemonChainDATA?.chain!] //Current recive the main pokemon
     while(currentEvolutionChain.length>0){                                  //chain array, that will be used in 
       if(currentEvolutionChain[0].species){                                 //a loop of arrays chain    
         evolutionChainSpeciesArray.push(currentEvolutionChain[0].species.name!)
@@ -130,7 +127,8 @@ export const PokemonCard = () =>{
           setPokemonSeen(pokemonSeen);
         }
     }
-  },[pokemon, pokemonPropertys, pokemonSpecie, pokeSpecieUseQuery.isSuccess])
+  },[pokemon, pokemonPropertys, pokemonSpecie, pokeSpecieUseQuery.isSuccess, 
+    pokemonSeen, setPokemonSeen])
   useEffect(()=>{
     if(pokemonSpecie.descriptions){
       if(currentPokemonDetails.currentPokemon !== pokemonPropertys.name!){
@@ -140,8 +138,8 @@ export const PokemonCard = () =>{
         setDescriptionRender(true);
       }
     }
-  },[pokemonSpecie.descriptions, currentPokemonDetails, pokemonPropertys, pokemonSeen,
-    setCurrentPokemonDetails, setPokemonSeen, setDescriptionRender])
+  },[pokemonSpecie.descriptions, currentPokemonDetails, pokemonPropertys,
+    setCurrentPokemonDetails, setDescriptionRender])
   
 
   //-----POKEMON EVOLUTION CHAIN SPECIES QUERIES-----
