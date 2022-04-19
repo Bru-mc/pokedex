@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
 import { useContext, useEffect, useRef, useState } from 'react';
 //images
-import arrowRight from './assets/caret-right-solid.png';
+import arrowRight from '../../assets/caret-right-solid.png';
 //helpers
 import { disableElement } from '../../helpers/disableElement';
 import { enableElement } from '../../helpers/enableElement';

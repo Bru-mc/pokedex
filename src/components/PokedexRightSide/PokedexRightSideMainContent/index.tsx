@@ -7,7 +7,7 @@ export const PokedexRightSideMainContent = () =>{
     for(let i = 1; i<11; i++){
         if(i<10){
             rightSideMainButtons.push(
-                <div className='RS_MButton'>
+                <div key={'rS_MB_'+i} className='RS_MButton'>
                   <p className='RS_MButtonNumber'>{i}</p>
                   <p className='RS_MButtonLetters'>
                       {
@@ -20,7 +20,7 @@ export const PokedexRightSideMainContent = () =>{
         }
         else{
             rightSideMainButtons.push(
-                <div className='RS_MButton'>
+                <div key={'rS_MB_'+i} className='RS_MButton'>
                   <p className='RS_MButtonNumber'>0</p>
                   <p className='RS_MButtonLetters'>__</p>
                 </div>

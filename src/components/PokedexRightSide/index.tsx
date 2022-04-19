@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
 import { useContext, useEffect, useRef, useState } from 'react';
 //images
-import arrowRight from './assets/caret-right-solid.png';
+import arrowRight from '../../assets/caret-right-solid.png';
 //helpers
 import { changeSidePokedex } from '../../helpers/changeSidePokedex';
 //components
@@ -15,7 +15,7 @@ import { PokedexContext } from '../../contexts/Pokedex';
 //style
 import "./index.css";
 
-export const PokedexLeftSide = () => {
+export const PokedexRightSide = () => {
     const pokeRightSide = useRef<any>(null);
     const buttonChangeSideLeft = useRef<any>(null);
     const {setPokeRightSide, setbuttonChangeSideLeft} = useContext(PokedexContext)
