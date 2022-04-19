@@ -2,21 +2,28 @@
 import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
 import { useContext, useEffect, useRef, useState } from 'react';
+//images
 import arrowRight from './assets/caret-right-solid.png';
-
+//helpers
 import { changeSidePokedex } from '../../helpers/changeSidePokedex';
-
-
-import { DescriptionRenderContextProvider } from '../../contexts/DescriptionRender';
-import "./index.css";
+//components
 import { PokedexRightSideHeader } from './PokedexRightSideHeader';
 import { PokedexRightSideMainContent } from './PokedexRightSideMainContent';
 import { PokedexRightSideBottomContent } from './PokedexRightSideBottomContent';
+//contexts
+import { PokedexContext } from '../../contexts/Pokedex';
+//style
+import "./index.css";
 
 export const PokedexLeftSide = () => {
     const pokeRightSide = useRef<any>(null);
     const buttonChangeSideLeft = useRef<any>(null);
+    const {setPokeRightSide, setbuttonChangeSideLeft} = useContext(PokedexContext)
     
+    useEffect(()=>{
+        setPokeRightSide(pokeRightSide);
+        setbuttonChangeSideLeft(buttonChangeSideLeft);
+    });
 
     return(
         <div className="pokedexRightSide" ref={pokeRightSide}>

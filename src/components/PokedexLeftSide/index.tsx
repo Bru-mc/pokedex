@@ -2,33 +2,40 @@
 import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
 import { useContext, useEffect, useRef, useState } from 'react';
-import { LedAnimationContext, LedAnimationProvider } from '../../contexts/LedAnimation';
-import { PokemonsList } from '../../pages/PokemonsList';
-import { PokemonCard } from '../../pages/PokemonCard';
-import { PokeHome } from '../../pages/PokeHome';
+//images
 import arrowRight from './assets/caret-right-solid.png';
+//helpers
 import { disableElement } from '../../helpers/disableElement';
 import { enableElement } from '../../helpers/enableElement';
 import { changeSidePokedex } from '../../helpers/changeSidePokedex';
+//components
+import { PokemonsList } from '../../pages/PokemonsList';
+import { PokemonCard } from '../../pages/PokemonCard';
+import { PokeHome } from '../../pages/PokeHome';
+//contexts
+import { LedAnimationContext, LedAnimationProvider } from '../../contexts/LedAnimation';
+import { PokedexContext } from '../../contexts/Pokedex';
+//style
 import "./index.css";
 
 export const PokedexLeftSide = () => {
     const pokeFront = useRef<any>(null);
     const animationLed = useRef<any>(null);
     const buttonChangeSideRight = useRef<any>(null);
-    const [canChangeSidePokedex, setCanChange] = useState(false);
+    const {pokeRightSide, setCanChangeSidePokedex, setbuttonChangeSideRight} = useContext(PokedexContext)
   
     const removeCape = () => {
       disableElement(pokeFront)
-      pokeRightSide.current.style.position = 'relative';
-      enableElement(pokeRightSide)
-      setCanChange(true);
-      setClientWidth(document.body.clientWidth)
+      pokeRightSide!.current.style.position = 'relative';
+      enableElement(pokeRightSide!)
+      setCanChangeSidePokedex(true);
+      // setClientWidth(document.body.clientWidth)
     }
     
     let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
     
     useEffect(() => {
+      setbuttonChangeSideRight(buttonChangeSideRight);
       ledRefState.ledRef = animationLed;
       ledRefState.addAnimation = () =>{
         ledRefState.ledRef!.current.style.animationDuration = '1s';

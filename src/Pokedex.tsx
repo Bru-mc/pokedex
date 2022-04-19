@@ -18,16 +18,17 @@ import { changeSidePokedex } from './helpers/changeSidePokedex';
 import { DescriptionScreen } from './components/DescriptionScreen';
 import { PokeHome } from './pages/PokeHome';
 import { DescriptionRenderContextProvider } from './contexts/DescriptionRender';
+import { PokedexContext, PokedexContextProvider } from './contexts/Pokedex';
 
 
 function Pokedex() {
   
-  const [clientWidth, setClientWidth] = useState(document.body.clientWidth);
-  
+  const {
+    clientWidth, setClientWidth, canChangeSidePokedex, 
+    buttonChangeSideRight, buttonChangeSideLeft, pokeRightSide
+  } = useContext(PokedexContext)
+
   const handleResize = () => setClientWidth(document.body.clientWidth)
-    
-  
-  let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
   
   useEffect(() => {  
     window.addEventListener('resize', handleResize);
@@ -35,28 +36,29 @@ function Pokedex() {
   
   useEffect(() => {
     if (clientWidth < 660 && canChangeSidePokedex){
-      buttonChangeSideRight.current.style.visibility = "initial";
-      buttonChangeSideLeft.current.style.visibility = "initial";
-      pokeRightSide.current.style.left = "initial";
+      buttonChangeSideRight!.current.style.visibility = "initial";
+      buttonChangeSideLeft!.current.style.visibility = "initial";
+      pokeRightSide!.current.style.left = "initial";
     }
   },[canChangeSidePokedex]);
 
   useEffect(() => { 
     if(clientWidth >= 660){
-      buttonChangeSideRight.current.style.visibility = "hidden";
-      buttonChangeSideLeft.current.style.visibility = "hidden";
-      pokeRightSide.current.style.left = "-32px";
+      buttonChangeSideRight!.current.style.visibility = "hidden";
+      buttonChangeSideLeft!.current.style.visibility = "hidden";
+      pokeRightSide!.current.style.left = "-32px";
       document.body.style.top = "0";
       document.body.style.bottom = "initial";
     }
     if (document.body.clientWidth < 660 && canChangeSidePokedex){
-      buttonChangeSideRight.current.style.visibility = "initial";
-      buttonChangeSideLeft.current.style.visibility = "initial";
-      pokeRightSide.current.style.left = "initial";
+      buttonChangeSideRight!.current.style.visibility = "initial";
+      buttonChangeSideLeft!.current.style.visibility = "initial";
+      pokeRightSide!.current.style.left = "initial";
     }
   },[clientWidth]);
   
   return (
+    <PokedexContextProvider>
     <PokemonContextProvider>
     <DescriptionRenderContextProvider>
     <CurrentPokemonContextProvider>
@@ -210,6 +212,7 @@ function Pokedex() {
     </CurrentPokemonContextProvider> 
     </DescriptionRenderContextProvider>
     </PokemonContextProvider>
+    </PokedexContextProvider>
   );
   
 }
