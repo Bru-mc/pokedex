@@ -5,7 +5,7 @@ export const PokedexRightSideMainContent = () =>{
     let rightSideMainButtons = [];
     let lastCharCode = 64;
     for(let i = 1; i<11; i++){
-        if(i<10){
+        if(i<9){
             rightSideMainButtons.push(
                 <div key={'rS_MB_'+i} className='RS_MButton'>
                   <p className='RS_MButtonNumber'>{i}</p>
@@ -17,6 +17,18 @@ export const PokedexRightSideMainContent = () =>{
                 </div>
             );
             lastCharCode += 3
+        }
+        else if(i===9){
+          rightSideMainButtons.push(
+            <div key={'rS_MB_'+i} className='RS_MButton'>
+              <p className='RS_MButtonNumber'>{i}</p>
+              <p className='RS_MButtonLetters'>
+                  {
+                    String.fromCharCode(lastCharCode + 1, lastCharCode + 2)
+                  }
+              </p>
+            </div>
+        );
         }
         else{
             rightSideMainButtons.push(
