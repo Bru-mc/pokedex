@@ -1,7 +1,5 @@
-//react-router-dom
-import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef} from 'react';
 //images
 import arrowRight from '../../assets/caret-right-solid.png';
 //helpers
@@ -9,18 +7,16 @@ import { disableElement } from '../../helpers/disableElement';
 import { enableElement } from '../../helpers/enableElement';
 import { changeSidePokedex } from '../../helpers/changeSidePokedex';
 //components
-import { PokemonsList } from '../../pages/PokemonsList';
-import { PokemonCard } from '../../pages/PokemonCard';
-import { PokeHome } from '../../pages/PokeHome';
+import { PokedexLeftSideHeader } from './PokedexLeftSideHeader';
 //contexts
-import { LedAnimationContext, LedAnimationProvider } from '../../contexts/LedAnimation';
 import { PokedexContext } from '../../contexts/Pokedex';
 //style
 import "./index.css";
+import { PokedexRightSideMainContent } from './PokedexLeftSideMainContent';
+
 
 export const PokedexLeftSide = () => {
     const pokeFront = useRef<any>(null);
-    const animationLed = useRef<any>(null);
     const buttonChangeSideRight = useRef<any>(null);
     const {pokeRightSide, setCanChangeSidePokedex, setbuttonChangeSideRight} = useContext(PokedexContext)
   
@@ -29,62 +25,16 @@ export const PokedexLeftSide = () => {
       pokeRightSide!.current.style.position = 'relative';
       enableElement(pokeRightSide!)
       setCanChangeSidePokedex(true);
-      // setClientWidth(document.body.clientWidth)
     }
-    
-    let {ledRefState,setLedRefState} = useContext(LedAnimationContext)
     
     useEffect(() => {
       setbuttonChangeSideRight(buttonChangeSideRight);
-      ledRefState.ledRef = animationLed;
-      ledRefState.addAnimation = () =>{
-        ledRefState.ledRef!.current.style.animationDuration = '1s';
-      }
-      ledRefState.removeAnimation = () =>{
-        ledRefState.ledRef!.current.style.animationDuration = '0s';
-      }  
-      setLedRefState(ledRefState);  
-    });
+    },[setbuttonChangeSideRight]);
     
     return(
         <div className="pokedex backColor">
-          <div className="pokedexHeader">
-            <div className="leftContent flex">
-              <div className="contentBottomBorder backColor"></div>
-              <div className="contentBottomBorderL"></div>
-              <div className="bigBackCircle circle flex lightGray">
-                <div className="bigLed circle" ref={animationLed}></div>
-              </div>
-              <div className="ledS flex">
-                <div className="ledSmall circle red"></div>
-                <div className="ledSmall circle yellow"></div>
-                <div className="ledSmall circle green"></div>
-              </div>
-            </div>
-            <div className="rightContent"></div>
-            <div className="rightContentOver backColor"></div>
-          </div>
-          <div className="pokedexMainContent">
-            <div className="mainScreenContainer flex lightGray">
-              <div className="mainScreenSLed flex">
-                <div className="mainScreenLed circle red"></div>
-                <div className="mainScreenLed circle red"></div>
-              </div>
-              <div className="mainScreen">
-                <LedAnimationProvider>
-                  <HashRouter>
-                    <Routes>
-                      <Route path='/' element = {<PokeHome />}/>
-                      <Route path='/pokemons' element = {<PokemonsList/>}/>
-                      <Route path='/pokemons/:name' element = {<PokemonCard/>}/>    
-                    </Routes>    
-                  </HashRouter>  
-                </LedAnimationProvider>               
-              </div>
-              <div className="mainScreenLedB circle red"></div>
-              <div className="mainSoundBox"></div>
-            </div>
-          </div>
+          <PokedexLeftSideHeader/>
+          <PokedexRightSideMainContent/>
           <div className="pokedexBottomContent flex">
             <div className="circularButton circle darkGray"></div>
             <div className="ledAndScreenContent">

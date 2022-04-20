@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Pokedex from './Pokedex';
 import { QueryClientProvider} from 'react-query';
-import {ReactQueryDevtools} from 'react-query/devtools';
 import { queryClient } from './services/queryClient';
-
+import { PokedexContextProvider } from './contexts/Pokedex';
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Pokedex />
-      {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/> */}
+      <PokedexContextProvider>
+        <Pokedex />
+      </PokedexContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')

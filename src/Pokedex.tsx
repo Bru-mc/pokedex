@@ -1,24 +1,12 @@
 import './Pokedex.css';
-//react-router-dom
-// import { HashRouter, Route, Routes} from 'react-router-dom';
 //react Hooks
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect} from 'react';
 //contexts
 import { PokemonContextProvider } from './contexts/Pokemon';
 import { CurrentPokemonContextProvider } from './contexts/CurrentPokemon';
-// import { LedAnimationContext, LedAnimationProvider } from './contexts/LedAnimation';
-// //pages components
-
-// import { PokemonsList } from './pages/PokemonsList';
-// import { PokemonCard } from './pages/PokemonCard';
-// import arrowRight from './assets/caret-right-solid.png'
-// import { disableElement } from './helpers/disableElement';
-// import { enableElement } from './helpers/enableElement';
-// import { changeSidePokedex } from './helpers/changeSidePokedex';
-// import { DescriptionScreen } from './components/DescriptionScreen';
-// import { PokeHome } from './pages/PokeHome';
 import { DescriptionRenderContextProvider } from './contexts/DescriptionRender';
-import { PokedexContext, PokedexContextProvider } from './contexts/Pokedex';
+import { PokedexContext } from './contexts/Pokedex';
+//components
 import { PokedexLeftSide } from './components/PokedexLeftSide';
 import { PokedexRightSide } from './components/PokedexRightSide';
 
@@ -30,7 +18,9 @@ function Pokedex() {
     buttonChangeSideRight, buttonChangeSideLeft, pokeRightSide
   } = useContext(PokedexContext)
 
-  const handleResize = () => setClientWidth(document.body.clientWidth)
+  const handleResize = () => {
+    setClientWidth(document.body.clientWidth)
+  }
   
   useEffect(() => {  
     window.addEventListener('resize', handleResize);
@@ -44,7 +34,7 @@ function Pokedex() {
         pokeRightSide!.current.style.left = "initial";
       }
     }
-  },[canChangeSidePokedex]);
+  },[buttonChangeSideRight, buttonChangeSideLeft, canChangeSidePokedex, pokeRightSide, clientWidth]);
 
   useEffect(() => { 
     if(buttonChangeSideRight && buttonChangeSideLeft && pokeRightSide){
@@ -61,10 +51,9 @@ function Pokedex() {
         pokeRightSide!.current.style.left = "initial";
       }
     }
-  },[clientWidth]);
+  },[buttonChangeSideRight, buttonChangeSideLeft, canChangeSidePokedex, pokeRightSide, clientWidth]);
   
   return (
-    <PokedexContextProvider>
     <PokemonContextProvider>
     <DescriptionRenderContextProvider>
     <CurrentPokemonContextProvider>
@@ -75,7 +64,6 @@ function Pokedex() {
     </CurrentPokemonContextProvider> 
     </DescriptionRenderContextProvider>
     </PokemonContextProvider>
-    </PokedexContextProvider>
   );
   
 }
