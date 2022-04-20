@@ -13,6 +13,7 @@ import { PokedexContext } from '../../contexts/Pokedex';
 //style
 import "./index.css";
 import { PokedexRightSideMainContent } from './PokedexLeftSideMainContent';
+import { PokedexLeftSideBottomContent } from './PokedexLeftSideBottomContent';
 
 
 export const PokedexLeftSide = () => {
@@ -35,22 +36,7 @@ export const PokedexLeftSide = () => {
         <div className="pokedex backColor">
           <PokedexLeftSideHeader/>
           <PokedexRightSideMainContent/>
-          <div className="pokedexBottomContent flex">
-            <div className="circularButton circle darkGray"></div>
-            <div className="ledAndScreenContent">
-              <div className="lineLeds flex">
-                <div className="lineLed red"></div>
-                <div className="lineLed blue"></div>
-              </div>
-              <div className="miniScreen green"></div>
-            </div>
-            <div className="crossButton flex">
-              <div className="horizontalLine darkGray"></div>
-              <div className="verticalLine darkGray"></div>
-              <div className="horizontalLineOver darkGray"></div>
-              <div className="crossCircle circle"></div>
-            </div>
-          </div>
+          <PokedexLeftSideBottomContent/>
           <div className="rightBorder backColor">
             <div className="topBorder"></div>
             <div className="bottomBorder"></div>
