@@ -1,0 +1,39 @@
+.pokedexRightSideMainContent{
+    height: 456px;
+    width: 330px;
+    position: absolute;
+    background-color: #be0c39;
+    bottom: 0;
+}
+.pokedexRightSideMainScreen{
+    width: 245px;
+    height: 150px;
+    position: absolute;
+    top:27px;
+    right: 27px;
+    background-color: #060b0e;
+}
+  
+.pokedexRightSideMainButtons{
+    width: 245px;
+    height: 80px;
+    position: absolute;
+    top: 205px;
+    right: 27px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #1c8fd6;
+    border-left: 1px solid black;
+}
+.RS_MButton{
+    width: 48px;
+    height: 39px;
+    background-color: #124bc7;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.RS_MButton p{
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+}

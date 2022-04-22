@@ -1,0 +1,72 @@
+.pokedexBottomContent{
+    position: relative;
+    margin-left: 27px;
+}
+.circularButton{
+    height: 40px;
+    width: 40px;
+    position: relative;
+    top: 0;
+    border: 2px solid #060b0e;
+    box-shadow: inset 0 0 0 2px #1d2d36;
+}
+.ledAndScreenContent{
+    height: 110px;
+    position: relative;
+    margin-left: 15px;
+}
+.lineLed{
+    height: 7px;
+    width: 45px;
+    border-radius: 30%;
+}
+.lineLeds div:first-child{
+    margin-right: 15px;
+}
+.miniScreen{
+    height: 55px;
+    width:80px;
+    margin-top: 15px;
+    margin-left:10px;
+    border-radius: 3%;
+    box-shadow:
+    0 0 10px #f55e84,
+    0 0 0 5px #970529;
+}
+.crossButton{
+    height: 90px;
+    width: 90px;
+    margin-left: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.horizontalLine, .verticalLine{
+    position: absolute;
+    border-radius: 5px;
+    border: 2px solid #060b0e;
+    box-shadow: inset 0 -3px 0 0 #1d2d36,
+                inset 1px 0 0 0 #1d2d36,
+                inset -1px 0 0 0 #1d2d36,
+                inset 0 1px 0 0 #405e6e;
+}
+.horizontalLine{
+    height: 80px;
+    width: 30px;
+}
+.verticalLine{
+    height: 30px;
+    width: 80px;
+}
+.horizontalLineOver{
+    width: 30px;
+    height: 40px;
+    position: absolute;
+}
+.crossCircle{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    box-shadow: inset 0 0 0 3px #0f171b,
+                inset 0 -6px 0 0 #19272e;
+}

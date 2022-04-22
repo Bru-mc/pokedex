@@ -1,0 +1,75 @@
+/*----- Pokedex body */
+.pokedex{
+    height: 600px;
+    width: 330px;
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 0 15px rgb(39, 23, 23);
+    margin-top: 25px;
+    margin-bottom: 50px; 
+}
+/*----- Right Border */
+.rightBorder{
+    z-index: 4;
+    height:510px;
+    width: 32px;
+    position: absolute;
+    top:90px;
+    right:0px;
+    box-shadow: 
+    inset 3px 2px 3px rgb(104, 31, 40),
+    inset -3px -2px 3px rgb(104, 31, 40),
+    inset 10px 0px 1px rgb(233, 90, 126),
+    inset 15px 0px 2px rgb(228, 54, 97),
+    inset 20px 0px 1px rgb(211, 28, 74);;
+}
+.topBorder, .bottomBorder{
+    height: 38px;
+    width: 32px;
+    position: absolute;
+}
+.topBorder{
+    top:0;
+    box-shadow: 0 6px 1px rgb(104, 31, 40);
+}
+.bottomBorder{
+    bottom: 0;
+    box-shadow: 0 -6px 1px rgb(104, 31, 40);
+}
+.buttonChangePokeSide{
+    visibility: hidden;
+    position: absolute;
+    margin: 10px;
+    bottom:260px;
+    left: 293px;
+    width: 25px;
+    height: 50px;
+    z-index: 5;
+}
+  
+/*Pokedex Front*/
+.pokedexFront{
+    z-index: 4;
+    height: 470px;
+    width: 330px;
+    bottom: 0;
+    position: absolute;
+    box-sizing: border-box;
+}
+.pokedexFrontTopRightOver{
+    position: absolute;
+    right: 0;
+    top: -50px;
+    height: 70px;
+    width: 160px;
+}
+.arrowRightIcon{
+    position: absolute;
+    margin: 10px;
+    bottom:260px;
+    width: 25px;
+    height: 50px;
+}
+.arrowRightIcon:hover{
+    cursor: pointer;
+}

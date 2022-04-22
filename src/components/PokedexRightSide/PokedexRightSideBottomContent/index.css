@@ -1,0 +1,53 @@
+.pokedexRightSideBottomContent{
+    position: absolute;
+    top:340px; 
+    left:58px;
+    right: 27px;
+    height: 166px;
+}
+.lineLedsRightSide{
+    position: absolute;
+    top:10px;
+    right: 0;
+    width: 96px;
+    justify-content: space-between;
+}
+.lineLedRightSide{
+    height: 5px;
+    width: 42px;
+    border-radius: 30%;
+    background: #1d2d36;
+}
+.RS_BottomCircularLed{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top:35px;
+    right: 0;
+}
+.pokedexRightSideBottomButtons{
+    height: 35px;
+    width: 96px;
+    border-left: 1px solid black;
+    position: absolute;
+    top: 28px;
+}
+.RS_BButton{
+    width: 48px;
+    height: 35px;
+    background-color: #e3e3e1;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+} 
+.pokedexRightSideBottomScreens{
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    bottom:30px;
+    justify-content:space-between;
+} 
+.RS_BScreen{
+    height: 45px;
+    width: 104px;
+    background-color: #060b0e;
+}

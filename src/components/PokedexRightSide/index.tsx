@@ -16,28 +16,27 @@ import { PokedexContext } from '../../contexts/Pokedex';
 import "./index.css";
 
 export const PokedexRightSide = () => {
-    const pokeRightSide = useRef<any>(null);
-    const buttonChangeSideLeft = useRef<any>(null);
-    const {setPokeRightSide, setbuttonChangeSideLeft} = useContext(PokedexContext)
-    
-    useEffect(()=>{
-        setPokeRightSide(pokeRightSide);
-        setbuttonChangeSideLeft(buttonChangeSideLeft);
-    });
-
-    return(
-        <div className="pokedexRightSide" ref={pokeRightSide}>
-          <PokedexRightSideHeader/>
-          <PokedexRightSideMainContent/>
-          <PokedexRightSideBottomContent/>
-          <div className="leftBorder backColor">
-            <div className="topBorder"></div>
-            <div className="bottomBorder"></div>
-          </div>
-          <img className="buttonChangePokeSideleft left" src={arrowRight} alt="clique aqui" 
-          ref={buttonChangeSideLeft} onClick={()=>changeSidePokedex("left")}/>
-        </div>
-    );
+  const pokeRightSide = useRef<any>(null);
+  const buttonChangeSideLeft = useRef<any>(null);
+  const {setPokeRightSide, setbuttonChangeSideLeft} = useContext(PokedexContext)
+  
+  useEffect(()=>{
+    setPokeRightSide(pokeRightSide);
+    setbuttonChangeSideLeft(buttonChangeSideLeft);
+  });
+  return(
+    <div className="pokedexRightSide" ref={pokeRightSide}>
+      <PokedexRightSideHeader/>
+      <PokedexRightSideMainContent/>
+      <PokedexRightSideBottomContent/>
+      <div className="leftBorder backColor">
+        <div className="topBorder"></div>
+        <div className="bottomBorder"></div>
+      </div>
+      <img className="buttonChangePokeSideleft left" src={arrowRight} alt="clique aqui" 
+      ref={buttonChangeSideLeft} onClick={()=>changeSidePokedex("left")}/>
+    </div>
+  );
 }
 
 

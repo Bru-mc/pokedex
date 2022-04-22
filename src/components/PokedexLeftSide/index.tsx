@@ -17,38 +17,38 @@ import { PokedexLeftSideBottomContent } from './PokedexLeftSideBottomContent';
 
 
 export const PokedexLeftSide = () => {
-    const pokeFront = useRef<any>(null);
-    const buttonChangeSideRight = useRef<any>(null);
-    const {pokeRightSide, setCanChangeSidePokedex, setbuttonChangeSideRight} = useContext(PokedexContext)
+  const pokeFront = useRef<any>(null);
+  const buttonChangeSideRight = useRef<any>(null);
+  const {pokeRightSide, setCanChangeSidePokedex, setbuttonChangeSideRight} = useContext(PokedexContext)
+
+  const removeCape = () => {
+    disableElement(pokeFront)
+    pokeRightSide!.current.style.position = 'relative';
+    enableElement(pokeRightSide!)
+    setCanChangeSidePokedex(true);
+  }
   
-    const removeCape = () => {
-      disableElement(pokeFront)
-      pokeRightSide!.current.style.position = 'relative';
-      enableElement(pokeRightSide!)
-      setCanChangeSidePokedex(true);
-    }
-    
-    useEffect(() => {
-      setbuttonChangeSideRight(buttonChangeSideRight);
-    },[setbuttonChangeSideRight]);
-    
-    return(
-        <div className="pokedex backColor">
-          <PokedexLeftSideHeader/>
-          <PokedexRightSideMainContent/>
-          <PokedexLeftSideBottomContent/>
-          <div className="rightBorder backColor">
-            <div className="topBorder"></div>
-            <div className="bottomBorder"></div>
-          </div>
-          <img className="buttonChangePokeSide" src={arrowRight} alt="clique aqui" 
-          ref={buttonChangeSideRight} onClick={()=>changeSidePokedex("right")}/>
-          
-          <div className="pokedexFront backColor" ref={pokeFront}>
-            <div className="pokedexFrontTopRightOver backColor"></div>
-            <img className="arrowRightIcon" src={arrowRight} alt="clique aqui" 
-            onClick={removeCape}/>
-          </div>
-        </div>
-    );
+  useEffect(() => {
+    setbuttonChangeSideRight(buttonChangeSideRight);
+  },[setbuttonChangeSideRight]);
+  
+  return(
+    <div className="pokedex backColor">
+      <PokedexLeftSideHeader/>
+      <PokedexRightSideMainContent/>
+      <PokedexLeftSideBottomContent/>
+      <div className="rightBorder backColor">
+        <div className="topBorder"></div>
+        <div className="bottomBorder"></div>
+      </div>
+      <img className="buttonChangePokeSide" src={arrowRight} alt="clique aqui" 
+      ref={buttonChangeSideRight} onClick={()=>changeSidePokedex("right")}/>
+      
+      <div className="pokedexFront backColor" ref={pokeFront}>
+        <div className="pokedexFrontTopRightOver backColor"></div>
+        <img className="arrowRightIcon" src={arrowRight} alt="clique aqui" 
+        onClick={removeCape}/>
+      </div>
+    </div>
+  );
 }
