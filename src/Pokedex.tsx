@@ -57,10 +57,10 @@ function Pokedex() {
     <PokemonContextProvider>
     <DescriptionRenderContextProvider>
     <CurrentPokemonContextProvider>
-    <div className='pokedexContainer'>
-      <PokedexLeftSide/>
-      <PokedexRightSide/>  
-    </div>
+      <div className='pokedexContainer'>
+        <PokedexLeftSide/>
+        <PokedexRightSide/>  
+      </div>
     </CurrentPokemonContextProvider> 
     </DescriptionRenderContextProvider>
     </PokemonContextProvider>
